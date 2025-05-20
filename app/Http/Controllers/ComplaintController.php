@@ -3,83 +3,70 @@
 namespace App\Http\Controllers;
 
 use App\Models\Complaint;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Resources\ComplaintResource;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Payment;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Facades\Log;
 
 class ComplaintController extends Controller
 {
-    public function index()
+    /**
+     * Get all complaints for the authenticated user
+     */
+    public function index(Request $request): AnonymousResourceCollection
     {
-        $complaints = Complaint::where('user_id', Auth::id())->get();
+        // Get user ID from JWT token
+        $userId = $request->user()->id;
+
+        // Only select necessary columns and order by latest
+        $complaints = Complaint::where('user_id', $userId)
+            ->select(['id', 'title', 'status', 'created_at', 'payment_id'])
+            ->orderBy('created_at', 'desc')
+            ->get();
+
         return ComplaintResource::collection($complaints);
     }
 
     /**
-     * Store a newly created complaint in storage.
+     * Create a new complaint
      */
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'title' => 'required',
-    //         'description' => 'required',
-    //         'payment_id' => 'nullable|exists:payments,id'
-    //     ]);
-    
-    //     $complaint =Complaint::create([
-    //         'user_id' => 1,
-    //         'payment_id' => $request->payment_id,
-    //         'title' => $request->title,
-    //         'description' => $request->description,
-    //         'status' => 'pending'
-    //     ]);
-    
-    //     return response()->json(new ComplaintResource($complaint), 201);
-    // }
-  
-
-     public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        // Ensure this is an API request
-        // Strict API guard
-        abort_unless($request->expectsJson(), 403, 'Only JSON requests accepted');
+        // Get user ID from JWT token
+        $userId = $request->user()->id;
 
-        // Strict authentication check
-        if (!auth()->check()) {
-            abort(401, 'Unauthenticated');
-        }
-
-        $request->validate([
+        // Validate input
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'payment_id' => 'nullable|exists:payments,id'
         ]);
 
-        $userId = Auth::id(); // No fallback - authentication is required
+        // Payment validation with optimized queries
+        if (isset($validated['payment_id'])) {
+            $paymentValid = Payment::where('id', $validated['payment_id'])
+                ->where('user_id', $userId)
+                ->exists();
 
-        // Payment validation logic
-        if ($request->payment_id) {
-            $paymentExists = Payment::where('id', $request->payment_id)
-                                    ->where('user_id', $userId)
-                                    ->exists();
-            
-            if (!$paymentExists) {
+            if (!$paymentValid) {
                 return response()->json([
                     'message' => 'Payment not found for this user',
-                    'redirect_url' => 'http://localhost:8000/api/create-payment', // Use named route
+                    'redirect_url' => route('payments.create'),
                     'redirect_method' => 'POST'
                 ], 403);
             }
         } else {
-            $hasPayment = Payment::where('user_id', $userId)->exists();
-            
+            // Only check for any payment if none specified
+            $hasPayment = Payment::where('user_id', $userId)
+                ->exists();
+
             if (!$hasPayment) {
                 return response()->json([
                     'message' => 'User has no payments. Please create a payment first.',
-                    'redirect_url' => 'http://localhost:8000/api/create-payment', // Use named route
-                    'redirect_method' => 'POST',
-                    'user_id' => $userId // For debugging
+                    'redirect_url' => route('payments.create'),
+                    'redirect_method' => 'POST'
                 ], 403);
             }
         }
@@ -87,9 +74,9 @@ class ComplaintController extends Controller
         try {
             $complaint = Complaint::create([
                 'user_id' => $userId,
-                'payment_id' => $request->payment_id,
-                'title' => $request->title,
-                'description' => $request->description,
+                'payment_id' => $validated['payment_id'] ?? null,
+                'title' => $validated['title'],
+                'description' => $validated['description'],
                 'status' => 'pending'
             ]);
 
@@ -99,43 +86,60 @@ class ComplaintController extends Controller
             ], 201);
 
         } catch (\Exception $e) {
+            Log::error('Complaint creation failed for user ' . $userId . ': ' . $e->getMessage());
             return response()->json([
                 'message' => 'Failed to create complaint',
-                'error' => $e->getMessage()
+                'error' => config('app.debug') ? $e->getMessage() : 'Internal server error'
             ], 500);
         }
     }
+
     /**
-     * Display the specified complaint.
+     * Show a specific complaint with authorization check
      */
-    public function show(Complaint $complaint)  // <-- Type-hint the Complaint model
+    public function show(Request $request, Complaint $complaint)
     {
-        return response()->json([
-            'success' => true,
-            'data' => new ComplaintResource($complaint)
-        ]);
+        // Authorization check - ensure user owns the complaint
+        if ($request->user()->id !== $complaint->user_id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        return new ComplaintResource($complaint->loadMissing('payment'));
     }
-      /**
-     * Update the specified complaint in storage.
+
+    /**
+     * Update a complaint
      */
     public function update(Request $request, Complaint $complaint)
     {
-        $complaint->update($request->validate([
-            'title' => 'sometimes|required',
-            'description' => 'sometimes|required',
+        // Authorization check
+        if ($request->user()->id !== $complaint->user_id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $validated = $request->validate([
+            'title' => 'sometimes|required|string|max:255',
+            'description' => 'sometimes|required|string',
             'status' => 'sometimes|in:pending,processing,resolved,rejected'
-        ]));
-    
+        ]);
+
+        $complaint->update($validated);
+
         return new ComplaintResource($complaint);
     }
 
     /**
-     * Remove the specified complaint from storage.
+     * Delete a complaint
      */
-    public function destroy(Complaint $complaint)
+    public function destroy(Request $request, Complaint $complaint)
     {
+        // Authorization check
+        if ($request->user()->id !== $complaint->user_id) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $complaint->delete();
-        
+
         return response()->json([
             'success' => true,
             'message' => 'Complaint deleted successfully'
