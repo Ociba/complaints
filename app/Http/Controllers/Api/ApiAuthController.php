@@ -12,11 +12,17 @@ class ApiAuthController extends Controller
 {
     public function register(Request $request)
     {
+        if ($request->method() == 'GET'){
+            return response()->json(['error'=>"Method now allowed, Allowed methods are POST"]);
+        }
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-            'country' => 'required|string|max:100'
+            'country' => 'required|string|max:100',
+            'phone' => 'required|string|max:20',
+            'company' => 'required|string|max:255',
+            'gender' => 'required|string|in:Male,Female,Other,Prefer not to say',
         ]);
 
         if ($validator->fails()) {
@@ -29,7 +35,10 @@ class ApiAuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'country' => $request->country
+            'country' => $request->country,
+            'phone' => $request->phone,
+            'company' => $request->company,
+            'gender' => $request->gender,
         ]);
 
         $token = $user->createToken('auth-token')->plainTextToken;
@@ -43,7 +52,10 @@ class ApiAuthController extends Controller
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
-                'country' => $user->country
+                'country' => $user->country,
+                'phone' => $user->phone,
+                'company' => $user->company,
+                'gender' => $user->gender,
             ],
             'message' => 'User registered successfully'
         ], 201);

@@ -2,147 +2,96 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Complaint;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Http\Resources\ComplaintResource;
-use App\Models\Payment;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+
 
 class ComplaintController extends Controller
 {
-    /**
-     * Get all complaints for the authenticated user
-     */
-    public function index(Request $request): AnonymousResourceCollection
+    protected function handleFileUpload(Request $request, $fileType, $subDirectory)
     {
-        // Get user ID from JWT token
-        $userId = $request->user()->id;
-
-        // Only select necessary columns and order by latest
-        $complaints = Complaint::where('user_id', $userId)
-            ->select(['id', 'title', 'status', 'created_at', 'payment_id'])
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-        return ComplaintResource::collection($complaints);
-    }
-
-    /**
-     * Create a new complaint
-     */
-    public function store(Request $request): JsonResponse
-    {
-        // Get user ID from JWT token
-        $userId = $request->user()->id;
-
-        // Validate input
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'payment_id' => 'nullable|exists:payments,id'
+        $validator = Validator::make($request->all(), [
+            'file' => 'required|file|mimes:mp3,wav,aac,m4a,mp4,mov,avi,mkv|max:204800', // Max 200MB, adjust mimes and max size
+            'complaint_type' => 'sometimes|string',
         ]);
 
-        // Payment validation with optimized queries
-        if (isset($validated['payment_id'])) {
-            $paymentValid = Payment::where('id', $validated['payment_id'])
-                ->where('user_id', $userId)
-                ->exists();
-
-            if (!$paymentValid) {
-                return response()->json([
-                    'message' => 'Payment not found for this user',
-                    'redirect_url' => route('payments.create'),
-                    'redirect_method' => 'POST'
-                ], 403);
-            }
-        } else {
-            // Only check for any payment if none specified
-            $hasPayment = Payment::where('user_id', $userId)
-                ->exists();
-
-            if (!$hasPayment) {
-                return response()->json([
-                    'message' => 'User has no payments. Please create a payment first.',
-                    'redirect_url' => route('payments.create'),
-                    'redirect_method' => 'POST'
-                ], 403);
-            }
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        try {
-            $complaint = Complaint::create([
-                'user_id' => $userId,
-                'payment_id' => $validated['payment_id'] ?? null,
-                'title' => $validated['title'],
-                'description' => $validated['description'],
-                'status' => 'pending'
-            ]);
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $originalName = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            // Sanitize filename and make it unique
+            $fileName = Str::slug(pathinfo($originalName, PATHINFO_FILENAME)) . '_' . time() . '.' . $extension;
+
+            // Store in 'storage/app/public/complaints/{subDirectory}/{fileName}'
+            // Ensure you run `php artisan storage:link`
+            $path = $file->storeAs("public/complaints/{$subDirectory}", $fileName);
+
+            // $url = Storage::url($path); // This gives the public URL if storage is linked
 
             return response()->json([
-                'data' => new ComplaintResource($complaint),
-                'message' => 'Complaint created successfully'
+                'success' => true,
+                'message' => ucfirst($fileType) . ' uploaded successfully.',
+                'file_name' => $fileName,
+                'path' => $path,
+                // 'url' => $url,
+                'original_name' => $originalName,
+                'complaint_type_received' => $request->input('complaint_type', 'N/A'),
             ], 201);
-
-        } catch (\Exception $e) {
-            Log::error('Complaint creation failed for user ' . $userId . ': ' . $e->getMessage());
-            return response()->json([
-                'message' => 'Failed to create complaint',
-                'error' => config('app.debug') ? $e->getMessage() : 'Internal server error'
-            ], 500);
         }
+
+        return response()->json(['success' => false, 'message' => 'No file uploaded or invalid file.'], 400);
     }
 
-    /**
-     * Show a specific complaint with authorization check
-     */
-    public function show(Request $request, Complaint $complaint)
+    public function uploadAudio(Request $request)
     {
-        // Authorization check - ensure user owns the complaint
-        if ($request->user()->id !== $complaint->user_id) {
-            abort(403, 'Unauthorized action.');
-        }
-
-        return new ComplaintResource($complaint->loadMissing('payment'));
+        return $this->handleFileUpload($request, 'audio', 'uploaded_audio');
     }
 
-    /**
-     * Update a complaint
-     */
-    public function update(Request $request, Complaint $complaint)
+    public function uploadVideo(Request $request)
     {
-        // Authorization check
-        if ($request->user()->id !== $complaint->user_id) {
-            abort(403, 'Unauthorized action.');
-        }
+        return $this->handleFileUpload($request, 'video', 'uploaded_videos');
+    }
 
-        $validated = $request->validate([
-            'title' => 'sometimes|required|string|max:255',
-            'description' => 'sometimes|required|string',
-            'status' => 'sometimes|in:pending,processing,resolved,rejected'
+    public function uploadAudioRecording(Request $request)
+    {
+        return $this->handleFileUpload($request, 'audio recording', 'recorded_audio');
+    }
+
+    public function uploadVideoRecording(Request $request)
+    {
+        return $this->handleFileUpload($request, 'video recording', 'recorded_videos');
+    }
+
+    public function submitTextComplaint(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'complaint_text' => 'required|string|max:5000',
+            // Add other fields like user_id, etc.
         ]);
 
-        $complaint->update($validated);
-
-        return new ComplaintResource($complaint);
-    }
-
-    /**
-     * Delete a complaint
-     */
-    public function destroy(Request $request, Complaint $complaint)
-    {
-        // Authorization check
-        if ($request->user()->id !== $complaint->user_id) {
-            abort(403, 'Unauthorized action.');
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $complaint->delete();
+        // TODO: Save the text complaint to your database
+        // Example:
+        // $complaint = Complaint::create([
+        //     'user_id' => auth()->id(), // if authenticated
+        //     'type' => 'text',
+        //     'content' => $request->input('complaint_text'),
+        //     'status' => 'submitted',
+        // ]);
 
         return response()->json([
             'success' => true,
-            'message' => 'Complaint deleted successfully'
-        ]);
+            'message' => 'Text complaint submitted successfully.',
+            // 'complaint_id' => $complaint->id, // if saved
+        ], 201);
     }
 }
