@@ -70,6 +70,7 @@ class ComplaintController extends Controller
 
     public function submitTextComplaint(Request $request)
     {
+        info($request);
         $validator = Validator::make($request->all(), [
             'complaint_text' => 'required|string|max:5000',
             // Add other fields like user_id, etc.
@@ -93,5 +94,10 @@ class ComplaintController extends Controller
             'message' => 'Text complaint submitted successfully.',
             // 'complaint_id' => $complaint->id, // if saved
         ], 201);
+    }
+
+    public function complaints(Request $request)
+    {
+        info($request);
     }
 }

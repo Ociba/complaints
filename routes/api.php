@@ -7,6 +7,8 @@ use App\Http\Controllers\ComplaintController;
 
 Route::prefix('v1')->group(function() {
     Route::get('countries', [CountryController::class, 'index']);
+
+    Route::post('/complaints', [ComplaintController::class, 'complaints']);
     // Authentication Routes
     Route::prefix('auth')->group(function() {
         Route::match(['GET','POST'],'register', [ApiAuthController::class, 'register']);
@@ -16,6 +18,7 @@ Route::prefix('v1')->group(function() {
             Route::post('logout', [ApiAuthController::class, 'logout']);
             Route::get('me', [ApiAuthController::class, 'me']);
         });
+
 
         Route::post('complaints/upload-audio', [ComplaintController::class, 'uploadAudio']);
         Route::post('complaints/upload-video', [ComplaintController::class, 'uploadVideo']);

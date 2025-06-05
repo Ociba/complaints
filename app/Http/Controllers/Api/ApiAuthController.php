@@ -7,14 +7,16 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ApiAuthController extends Controller
 {
     public function register(Request $request)
     {
-        if ($request->method() == 'GET'){
-            return response()->json(['error'=>"Method now allowed, Allowed methods are POST"]);
+        if ($request->method() == 'GET') {
+            return response()->json(['error' => "Method not allowed, Allowed methods are POST"]);
         }
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -41,13 +43,13 @@ class ApiAuthController extends Controller
             'gender' => $request->gender,
         ]);
 
-        $token = $user->createToken('auth-token')->plainTextToken;
+        $token = JWTAuth::fromUser($user);
 
         return response()->json([
             'success' => true,
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => config('sanctum.expiration'),
+            'expires_in' => auth('api')->factory()->getTTL() * 60,
             'user' => [
                 'id' => $user->id,
                 'name' => $user->name,
@@ -65,21 +67,19 @@ class ApiAuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (!auth()->attempt($credentials)) {
+        if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json([
                 'success' => false,
                 'message' => 'Invalid credentials'
             ], 401);
         }
 
-        $token = auth()->user()->createToken('auth-token')->plainTextToken;
-
         return response()->json([
             'success' => true,
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => config('sanctum.expiration'),
-            'user' => auth()->user(),
+            'expires_in' => auth('api')->factory()->getTTL() * 60,
+            'user' => auth('api')->user(),
             'message' => 'Login successful'
         ]);
     }
@@ -88,14 +88,13 @@ class ApiAuthController extends Controller
     {
         return response()->json([
             'success' => true,
-            'user' => $request->user()
+            'user' => JWTAuth::user()
         ]);
     }
 
     public function logout(Request $request)
     {
-        // Proper way to revoke the current token
-        $request->user()->currentAccessToken()->delete();
+        JWTAuth::invalidate(JWTAuth::getToken());
 
         return response()->json([
             'success' => true,
