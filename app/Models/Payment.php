@@ -14,7 +14,12 @@ class Payment extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    
+
+    public function complaint(): BelongsTo
+    {
+        return $this->belongsTo(Complaint::class);
+    }
+
 }
 
 

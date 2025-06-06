@@ -26,15 +26,15 @@ Route::post('/complaints/{complaint}/pay', [PaymentController::class, 'initiateP
 Route::get('/payments/verify', [PaymentController::class, 'verifyPayment']); // Webhook/Callback
 
 Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->prefix('admin')->group(function () {
-// Complaints
-Route::get('/complaints', [AdminComplaintController::class, 'index'])->name('Complaints');
-Route::post('/complaints/{complaint}/resolve', [AdminComplaintController::class, 'resolve'])->name('complaints.resolve');
+    // Complaints
+    Route::get('/complaints', [AdminComplaintController::class, 'index'])->name('Complaints');
+    Route::post('/complaints/{complaint}/resolve', [AdminComplaintController::class, 'resolve'])->name('complaints.resolve');
 
-// Payments
-Route::get('/payments', [AdminPaymentController::class, 'index'])->name('Transactions');
-Route::get('/settings/complaint_fee', [SystemSettingController::class, 'complaintFee'])->name('Complaint Fee');
-Route::post('/complaints/{complaint}/refund', [AdminPaymentController::class, 'refund'])->name('complaints.refund');
-Route::get('/settings/system_user', [SystemSettingController::class, 'systemUser'])->name('Users');
-Route::post('/settings/{id}', [SystemSettingController::class, 'update'])->name('settings.update');
-Route::get('/settings/add/{setting}', [SystemSettingController::class, 'show'])->name('Show');
+    // Payments
+    Route::get('/payments', [AdminPaymentController::class, 'index'])->name('Transactions');
+    Route::get('/settings/complaint_fee', [SystemSettingController::class, 'complaintFee'])->name('Complaint Fee');
+    Route::post('/complaints/{complaint}/refund', [AdminPaymentController::class, 'refund'])->name('complaints.refund');
+    Route::get('/settings/system_user', [SystemSettingController::class, 'systemUser'])->name('Users');
+    Route::post('/settings/{id}', [SystemSettingController::class, 'update'])->name('settings.update');
+    Route::get('/settings/add/{setting}', [SystemSettingController::class, 'show'])->name('Show');
 });

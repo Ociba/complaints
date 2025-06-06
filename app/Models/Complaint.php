@@ -22,6 +22,10 @@ class Complaint extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function payment(){
+        return $this->hasOne(Payment::class);
+    }
+
     public function fileComplaint()
     {
         return $this->belongsTo(FileComplaint::class, 'file_complaint_id');

@@ -13,7 +13,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                     @endif
-                    
+
                     @if(session('error'))
                         <div class="alert alert-danger alert-dismissible fade show">
                             {{ session('error') }}
@@ -39,11 +39,11 @@
                             @foreach($complaints as $i=>$complaint)
                             <tr>
                                 <td>{{ $i + 1 }}</td>
-                                <td>{{ $complaint->creator->name }}</td>
-                                @if( $complaint->payment->status == 'pending')
-                                <td><span class="badge badge-primary px-2">{{ $complaint->payment->status }}</span></td>
+                                <td>{{ $complaint->user->name }}</td>
+                                @if( @$complaint->payment->status == 'pending')
+                                <td><span class="badge badge-primary px-2">{{ @$complaint->payment->status }}</span></td>
                                 @else
-                                <td><span class="badge badge-secondary px-2">{{ $complaint->payment->status }}</span></td>
+                                <td><span class="badge badge-secondary px-2">{{ @$complaint->payment->status }}</span></td>
                                 @endif
                                 <td>{{ $complaint->title }}</td>
                                 <td>{{ $complaint->description }}</td>
@@ -60,7 +60,7 @@
                                         Resolve
                                     </button>
                                 </form>
-                                
+
                                 <form action="{{ route('complaints.refund', $complaint) }}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-sm mb-1 btn-outline-warning">
