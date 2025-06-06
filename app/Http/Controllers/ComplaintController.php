@@ -211,29 +211,22 @@ class ComplaintController extends Controller
                 $fileData = null;
 
                 if ($complaint->fileComplaint) {
-                    // The 'path' stored in the database is already relative to the public directory
-                    // (e.g., "complaints/recorded_audio/file.mp3") because we changed filesystems.php
-                    // and how uploadComplaintFile stores the file.
-
-                    // Construct the full URL directly.
-                    // asset() will correctly prepend your APP_URL.
-                    // We concatenate 'public/' because the web server serves from the 'public' directory
-                    // and the stored path is relative to that.
-                    // However, since public_path() was made the root of 'public' disk, the path
-                    // in the database already starts from 'complaints/'.
-                    // So we just need to append the base URL to the stored path.
                     $baseUrl = config('app.url'); // Get your application's base URL from .env (APP_URL)
-                    $filePath = $complaint->fileComplaint->path;
+                    $storedFilePath = $complaint->fileComplaint->path; // e.g., "complaints/recorded_audio/file.m4a"
 
+                    // Prepend 'public/' to the stored path to make it relative to the domain root
+                    $fullRelativePath = 'public/' . ltrim($storedFilePath, '/');
+
+                    // Construct the full URL
                     // Ensure no double slashes if APP_URL already ends with one
-                    $url = rtrim($baseUrl, '/') . '/' . ltrim($filePath, '/');
+                    $url = rtrim($baseUrl, '/') . '/' . $fullRelativePath;
 
 
                     $fileData = [
                         'id' => $complaint->fileComplaint->id,
                         'filename' => $complaint->fileComplaint->filename,
                         'original_name' => $complaint->fileComplaint->original_name,
-                        'path' => $url, // This will now be http://localhost:8000/complaints/recorded_audio/file.mp3
+                        'path' => $url, // This will now be http://localhost:8000/public/complaints/recorded_audio/file.mp3 (or your actual domain)
                         'file_type' => $complaint->fileComplaint->file_type,
                     ];
                 }
