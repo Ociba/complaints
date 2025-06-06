@@ -114,7 +114,13 @@ class ComplaintController extends Controller
     public function uploadAudioRecording(Request $request)
     {
         // Add specific mimes validation here
-        $request->validate(['file' => 'mimes:mp3,wav,aac,m4a']);
+        $file = $request->file('file');
+        $file->getMimeType();
+        $extension = $file->getClientOriginalExtension();
+
+        if (!in_array($extension, ['mp3', 'wav', 'aac', 'm4a'])) {
+            return response()->json(['error' => 'Invalid file type'], 400);
+        }
         return $this->handleFileComplaint($request, 'audio_recording', 'recorded_audio');
     }
 
