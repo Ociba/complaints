@@ -148,7 +148,7 @@ class ComplaintController extends Controller
         Log::info("Submitting text complaint for user: {$user->id}");
 
         $validator = Validator::make($request->all(), [
-            'text' => 'required|string|max:5000', // Matches 'text' key from Flutter
+            'text_content' => 'required|string|max:5000', // Matches 'text' key from Flutter
             // The 'type' field from Flutter's FormData (e.g., 'text') is implicitly handled by this specific endpoint.
         ]);
 
@@ -162,7 +162,7 @@ class ComplaintController extends Controller
             $complaint = Complaint::create([
                 'user_id' => $user->id,
                 'type' => 'text',
-                'content' => $request->input('text'), // Use 'text' as per Flutter's FormData
+                'content' => $request->input('text_content'), // Use 'text' as per Flutter's FormData
                 'file_complaint_id' => null, // No file for text complaints
                 'status' => 'pending',
             ]);
