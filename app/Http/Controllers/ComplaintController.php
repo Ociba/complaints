@@ -257,7 +257,7 @@ class ComplaintController extends Controller
             ->count();
 
         $solvedCount = Complaint::where('user_id', $user->id)
-            ->where('status', 'solved') // Assuming 'solved' is the status for solved complaints
+            ->where('status', 'resolved') // Assuming 'solved' is the status for solved complaints
             ->count();
 
         return response()->json([
