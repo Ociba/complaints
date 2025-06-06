@@ -277,7 +277,6 @@ class ComplaintController extends Controller
 
     public function postComplaintLocation(Request $request, $complaintId)
     {
-
         // Validate the incoming data
         $validator = Validator::make($request->all(), [
             'latitude' => 'required|numeric',
