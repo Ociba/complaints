@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\UploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -13,93 +14,70 @@ use Illuminate\Support\Facades\Log; // For logging
 class ComplaintController extends Controller
 {
     // Constructor to apply middleware
-    public function __construct()
+    protected $uploadService;
+
+    public function __construct(UploadService $uploadService)
     {
-        // Apply 'auth:api' middleware to all methods in this controller
-        // This ensures only authenticated users can access these endpoints.
         $this->middleware('auth:api');
+        $this->uploadService = $uploadService;
     }
 
-    /**
-     * Handles the common logic for file uploads (audio, video, attachments).
-     *
-     * @param Request $request The incoming HTTP request.
-     * @param string $complaintType The type of complaint (e.g., 'audio_recording', 'video_file_upload').
-     * @param string $subDirectory The subdirectory within 'public/complaints' to store the file.
-     * @return \Illuminate\Http\JsonResponse
-     */
     protected function handleFileComplaint(Request $request, $complaintType, $subDirectory)
     {
-        // Get the authenticated user
         $user = auth()->user();
         if (!$user) {
             return response()->json(['message' => 'Unauthenticated.'], 401);
         }
 
         $validator = Validator::make($request->all(), [
-            'file' => 'required|file|max:204800', // Max 200MB (200 * 1024 KB)
-            // The 'type' field from Flutter's FormData is mapped to $complaintType argument here
-            // No need to validate 'type' directly from request if it's derived from the route
+            'file' => 'required|file|max:204800',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $originalName = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-            $mimeType = $file->getClientMimeType();
-            $fileSize = $file->getSize(); // Size in bytes
+        try {
+            // Use UploadService to handle the file upload
+            $fileData = $this->uploadService->uploadComplaintFile(
+                $request->file('file'),
+                $subDirectory
+            );
 
-            // Sanitize filename and make it unique
-            $fileName = Str::slug(pathinfo($originalName, PATHINFO_FILENAME)) . '_' . time() . '.' . $extension;
+            // Create FileComplaint record
+            $fileComplaint = FileComplaint::create([
+                'filename' => $fileData['filename'],
+                'path' => $fileData['path'],
+                'file_type' => $complaintType,
+                'original_name' => $fileData['original_name'],
+                'mime_type' => $fileData['mime_type'],
+                'size' => $fileData['size'],
+            ]);
 
-            try {
-                // Store in 'storage/app/public/complaints/{subDirectory}/{fileName}'
-                $path = $file->storeAs("public/complaints/{$subDirectory}", $fileName);
+            // Create main Complaint record
+            $complaint = Complaint::create([
+                'user_id' => $user->id,
+                'type' => Str::before($complaintType, '_'),
+                'file_complaint_id' => $fileComplaint->id,
+                'status' => 'pending',
+            ]);
 
-                // Create a FileComplaint record
-                $fileComplaint = FileComplaint::create([
-                    'filename' => $fileName,
-                    'path' => $path, // Relative path in storage
-                    'file_type' => $complaintType, // e.g., 'audio_recording', 'video_file_upload'
-                    'original_name' => $originalName,
-                    'mime_type' => $mimeType,
-                    'size' => $fileSize,
-                ]);
+            return response()->json([
+                'success' => true,
+                'message' => ucfirst(str_replace('_', ' ', $complaintType)) . ' uploaded successfully.',
+                'file_data' => [
+                    'path' => Storage::url($fileData['path']),
+                    'original_name' => $fileData['original_name'],
+                ],
+                'complaint_id' => $complaint->id,
+            ], 201);
 
-                // Create a main Complaint record, linking to the FileComplaint
-                $complaint = Complaint::create([
-                    'user_id' => $user->id,
-                    'type' => Str::before($complaintType, '_'), // Extracts 'audio' or 'video'
-                    'file_complaint_id' => $fileComplaint->id,
-                    'status' => 'pending',
-                    // 'content' remains null for file-based complaints unless specific text is also sent
-                ]);
-
-                return response()->json([
-                    'success' => true,
-                    'message' => ucfirst(str_replace('_', ' ', $complaintType)) . ' uploaded and complaint created successfully.',
-                    'file_data' => [
-                        'id' => $fileComplaint->id,
-                        'filename' => $fileComplaint->filename,
-                        'original_name' => $fileComplaint->original_name,
-                        'path' => Storage::url($fileComplaint->path), // Public URL
-                        'file_type' => $fileComplaint->file_type,
-                    ],
-                    'complaint_id' => $complaint->id,
-                    'complaint_type' => $complaint->type,
-                ], 201);
-
-            } catch (\Exception $e) {
-                // Log any exceptions during file storage or database saving
-                return response()->json(['success' => false, 'message' => 'Failed to process file complaint due to server error.'], 500);
-            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'File upload failed: ' . $e->getMessage(),
+            ], 500);
         }
-
-        return response()->json(['success' => false, 'message' => 'No file uploaded or invalid file.'], 400);
     }
 
 
@@ -109,13 +87,7 @@ class ComplaintController extends Controller
     public function uploadAudio(Request $request)
     {
         // Add specific mimes validation here
-        $file = $request->file('file');
-        $mimeType = $file->getMimeType();
-        $extension = $file->getClientOriginalExtension();
-
-        if (!in_array($extension, ['mp3', 'wav', 'aac', 'm4a'])) {
-            return response()->json(['error' => 'Invalid file type'], 400);
-        }
+        $request->validate(['file' => 'mimes:mp3,wav,aac,m4a']);
         return $this->handleFileComplaint($request, 'audio_file_upload', 'uploaded_audio');
     }
 
@@ -207,40 +179,44 @@ class ComplaintController extends Controller
             return response()->json(['message' => 'Unauthenticated.'], 401);
         }
 
-        // Get the filter_type from query parameters (e.g., ?filter_type=audio)
         $filterType = $request->input('filter_type');
 
-        // Start building the query
         $query = Complaint::with('fileComplaint')
             ->where('user_id', $user->id)
             ->orderByDesc('created_at');
 
-        // Apply filtering if a specific filterType is provided and it's not 'all'
-        // The Flutter app sends 'audio', 'video', 'text' or nothing (null) for 'All'
         if ($filterType && $filterType !== 'all') {
-            $query->where('type', $filterType); // Filter by the 'type' column in the complaints table
+            $query->where('type', $filterType);
         }
 
-        $userComplaints = $query->get(); // Execute the query
-
+        $userComplaints = $query->get();
 
         return response()->json([
             'success' => true,
             'message' => 'Complaints retrieved successfully.',
             'complaints' => $userComplaints->map(function($complaint) {
-                return [
-                    'id' => $complaint->id,
-                    'type' => $complaint->type,
-                    'content' => $complaint->content, // Only for text complaints
-                    'status' => $complaint->status,
-                    'created_at' => $complaint->created_at->toDateTimeString(),
-                    'file_data' => $complaint->fileComplaint ? [
+                $fileData = null;
+
+                if ($complaint->fileComplaint) {
+                    // Generate the full public URL
+                    $url = asset(Storage::url($complaint->fileComplaint->path));
+
+                    $fileData = [
                         'id' => $complaint->fileComplaint->id,
                         'filename' => $complaint->fileComplaint->filename,
                         'original_name' => $complaint->fileComplaint->original_name,
-                        'path' => Storage::url($complaint->fileComplaint->path),
+                        'path' => $url, // Now returns full URL like http://yourapp.com/storage/complaints/file.mp3
                         'file_type' => $complaint->fileComplaint->file_type,
-                    ] : null,
+                    ];
+                }
+
+                return [
+                    'id' => $complaint->id,
+                    'type' => $complaint->type,
+                    'content' => $complaint->content,
+                    'status' => $complaint->status,
+                    'created_at' => $complaint->created_at->toDateTimeString(),
+                    'file_data' => $fileData,
                 ];
             }),
         ], 200);
