@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ComplaintLocation;
 use App\Services\UploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -272,5 +273,44 @@ class ComplaintController extends Controller
                 'solved' => $solvedCount,
             ],
         ], 200);
+    }
+
+    public function postComplaintLocation(Request $request, $complaintId)
+    {
+
+        // Validate the incoming data
+        $validator = Validator::make($request->all(), [
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            // Log the validation error, but return 200 for client not to block
+            // (since the main complaint was already submitted)
+            Log::warning("Location submission validation failed for complaint ID {$complaintId}: " . json_encode($validator->errors()->toArray()));
+            // Return 200 or 202 accepted, as the main process completed
+            return response()->json(['message' => 'Location data invalid, but complaint processed.', 'errors' => $validator->errors()], 200);
+        }
+
+        try {
+            // Find the complaint
+            ComplaintLocation::create([
+                'complaint_id' => $complaintId,
+                'latitude' => $request->input('latitude'),
+                'longitude' => $request->input('longitude'),
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Location successfully attached to complaint.',
+                'complaint_id' => $complaintId,
+            ], 200);
+
+        } catch (\Exception $e) {
+            Log::error("Error attaching location to complaint ID {$complaintId}: " . $e->getMessage(), ['trace' => $e->getTraceAsString()]);
+            // Return a non-error status if the main complaint was already processed,
+            // to avoid confusing the client. Or just log and let it silently fail.
+            return response()->json(['message' => 'Failed to attach location due to server error.'], 500);
+        }
     }
 }

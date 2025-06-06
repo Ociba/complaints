@@ -27,5 +27,7 @@ Route::prefix('v1')->group(function() {
         Route::post('complaints/submit-text', [ComplaintController::class, 'submitTextComplaint']);
         Route::get('complaints', [ComplaintController::class,'complaints']);
         Route::get('/complaints/counts', [ComplaintController::class, 'getComplaintCounts']);
+        Route::post('/complaints/{complaintId}/location', [ComplaintController::class, 'postComplaintLocation']);
+
     });
 });
