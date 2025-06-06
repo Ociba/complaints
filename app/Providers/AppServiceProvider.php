@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +26,7 @@ class AppServiceProvider extends ServiceProvider
                  ->prefix('api') // Adds /api prefix to routes
                  ->group(base_path('routes/api.php'));
         }
+
+        Schema::defaultStringLength(191);
     }
 }
