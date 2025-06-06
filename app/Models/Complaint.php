@@ -2,22 +2,28 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\Payment;
-use App\Models\User;
 
 class Complaint extends Model
 {
-    protected $fillable = ['user_id','payment_id','title','description','status'];
+    use HasFactory;
 
-    public function creator(): BelongsTo
+    protected $fillable = [
+        'user_id',
+        'type', // e.g., 'text', 'audio', 'video'
+        'content', // For text complaints
+        'file_complaint_id', // Foreign key to FileComplaint
+        'status', // e.g., 'pending', 'resolved'
+    ];
+
+    public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
-    public function payment(): BelongsTo
+    public function fileComplaint()
     {
-        return $this->belongsTo(Payment::class, 'payment_id');
+        return $this->belongsTo(FileComplaint::class, 'file_complaint_id');
     }
 }

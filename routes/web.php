@@ -30,7 +30,7 @@ Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->prefix
 Route::get('/complaints', [AdminComplaintController::class, 'index'])->name('Complaints');
 Route::post('/complaints/{complaint}/resolve', [AdminComplaintController::class, 'resolve'])->name('complaints.resolve');
 
-// Payments 
+// Payments
 Route::get('/payments', [AdminPaymentController::class, 'index'])->name('Transactions');
 Route::get('/settings/complaint_fee', [SystemSettingController::class, 'complaintFee'])->name('Complaint Fee');
 Route::post('/complaints/{complaint}/refund', [AdminPaymentController::class, 'refund'])->name('complaints.refund');
