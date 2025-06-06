@@ -38,16 +38,16 @@ class ComplaintController extends Controller
         }
 
         try {
-            // Use UploadService to handle the file upload
+            // Pass 'recorded_audio' or similar for $subDirectory
             $fileData = $this->uploadService->uploadComplaintFile(
                 $request->file('file'),
-                $subDirectory
+                $subDirectory // e.g., 'recorded_audio'
             );
 
             // Create FileComplaint record
             $fileComplaint = FileComplaint::create([
                 'filename' => $fileData['filename'],
-                'path' => $fileData['path'],
+                'path' => $fileData['path'], // Stores "complaints/recorded_audio/filename.m4a"
                 'file_type' => $complaintType,
                 'original_name' => $fileData['original_name'],
                 'mime_type' => $fileData['mime_type'],
@@ -66,6 +66,7 @@ class ComplaintController extends Controller
                 'success' => true,
                 'message' => ucfirst(str_replace('_', ' ', $complaintType)) . ' uploaded successfully.',
                 'file_data' => [
+                    // Storage::url() will now resolve to http://localhost:8000/complaints/...
                     'path' => Storage::url($fileData['path']),
                     'original_name' => $fileData['original_name'],
                 ],
@@ -204,14 +205,29 @@ class ComplaintController extends Controller
                 $fileData = null;
 
                 if ($complaint->fileComplaint) {
-                    // Generate the full public URL
-                    $url = asset(Storage::url($complaint->fileComplaint->path));
+                    // The 'path' stored in the database is already relative to the public directory
+                    // (e.g., "complaints/recorded_audio/file.mp3") because we changed filesystems.php
+                    // and how uploadComplaintFile stores the file.
+
+                    // Construct the full URL directly.
+                    // asset() will correctly prepend your APP_URL.
+                    // We concatenate 'public/' because the web server serves from the 'public' directory
+                    // and the stored path is relative to that.
+                    // However, since public_path() was made the root of 'public' disk, the path
+                    // in the database already starts from 'complaints/'.
+                    // So we just need to append the base URL to the stored path.
+                    $baseUrl = config('app.url'); // Get your application's base URL from .env (APP_URL)
+                    $filePath = $complaint->fileComplaint->path;
+
+                    // Ensure no double slashes if APP_URL already ends with one
+                    $url = rtrim($baseUrl, '/') . '/' . ltrim($filePath, '/');
+
 
                     $fileData = [
                         'id' => $complaint->fileComplaint->id,
                         'filename' => $complaint->fileComplaint->filename,
                         'original_name' => $complaint->fileComplaint->original_name,
-                        'path' => $url, // Now returns full URL like http://yourapp.com/storage/complaints/file.mp3
+                        'path' => $url, // This will now be http://localhost:8000/complaints/recorded_audio/file.mp3
                         'file_type' => $complaint->fileComplaint->file_type,
                     ];
                 }
