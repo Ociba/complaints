@@ -14,7 +14,6 @@ class ApiAuthController extends Controller
 {
     public function register(Request $request)
     {
-        info($request);
         if ($request->method() == 'GET') {
             return response()->json(['error' => "Method not allowed, Allowed methods are POST"]);
         }

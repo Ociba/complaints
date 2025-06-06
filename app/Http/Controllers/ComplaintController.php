@@ -145,15 +145,12 @@ class ComplaintController extends Controller
             return response()->json(['message' => 'Unauthenticated.'], 401);
         }
 
-        Log::info("Submitting text complaint for user: {$user->id}");
-
         $validator = Validator::make($request->all(), [
             'text_content' => 'required|string|max:5000', // Matches 'text' key from Flutter
             // The 'type' field from Flutter's FormData (e.g., 'text') is implicitly handled by this specific endpoint.
         ]);
 
         if ($validator->fails()) {
-            Log::warning("Text complaint validation failed for user {$user->id}: " . json_encode($validator->errors()->toArray()));
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
@@ -167,7 +164,6 @@ class ComplaintController extends Controller
                 'status' => 'pending',
             ]);
 
-            Log::info("Text complaint submitted successfully for user {$user->id}. Complaint ID: {$complaint->id}");
 
             return response()->json([
                 'success' => true,
@@ -177,7 +173,6 @@ class ComplaintController extends Controller
             ], 201);
 
         } catch (\Exception $e) {
-            Log::error("Error submitting text complaint for user {$user->id}: " . $e->getMessage(), ['trace' => $e->getTraceAsString()]);
             return response()->json(['success' => false, 'message' => 'Failed to submit text complaint due to server error.'], 500);
         }
     }
@@ -286,7 +281,6 @@ class ComplaintController extends Controller
         if ($validator->fails()) {
             // Log the validation error, but return 200 for client not to block
             // (since the main complaint was already submitted)
-            Log::warning("Location submission validation failed for complaint ID {$complaintId}: " . json_encode($validator->errors()->toArray()));
             // Return 200 or 202 accepted, as the main process completed
             return response()->json(['message' => 'Location data invalid, but complaint processed.', 'errors' => $validator->errors()], 200);
         }
@@ -306,7 +300,6 @@ class ComplaintController extends Controller
             ], 200);
 
         } catch (\Exception $e) {
-            Log::error("Error attaching location to complaint ID {$complaintId}: " . $e->getMessage(), ['trace' => $e->getTraceAsString()]);
             // Return a non-error status if the main complaint was already processed,
             // to avoid confusing the client. Or just log and let it silently fail.
             return response()->json(['message' => 'Failed to attach location due to server error.'], 500);
