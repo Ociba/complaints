@@ -51,7 +51,7 @@ class ApiAuthController extends Controller
         $bioData = MemberBioData::create([
             'user_id' => $user->id,
             'country' => $request->country,
-            'company' => $request->company,
+            'company' => $request->company ?? 'No Company',
             'gender' => $request->gender,
             'next_of_kin' => $request->nok,
             'next_of_kin_phone' => $request->nok_phone,

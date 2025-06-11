@@ -68,4 +68,15 @@ class User extends Authenticatable implements JWTSubject // Implement the interf
     {
         return [];
     }
+
+    // app/Models/User.php
+    public function emergencyContacts()
+    {
+        return $this->hasMany(EmergencyContact::class);
+    }
+
+    public function primaryEmergencyContact()
+    {
+        return $this->hasOne(EmergencyContact::class)->where('is_primary', true);
+    }
 }
