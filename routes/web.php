@@ -40,30 +40,3 @@ Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->prefix
     Route::post('/settings/{id}', [SystemSettingController::class, 'update'])->name('settings.update');
     Route::get('/settings/add/{setting}', [SystemSettingController::class, 'show'])->name('Show');
 });
-
-Route::get('/preview-sos-email', function () {
-    // 1. Prepare mock data for the notification
-    // This data should mimic what your SOSController passes to the Notification
-    $mockSosData = [
-        'user' => 'Test User Name',
-        'latitude' => '0.3476', // Example latitude for Kampala
-        'longitude' => '32.5825', // Example longitude for Kampala
-        'message' => 'This is a sample emergency message for email preview.',
-        'time' => now()->format('Y-m-d H:i:s T'),
-        // Ensure this URL is correct as per our previous discussion
-        'map_url' => "http://maps.google.com/maps?q=0.3476,32.5825",
-    ];
-
-    // 2. Create an instance of your Notification
-    $notification = new SOSNotification($mockSosData);
-
-    // 3. Create a mock notifiable instance (only needs an 'email' property)
-    // This is required by the toMail method, even if we're not actually sending
-    $mockNotifiable = (object)['email' => 'test@example.com'];
-
-    // 4. Get the MailMessage instance from the notification
-    $mailMessage = $notification->toMail($mockNotifiable);
-
-    // 5. Render the MailMessage to HTML
-    return $mailMessage->render();
-});

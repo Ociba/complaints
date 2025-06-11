@@ -11,7 +11,7 @@
 
     {!! $sosData['user']!!} has triggered an SOS alert!
 
-    {!! $sosData['message'] !!}
+    {!! $sosData['content'] !!}
 
     Time {!! $sosData['time'] ? \Carbon\Carbon::parse($sosData['time'])->format('d M H:i') : 'N/A' !!}
 
