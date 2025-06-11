@@ -3,7 +3,7 @@ self.addEventListener('push', function(event) {
     event.waitUntil(
         self.registration.showNotification(payload.title, {
             body: payload.body,
-            icon: '/icon.png',
+            icon: '/logo.png',
             data: { url: payload.action_url }
         })
     );

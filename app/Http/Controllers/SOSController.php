@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Complaint;
 use App\Models\ComplaintLocation;
 use App\Models\EmergencyContact;
-use App\Services\UploadService;
+use App\Services\UploadService; // Keep if used elsewhere, but not in this snippet
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\SOSNotification;
 use App\Models\User;
 use Illuminate\Support\Facades\Notification;
-use App\Services\FirebaseService;
+use App\Services\FirebaseService; // Keep if used elsewhere, but not in this snippet
 
 class SOSController extends Controller
 {
@@ -20,7 +20,7 @@ class SOSController extends Controller
     {
         $this->middleware('auth:api');
     }
-    // app/Http/Controllers/SOSController.php
+
     public function handleSOS(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -34,13 +34,21 @@ class SOSController extends Controller
         }
 
         $user = auth()->user();
+        // Assuming EmergencyContact::all() retrieves contacts with email addresses
+        // If you need to filter for contacts with mail, you might do:
+        // $emergencyContacts = EmergencyContact::whereNotNull('email')->where('email', '!=', '')->get();
         $emergencyContacts = EmergencyContact::all();
         $user = User::whereId($user->id)->first();
 
-        if ($emergencyContacts->isEmpty()) {
+        // It's better to check for actual email addresses rather than just if the collection is empty
+        $receivableContacts = $emergencyContacts->filter(function ($contact) {
+            return !empty($contact->email);
+        });
+
+        if ($receivableContacts->isEmpty()) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'No emergency contacts with email addresses found'
+                'message' => 'No emergency contacts with valid email addresses found.'
             ], 400);
         }
 
@@ -50,15 +58,16 @@ class SOSController extends Controller
             'type' => 'text',
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
-            'content' => 'SOS Notification, Immediate attention needed',
+            'content' => $request->message ?? 'SOS Notification, Immediate attention needed', // Use provided message or default
+            'message' => $request->message ?? 'Immediate attention needed!', // Pass 'message' key for consistency with blade
             'time' => now()->format('Y-m-d H:i:s T'),
+            // CORRECTED MAP URL FORMAT
             'map_url' => "https://www.google.com/maps?q={$request->latitude},{$request->longitude}",
         ];
 
 
         try {
             // register complaints
-
             $complaint = Complaint::create($sosData);
 
             ComplaintLocation::create([
@@ -67,11 +76,12 @@ class SOSController extends Controller
                 'longitude' => $request->longitude,
             ]);
 
-            Notification::send($emergencyContacts, new SOSNotification($sosData));
+            // Send notification only to contacts with valid mail
+            Notification::send($receivableContacts, new SOSNotification($sosData));
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'SOS alerts sent to ' . $emergencyContacts->count() . ' contacts',
+                'message' => 'SOS alerts sent to ' . $receivableContacts->count() . ' contacts.',
                 'data' => $sosData
             ]);
 

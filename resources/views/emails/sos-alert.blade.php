@@ -1,35 +1,28 @@
-@component('mail::layout')
-    @slot('header')
-        @component('mail::header', ['url' => config('app.url')])
-            {{ config('app.name') }} Emergency Alert System
-        @endcomponent
-    @endslot
+<x-mail::layout>
+    {{-- Header --}}
+    <x-slot:header>
+        <x-mail::header :url="config('app.url')">
+            {{ config('app.name') }}
+        </x-mail::header>
+    </x-slot:header>
 
-    # 🚨 EMERGENCY ALERT
+    {{-- Body --}}
+    <h1 style="color: #dc3545; font-size: 24px; margin-bottom: 20px;">🚨 EMERGENCY ALERT</h1>
 
-    **{{ $sosData['user'] }}** has triggered an SOS alert!
+    {!! $sosData['user']!!} has triggered an SOS alert!
 
-    **Location:**
-    [View on Google Maps]({{ $sosData['map_url'] }})
-    (Latitude: {{ $sosData['latitude'] }}, Longitude: {{ $sosData['longitude'] }})
+    {!! $sosData['message'] !!}
 
-    **Message:**
-    {{ $sosData['message'] }}
+    Time {!! $sosData['time'] ? \Carbon\Carbon::parse($sosData['time'])->format('d M H:i') : 'N/A' !!}
 
-    **Time of Alert:**
-    {{ $sosData['time'] }}
-
-    @component('mail::button', ['url' => $sosData['map_url'], 'color' => 'red'])
+    <x-mail::button :url="$sosData['map_url']" color="red">
         View Location on Map
-    @endcomponent
+    </x-mail::button>
 
-    @component('mail::panel')
-        This is an automated emergency alert. Please respond immediately if you receive this message.
-    @endcomponent
-
-    @slot('footer')
-        @component('mail::footer')
-            © {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
-        @endcomponent
-    @endslot
-@endcomponent
+    {{-- Footer --}}
+    <x-slot:footer>
+        <x-mail::footer>
+            © {{ date('Y') }} {{ config('app.name') }}. {{ __('All rights reserved.') }}
+        </x-mail::footer>
+    </x-slot:footer>
+</x-mail::layout>

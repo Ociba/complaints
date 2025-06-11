@@ -28,6 +28,6 @@ Notification.requestPermission().then(permission => {
 onMessage(messaging, payload => {
     new Notification(payload.notification.title, {
         body: payload.notification.body,
-        icon: '/icon.png'
+        icon: '/logo.png'
     });
 });
