@@ -47,7 +47,7 @@ class SOSController extends Controller
         $sosData = [
             'user' => $user->name,
             'user_id' => $user->id,
-            'type' => 'sos',
+            'type' => 'text',
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
             'content' => 'SOS Notification, Immediate attention needed',
