@@ -1,170 +1,139 @@
-<div class="header">    
-    <div class="header-content clearfix">
-        
-        <div class="nav-control">
-            <div class="hamburger">
-                <span class="toggle-icon"><i class="icon-menu"></i></span>
-            </div>
-        </div>
-        <div class="header-left">
-            <div class="input-group icons">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-                </div>
-                <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
-                <div class="drop-down animated flipInX d-md-none">
-                    <form action="#">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="header-right">
-            <ul class="clearfix">
-                <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
-                        <i class="mdi mdi-email-outline"></i>
-                        <span class="badge badge-pill gradient-1">3</span>
-                    </a>
-                    <div class="drop-down animated fadeIn dropdown-menu">
-                        <div class="dropdown-content-heading d-flex justify-content-between">
-                            <span class="">3 New Messages</span>  
-                            <a href="javascript:void()" class="d-inline-block">
-                                <span class="badge badge-pill gradient-1">3</span>
-                            </a>
-                        </div>
-                        <div class="dropdown-content-body">
-                            <ul>
-                                <li class="notification-unread">
-                                    <a href="javascript:void()">
-                                        <img class="float-left mr-3 avatar-img" src="images/avatar/1.jpg" alt="">
-                                        <div class="notification-content">
-                                            <div class="notification-heading">Saiful Islam</div>
-                                            <div class="notification-timestamp">08 Hours ago</div>
-                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="notification-unread">
-                                    <a href="javascript:void()">
-                                        <img class="float-left mr-3 avatar-img" src="images/avatar/2.jpg" alt="">
-                                        <div class="notification-content">
-                                            <div class="notification-heading">Adam Smith</div>
-                                            <div class="notification-timestamp">08 Hours ago</div>
-                                            <div class="notification-text">Can you do me a favour?</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <img class="float-left mr-3 avatar-img" src="images/avatar/3.jpg" alt="">
-                                        <div class="notification-content">
-                                            <div class="notification-heading">Barak Obama</div>
-                                            <div class="notification-timestamp">08 Hours ago</div>
-                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <img class="float-left mr-3 avatar-img" src="images/avatar/4.jpg" alt="">
-                                        <div class="notification-content">
-                                            <div class="notification-heading">Hilari Clinton</div>
-                                            <div class="notification-timestamp">08 Hours ago</div>
-                                            <div class="notification-text">Hello</div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            
-                        </div>
-                    </div>
-                </li>
-                <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
-                        <i class="mdi mdi-bell-outline"></i>
-                        <span class="badge badge-pill gradient-2">3</span>
-                    </a>
-                    <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
-                        <div class="dropdown-content-heading d-flex justify-content-between">
-                            <span class="">2 New Notifications</span>  
-                            <a href="javascript:void()" class="d-inline-block">
-                                <span class="badge badge-pill gradient-2">5</span>
-                            </a>
-                        </div>
-                        <div class="dropdown-content-body">
-                            <ul>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <span class="mr-3 avatar-icon bg-success-lighten-2"><i class="icon-present"></i></span>
-                                        <div class="notification-content">
-                                            <h6 class="notification-heading">Events near you</h6>
-                                            <span class="notification-text">Within next 5 days</span> 
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="icon-present"></i></span>
-                                        <div class="notification-content">
-                                            <h6 class="notification-heading">Event Started</h6>
-                                            <span class="notification-text">One hour ago</span> 
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <span class="mr-3 avatar-icon bg-success-lighten-2"><i class="icon-present"></i></span>
-                                        <div class="notification-content">
-                                            <h6 class="notification-heading">Event Ended Successfully</h6>
-                                            <span class="notification-text">One hour ago</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="icon-present"></i></span>
-                                        <div class="notification-content">
-                                            <h6 class="notification-heading">Events to Join</h6>
-                                            <span class="notification-text">After two days</span> 
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            
-                        </div>
-                    </div>
-                </li>
-                <li class="icons dropdown d-none d-md-flex">
-                    <a href="/logout" class="log-user">
-                        <span><i class="icon-lock f-s-14" aria-hidden="true"></i> logout</span>  
-                    </a>
-                </li>
-                <li class="icons dropdown">
-                    <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
-                        <span class="activity active"></span>
-                        <img src="{{ asset('asset/images/user/1.png')}}" height="40" width="40" alt="">
-                    </div>
-                    <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                        <div class="dropdown-content-body">
-                            <ul>
-                                <li>
-                                    <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
-                                    </a>
-                                </li>
-                                
-                                <hr class="my-2">
-                                <li>
-                                    <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                </li>
-                                <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+<nav class="top-app-bar navbar navbar-expand navbar-dark bg-dark">
+    <div class="container-fluid px-4">
+        <!-- Drawer toggle button-->
+        <button class="btn btn-lg btn-icon order-1 order-lg-0" id="drawerToggle" href="javascript:void(0);"><i class="material-icons">menu</i></button>
+        <!-- Navbar brand-->
+        <a class="navbar-brand me-auto" href="/home"><div class="text-uppercase font-monospace">Material Admin Pro</div></a>
+        <!-- Navbar items-->
+        <div class="d-flex align-items-center mx-3 me-lg-0">
+            <!-- Navbar-->
+            <ul class="navbar-nav d-none d-lg-flex">
+                <li class="nav-item"><a class="nav-link" href="/home">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://docs.startbootstrap.com/material-admin-pro" target="_blank">Documentation</a></li>
             </ul>
+            <!-- Navbar buttons-->
+            <div class="d-flex">
+                <!-- Messages dropdown-->
+                <div class="dropdown dropdown-notifications d-none d-sm-block">
+                    <button class="btn btn-lg btn-icon dropdown-toggle me-3" id="dropdownMenuMessages" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">mail_outline</i></button>
+                    <ul class="dropdown-menu dropdown-menu-end me-3 mt-3 py-0 overflow-hidden" aria-labelledby="dropdownMenuMessages">
+                        <li><h6 class="dropdown-header bg-primary text-white fw-500 py-3">Messages</h6></li>
+                        <li><hr class="dropdown-divider my-0" /></li>
+                        <li>
+                            <a class="dropdown-item unread" href="#!">
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-content-text"><div class="text-truncate d-inline-block" style="max-width: 18rem">Hi there, I had a question about something, is there any way you can help me out?</div></div>
+                                    <div class="dropdown-item-content-subtext">Mar 12, 2023 · Juan Babin</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-0" /></li>
+                        <li>
+                            <a class="dropdown-item" href="#!">
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-content-text"><div class="text-truncate d-inline-block" style="max-width: 18rem">Thanks for the assistance the other day, I wanted to follow up with you just to make sure everyting is settled.</div></div>
+                                    <div class="dropdown-item-content-subtext">Mar 10, 2023 · Christine Hendersen</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-0" /></li>
+                        <li>
+                            <a class="dropdown-item" href="#!">
+                                <div class="dropdown-item-content">
+                                    <div class="dropdown-item-content-text"><div class="text-truncate d-inline-block" style="max-width: 18rem">Welcome to our group! It's good to see new members and I know you will do great!</div></div>
+                                    <div class="dropdown-item-content-subtext">Mar 8, 2023 · Celia J. Knight</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-0" /></li>
+                        <li>
+                            <a class="dropdown-item py-3" href="#!">
+                                <div class="d-flex align-items-center w-100 justify-content-end text-primary">
+                                    <div class="fst-button small">View all</div>
+                                    <i class="material-icons icon-sm ms-1">chevron_right</i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Notifications and alerts dropdown-->
+                <div class="dropdown dropdown-notifications d-none d-sm-block">
+                    <button class="btn btn-lg btn-icon dropdown-toggle me-3" id="dropdownMenuNotifications" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">notifications</i></button>
+                    <ul class="dropdown-menu dropdown-menu-end me-3 mt-3 py-0 overflow-hidden" aria-labelledby="dropdownMenuNotifications">
+                        <li><h6 class="dropdown-header bg-primary text-white fw-500 py-3">Alerts</h6></li>
+                        <li><hr class="dropdown-divider my-0" /></li>
+                        <li>
+                            <a class="dropdown-item unread" href="#!">
+                                <i class="material-icons leading-icon">assessment</i>
+                                <div class="dropdown-item-content me-2">
+                                    <div class="dropdown-item-content-text">Your March performance report is ready to view.</div>
+                                    <div class="dropdown-item-content-subtext">Mar 12, 2023 · Performance</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-0" /></li>
+                        <li>
+                            <a class="dropdown-item" href="#!">
+                                <i class="material-icons leading-icon">check_circle</i>
+                                <div class="dropdown-item-content me-2">
+                                    <div class="dropdown-item-content-text">Tracking codes successfully updated.</div>
+                                    <div class="dropdown-item-content-subtext">Mar 12, 2023 · Coverage</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-0" /></li>
+                        <li>
+                            <a class="dropdown-item" href="#!">
+                                <i class="material-icons leading-icon">warning</i>
+                                <div class="dropdown-item-content me-2">
+                                    <div class="dropdown-item-content-text">Tracking codes have changed and require manual action.</div>
+                                    <div class="dropdown-item-content-subtext">Mar 8, 2023 · Coverage</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-0" /></li>
+                        <li>
+                            <a class="dropdown-item py-3" href="#!">
+                                <div class="d-flex align-items-center w-100 justify-content-end text-primary">
+                                    <div class="fst-button small">View all</div>
+                                    <i class="material-icons icon-sm ms-1">chevron_right</i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- User profile dropdown-->
+                <div class="dropdown">
+                    <button class="btn btn-lg btn-icon dropdown-toggle" id="dropdownMenuProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">person</i></button>
+                    <ul class="dropdown-menu dropdown-menu-end mt-3" aria-labelledby="dropdownMenuProfile">
+                        <li>
+                            <a class="dropdown-item" href="#!">
+                                <i class="material-icons leading-icon">person</i>
+                                <div class="me-3">Profile</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#!">
+                                <i class="material-icons leading-icon">settings</i>
+                                <div class="me-3">Settings</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#!">
+                                <i class="material-icons leading-icon">help</i>
+                                <div class="me-3">Help</div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route ('logout') }}">
+                                <i class="material-icons leading-icon">logout</i>
+                                <div class="me-3">Logout</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</nav>

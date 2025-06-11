@@ -8,10 +8,16 @@ class AdminComplaintController extends Controller
 
 {
     public function index(){
-        $complaints = Complaint::with('user','payment')->get();
-        return view('admin.complaints.all',compact('complaints'));
+        return view('admin.complaints.all');
+    }
+    
+    public function complaintDetails($complaintId){
+        return view('admin.complaints.details',compact('complaintId'));
     }
 
+    public function locateComplaint($complaintId){
+        return view('admin.complaints.locate_complaint',compact('complaintId'));
+    }
     public function resolve(Complaint $complaint)
     {
         // Update the complaint status

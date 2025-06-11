@@ -17,6 +17,12 @@ class Complaint extends Model
         'status', // e.g., 'pending', 'resolved'
     ];
 
+    // User.php model
+    public function bioData()
+    {
+        return $this->hasOne(MemberBioData::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -29,5 +35,34 @@ class Complaint extends Model
     public function fileComplaint()
     {
         return $this->belongsTo(FileComplaint::class, 'file_complaint_id');
+    }
+
+    
+    public function location()
+    {
+        return $this->hasOne(ComplaintLocation::class);
+    }
+
+    public static function getComplaint(){
+        return Complaint::with('user.bioData','fileComplaint')->latest()->get();
+    }
+
+    public static function getParticularComplaint($complaintId){
+        return Complaint::with('user.bioData','fileComplaint')
+            //  ->whereId($complaintId)->get();
+            ->findOrFail($complaintId);
+    }
+
+    // In Complaint model
+    public function getMediaTypeAttribute()
+    {
+        if ($this->type === 'text') return 'text';
+        if (!$this->fileComplaint) return null;
+        
+        return match($this->fileComplaint->file_type) {
+            'audio_recording', 'audio' => 'audio',
+            'video_file_upload', 'video' => 'video',
+            default => 'file'
+        };
     }
 }

@@ -68,4 +68,9 @@ class User extends Authenticatable implements JWTSubject // Implement the interf
     {
         return [];
     }
+
+    public function bioData()
+    {
+        return $this->hasOne(MemberBioData::class);
+    }
 }

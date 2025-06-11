@@ -1,98 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-@include('layouts.css')
-
-<body>
-
-    <!--*******************
-        Preloader start
-    ********************-->
-   @include('layouts.preloader')
-    <!--*******************
-        Preloader end
-    ********************-->
-
-    
-    <!--**********************************
-        Main wrapper start
-    ***********************************-->
-    <div id="main-wrapper">
-
-        <!--**********************************
-            Nav header start
-        ***********************************-->
-        <div class="nav-header">
-            <div class="brand-logo">
-                <a href="#">
-                    <span class="brand-title">
-                    {{ env('App_Name') }}
-                    </span>
-                </a>
-            </div>
-        </div>
-        <!--**********************************
-            Nav header end
-        ***********************************-->
-
-        <!--**********************************
-            Header start
-        ***********************************-->
+    <head>
+       @include('layouts.css')
+    </head>
+    <body class="nav-fixed bg-light">
+        <!-- Top app bar navigation menu-->
         @include('layouts.topnav')
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
-
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        @include('layouts.sidebar')
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
-
-        <!--**********************************
-            Content body start
-        ***********************************-->
-        <div class="content-body">
-            <div class="container-fluid mt-3">
-
-            <div class="row page-titles mx-0 mt-5">
-            <div class="col p-md-0">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ Request()->Route()->getName() }}</a></li>
-                </ol>
+        <!-- Layout wrapper-->
+        <div id="layoutDrawer">
+            <!-- Layout navigation-->
+            @include('layouts.sidebar')
+            <!-- Layout content-->
+            <div id="layoutDrawer_content">
+                <!-- Main page content-->
+                <main>
+                    <!-- Main dashboard content-->
+                    <div class="container-xl p-5">
+                        @include('layouts.breadcrumb')
+                        <!-- Colored status cards-->
+                        @yield('content')
+                    </div>
+                </main>
+                <!-- Footer-->
+               @include('layouts.footer')
             </div>
         </div>
-        <!-- row -->
-                    @yield('content')
-            </div>
-            <!-- #/ container -->
-        </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-        
-        
-        <!--**********************************
-            Footer start
-        ***********************************-->
-       @include('layouts.footer')
-        <!--**********************************
-            Footer end
-        ***********************************-->
-    </div>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
-
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    @include('layouts.javascript')
-
+        @include('layouts.javascript')
 </body>
-
 </html>

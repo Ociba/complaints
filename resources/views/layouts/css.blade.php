@@ -1,17 +1,17 @@
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{ env('App_Name') }} - {{Request()->Route()->getName()}}</title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('asset/images/favicon.png')}}">
-    <!-- Pignose Calender -->
-    <link href="{{ asset('asset/plugins/pg-calendar/css/pignose.calendar.min.css')}}" rel="stylesheet">
-    <!-- Chartist -->
-    <link rel="stylesheet" href="{{ asset('asset/plugins/chartist/css/chartist.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('asset/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
-    <!-- Custom Stylesheet -->
-    <link href="{{ asset('asset/css/style.css')}}" rel="stylesheet">
-    <link href="{{ asset('asset/plugins/tables/css/datatable/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-
-</head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>{{env('APP_NAME')}} - {{Request()->Route()->getName()}}</title>
+<!-- Load Favicon-->
+<link href="{{ asset('asset/admin/assets/img/favicon.ico')}}" rel="shortcut icon" type="image/x-icon" />
+<!-- Load Material Icons from Google Fonts-->
+<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet" />
+<!-- Load Simple DataTables Stylesheet-->
+<link href="{{ asset('asset/admin/dist/style.min.css')}}" rel="stylesheet" />
+<!-- Roboto and Roboto Mono fonts from Google Fonts-->
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500" rel="stylesheet" />
+<!-- Load main stylesheet-->
+<link href="{{ asset('asset/admin/css/styles.css')}}" rel="stylesheet" />
