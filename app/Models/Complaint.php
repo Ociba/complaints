@@ -50,7 +50,6 @@ class Complaint extends Model
 
     public static function getParticularComplaint($complaintId){
         return Complaint::with('user.bioData','fileComplaint')
-            //  ->whereId($complaintId)->get();
             ->findOrFail($complaintId);
     }
 
