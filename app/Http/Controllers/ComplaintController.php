@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ComplaintLocation;
+use App\Models\EmergencyContact;
+use App\Notifications\SOSNotification;
 use App\Services\UploadService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -11,6 +14,7 @@ use Illuminate\Support\Str;
 use App\Models\Complaint; // Import the Complaint model
 use App\Models\FileComplaint; // Import the FileComplaint model
 use Illuminate\Support\Facades\Log; // For logging
+use Illuminate\Support\Facades\Notification;
 
 class ComplaintController extends Controller
 {
@@ -272,26 +276,43 @@ class ComplaintController extends Controller
 
     public function postComplaintLocation(Request $request, $complaintId)
     {
-        // Validate the incoming data
         $validator = Validator::make($request->all(), [
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
+            'accuracy' => 'nullable|numeric',
+            'altitude' => 'nullable|numeric',
+            'heading' => 'nullable|numeric',
+            'speed' => 'nullable|numeric',
+            'speed_accuracy' => 'nullable|numeric',
         ]);
 
         if ($validator->fails()) {
-            // Log the validation error, but return 200 for client not to block
-            // (since the main complaint was already submitted)
-            // Return 200 or 202 accepted, as the main process completed
-            return response()->json(['message' => 'Location data invalid, but complaint processed.', 'errors' => $validator->errors()], 200);
+            return response()->json([
+                'message' => 'Location data invalid, but complaint processed.',
+                'errors' => $validator->errors()
+            ], 200);
         }
 
         try {
-            // Find the complaint
-            ComplaintLocation::create([
+            $location = ComplaintLocation::create([
                 'complaint_id' => $complaintId,
                 'latitude' => $request->input('latitude'),
                 'longitude' => $request->input('longitude'),
+                'accuracy' => $request->input('accuracy'),
+                'altitude' => $request->input('altitude'),
+                'heading' => $request->input('heading'),
+                'speed' => $request->input('speed'),
+                'speed_accuracy' => $request->input('speed_accuracy'),
             ]);
+
+            // Get the full complaint with user relationship
+            $complaint = Complaint::with('user')->findOrFail($complaintId);
+            info($complaint);
+            // Only send notifications for SOS complaints
+            if (strtoupper($complaint->type) === 'SOS') {
+                info($complaint->type);
+                $this->sendEmergencyNotification($complaint, $location);
+            }
 
             return response()->json([
                 'success' => true,
@@ -300,9 +321,43 @@ class ComplaintController extends Controller
             ], 200);
 
         } catch (\Exception $e) {
-            // Return a non-error status if the main complaint was already processed,
-            // to avoid confusing the client. Or just log and let it silently fail.
-            return response()->json(['message' => 'Failed to attach location due to server error.'], 500);
+            return response()->json([
+                'message' => 'Failed to attach location due to server error.',
+                'error' => $e->getMessage()
+            ], 500);
         }
+    }
+
+
+    protected function sendEmergencyNotification(Complaint $complaint, ComplaintLocation $location)
+    {
+        try {
+            // Get emergency contacts who should receive emails
+            $emergencyContacts = EmergencyContact::where('receive_email', true)
+                ->orderBy('priority', 'asc')
+                ->get();
+
+            // Prepare notification data
+            $sosData = [
+                'user' => $complaint->user->name,
+                'content' => 'Emergency SOS alert with location information.',
+                'time' => Carbon::parse($location->created_at)->format('d M H:i'),
+                'map_url' => $this->generateMapUrl($location->latitude, $location->longitude),
+            ];
+
+            // Send notifications to all emergency contacts
+            foreach ($emergencyContacts as $contact) {
+                Notification::route('mail', $contact->email)
+                    ->notify(new SOSNotification($sosData));
+            }
+
+        } catch (\Exception $e) {
+            \Log::error("Failed to send emergency notifications: " . $e->getMessage());
+        }
+    }
+
+    protected function generateMapUrl($latitude, $longitude)
+    {
+        return "https://www.google.com/maps?q={$latitude},{$longitude}";
     }
 }

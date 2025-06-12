@@ -13,7 +13,7 @@
 
     {!! $sosData['content'] !!}
 
-    Time {!! $sosData['time'] ? \Carbon\Carbon::parse($sosData['time'])->format('d M H:i') : 'N/A' !!}
+    Time {!! $sosData['time'] !!}
 
     <x-mail::button :url="$sosData['map_url']" color="red">
         View Location on Map
