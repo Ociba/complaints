@@ -77,4 +77,14 @@ class User extends Authenticatable implements JWTSubject // Implement the interf
     public static function countDomesticUsers(){
         return User::whereRole('user')->count();
     }
+    // app/Models/User.php
+    public function emergencyContacts()
+    {
+        return $this->hasMany(EmergencyContact::class);
+    }
+
+    public function primaryEmergencyContact()
+    {
+        return $this->hasOne(EmergencyContact::class)->where('is_primary', true);
+    }
 }

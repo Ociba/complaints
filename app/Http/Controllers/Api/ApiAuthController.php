@@ -20,7 +20,6 @@ class ApiAuthController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'country' => 'required|string|max:100',
             'phone' => 'required|string|max:20|unique:users',
@@ -39,7 +38,7 @@ class ApiAuthController extends Controller
         // Create user
         $user = User::create([
             'name' => $request->name,
-            'email' => $request->email,
+            'email' => $request->username,
             'password' => Hash::make($request->password),
             'country' => $request->country,
             'phone' => $request->phone,
@@ -51,7 +50,7 @@ class ApiAuthController extends Controller
         $bioData = MemberBioData::create([
             'user_id' => $user->id,
             'country' => $request->country,
-            'company' => $request->company,
+            'company' => $request->company ?? 'No Company',
             'gender' => $request->gender,
             'next_of_kin' => $request->nok,
             'next_of_kin_phone' => $request->nok_phone,
@@ -83,7 +82,7 @@ class ApiAuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
+        info($request->all());
         if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json([
                 'success' => false,
@@ -107,7 +106,6 @@ class ApiAuthController extends Controller
         $token = JWTAuth::claims([
             'user' => $userData
         ])->attempt($credentials);
-
         return response()->json([
             'success' => true,
             'access_token' => $token,
@@ -117,22 +115,6 @@ class ApiAuthController extends Controller
         ]);
     }
 
-    public function me(Request $request)
-    {
-        $user = JWTAuth::user();
-        $bioData = MemberBioData::where('user_id', $user->id)->first();
-
-        // Combine user and bio data
-        $userData = array_merge($user->toArray(), [
-            'next_of_kin' => $bioData->next_of_kin ?? null,
-            'next_of_kin_phone' => $bioData->next_of_kin_phone ?? null,
-        ]);
-
-        return response()->json([
-            'success' => true,
-            'user' => $userData
-        ]);
-    }
 
     public function logout(Request $request)
     {

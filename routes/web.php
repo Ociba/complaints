@@ -9,6 +9,8 @@ use App\Http\Controllers\AdminPaymentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SystemSettingController;
 use App\Http\Controllers\FrontPagesController;
+use App\Notifications\SOSNotification;
+
 
 Route::get('/', function () { return view('welcome');})->name('Welcome');
 

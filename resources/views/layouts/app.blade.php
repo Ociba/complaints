@@ -17,6 +17,31 @@
      <!-- CSS -->
      <link href="{{ asset('css/app.css') }}" rel="stylesheet">
      <script src="{{ asset('js/app.js') }}"></script>
+
+    {{-- Never Delete this   --}}
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDK4pL16_Xzy0DoRJ3rMUbFYaCtn9DgcXY",
+            authDomain: "migrantwatch-44430.firebaseapp.com",
+            projectId: "migrantwatch-44430",
+            storageBucket: "migrantwatch-44430.firebasestorage.app",
+            messagingSenderId: "765877401410",
+            appId: "1:765877401410:web:5bce8dadfd874c0d5dbadb",
+            measurementId: "G-3CXLMHHWYF"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
 </head>
 <body>
     <div id="app">

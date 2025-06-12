@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\ApiAuthController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\SOSController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function() {
@@ -16,7 +17,7 @@ Route::prefix('v1')->group(function() {
     });
 
     // Protected Routes (Require JWT)
-    Route::middleware('api')->group(function() {
+    Route::middleware('auth:api')->group(function() { // <--- Apply auth:api here for all protected routes
         // Auth-related routes (logout, me)
         Route::post('auth/logout', [ApiAuthController::class, 'logout']);
 
@@ -29,5 +30,7 @@ Route::prefix('v1')->group(function() {
         Route::get('/complaints/counts', [ComplaintController::class, 'getComplaintCounts']);
         Route::post('/complaints/{complaintId}/location', [ComplaintController::class, 'postComplaintLocation']);
 
+        // Now correctly protected by auth:api
+        Route::post('/sos', [SOSController::class, 'handleSOS'])->name('api.sos');
     });
 });
