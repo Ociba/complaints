@@ -73,4 +73,8 @@ class User extends Authenticatable implements JWTSubject // Implement the interf
     {
         return $this->hasOne(MemberBioData::class);
     }
+
+    public static function countDomesticUsers(){
+        return User::whereRole('user')->count();
+    }
 }

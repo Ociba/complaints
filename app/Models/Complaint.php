@@ -79,4 +79,24 @@ class Complaint extends Model
         ->latest()
         ->get();
     }
+
+    public static function countPendingComplaints(){
+        return Complaint::whereStatus('pending')->count();
+    }
+
+    public static function countResolvedComplaints(){
+        return Complaint::whereStatus('resolved')->count();
+    }
+
+    public static function countTextComplaints(){
+        return Complaint::whereType('text')->count();
+    }
+
+    public static function countAudioComplaints(){
+        return Complaint::whereType('audio')->count();
+    }
+
+    public static function countVideoComplaints(){
+        return Complaint::whereType('video')->count();
+    }
 }

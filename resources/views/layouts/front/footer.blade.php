@@ -18,11 +18,11 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about_us">About us</a></li>
+            <li><a href="/feedback">Feedback</a></li>
             <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="/privacy_policy">Privacy policy</a></li>
           </ul>
         </div>
 
