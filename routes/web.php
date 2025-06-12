@@ -10,9 +10,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SystemSettingController;
 use App\Http\Controllers\FrontPagesController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('Welcome');
+Route::get('/', function () { return view('welcome');})->name('Welcome');
+
 
 Route::get('/about_us', [FrontPagesController::class, 'aboutUs'])->name('About Us');
 Route::get('/feedback', [FrontPagesController::class, 'feedback'])->name('Feedback');
@@ -30,10 +29,11 @@ Route::post('/complaints/{complaint}/pay', [PaymentController::class, 'initiateP
 Route::get('/payments/verify', [PaymentController::class, 'verifyPayment']); // Webhook/Callback
 
 Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->prefix('admin')->group(function () {
-    // Complaints 
+    // Complaints
     Route::get('/complaints', [AdminComplaintController::class, 'index'])->name('Complaints');
     Route::get('/complaint-details/{complaintId}', [AdminComplaintController::class, 'complaintDetails'])->name('Complaints Details');
     Route::get('/locate/{complaintId}', [AdminComplaintController::class, 'locateComplaint'])->name('Locate Complaint');
+    Route::get('/print-complaint/{complaintId}', [AdminComplaintController::class, 'PrintComplaint'])->name('Complaint Print');
 
     Route::post('/complaints/{complaint}/resolve', [AdminComplaintController::class, 'resolve'])->name('complaints.resolve');
 

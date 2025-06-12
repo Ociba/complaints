@@ -25,14 +25,14 @@
                 <div class="card-body p-5">
                     <div class="card-title">{{ $details->user->name }}</div>
                     <div class="card-subtitle mb-4"></div>
-                    <div class="text-center">
+                    <div class="text-left">
                         <p>
                             <span class="fw-bold">Status: </span>
                             <span class="badge bg-{{ $details->status == 'resolved' ? 'success' : 'warning' }}">
                                 {{ ucfirst($details->status) }}
                             </span>
                         </p>
-                        <p><span class="fw-bold">Country: </span> {{ $details->user->bioData->country }}</p>
+                        <p><span class="fw-bold">Country: </span> {{ @$details->user->bioData->country }}</p>
                         <p><span class="fw-bold">Type: </span> <span class="text-danger fw-bold">{{ ucfirst($details->type) }}</span></p>
                         <p><span class="fw-bold">Date:</span> {{ $details->created_at->format('M j, Y') }}</p>
                         <p><span class="fw-bold">Time:</span> {{ $details->created_at->format('g:i A') }}</p>
@@ -178,6 +178,7 @@
                         </div>
                     </div>
                         @endif
+                        <a href="/admin/print-complaint/{{$details->id}}" class="btn btn-sm text-white btn-warning mt-3"><i class="material-icons">print</i>Print</a>
                         <a href="/admin/locate/{{$details->id}}" class="btn btn-sm btn-success mt-3"><i class="material-icons">map</i>Locate A Complaint</a>
                 </div>
             </div>

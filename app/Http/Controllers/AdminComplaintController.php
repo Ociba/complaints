@@ -28,4 +28,8 @@ class AdminComplaintController extends Controller
         // Redirect back with success message
         return back()->with('success', 'Complaint #'.$complaint->id.' has been marked as resolved!');
     }
+
+    public function PrintComplaint($complaintId){
+        return view('admin.complaints.print_complaint',compact('complaintId'));
+    }
 }
