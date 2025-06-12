@@ -18,8 +18,6 @@ class SOSController extends Controller
 
     public function handleSos(Request $request)
     {
-        info($request->all());
-
         try {
             // Validate the incoming request
             $validator = Validator::make($request->all(), [

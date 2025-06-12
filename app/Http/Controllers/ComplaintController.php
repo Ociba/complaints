@@ -307,10 +307,8 @@ class ComplaintController extends Controller
 
             // Get the full complaint with user relationship
             $complaint = Complaint::with('user')->findOrFail($complaintId);
-            info($complaint);
             // Only send notifications for SOS complaints
             if (strtoupper($complaint->type) === 'SOS') {
-                info($complaint->type);
                 $this->sendEmergencyNotification($complaint, $location);
             }
 
