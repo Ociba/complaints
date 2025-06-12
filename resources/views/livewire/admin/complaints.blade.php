@@ -13,6 +13,18 @@
             </div>
         </div>
         <div class="card-body p-4">
+            <div class="row">
+               @if (session()->has('success'))
+                <div class="alert alert-success mt-2">
+                    {{ session('success') }}
+                </div>
+                @endif
+                @if (session()->has('error'))
+                <div class="alert alert-danger mt-2">
+                    {{ session('error') }}
+                </div>
+                @endif
+            </div>
             <!-- Simple DataTables example-->
             <table id="datatablesSimple">
                 <thead>
@@ -31,7 +43,7 @@
                     <tr>
                         <td>{{ $i + 1 }}</td>
                         <td>{{ $complaint->user->name }}</td>
-                        <td title="{{ $complaint->created_at->format('M j, Y g:i A') }}">{{ $complaint->created_at->format('M j, Y') }} {{ $complaint->created_at->format('g:i A') }} <small class="text-muted">({{ $complaint->created_at->diffForHumans() }})</small></td>
+                        <td title="{{ $complaint->created_at->format('M j, Y g:i A') }}">{{ $complaint->created_at->format('M j, Y') }} {{ $complaint->created_at->format('g:i A') }} <p><small class="text-muted">({{ $complaint->created_at->diffForHumans() }})</small></p></td>
                         <td>{{ $complaint->type}}</td>
                         @if( $complaint->status === 'pending')
                         <td><span class="badge bg-danger px-2">{{ @$complaint->status }}</span></td>
@@ -39,7 +51,10 @@
                         <td><span class="badge bg-success px-2">{{ @$complaint->status }}</span></td>
                         @endif
                         <td>{{ $complaint->user->bioData->next_of_kin_phone ?? 'N/A' }}</td>
-                        <td><a href="/admin/complaint-details/{{$complaint->id}}" class="btn btn-sm btn-outline-success">View More</a></td>
+                        <td>
+                            <a href="/admin/complaint-details/{{$complaint->id}}" class="btn btn-sm btn-outline-success">View More</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary" wire:click="markComplaintAsResolved({{$complaint->id}})">Resolve</a>
+                       </td>
                     </tr>
                     @endforeach
                 </tbody>

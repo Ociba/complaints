@@ -21,7 +21,7 @@
     <div class="row gx-5">
         <div class="col-xl-4">
             <!-- Profile picture card-->
-            <div class="card card-raised mb-5">
+            <div class="card shadow card-raised mb-5">
                 <div class="card-body p-5">
                     <div class="card-title">{{ $details->user->name }}</div>
                     <div class="card-subtitle mb-4"></div>
@@ -42,9 +42,9 @@
         </div>
         <div class="col-xl-8">
             <!-- Account details card-->
-            <div class="card card-raised mb-5">
+            <div class="card shadow card-raised mb-5">
                 <div class="card-body p-5">
-                    <div class="card-title">Complaint Details</div>
+                    <div class="card-title mb-4">Complaint Details</div>
                         <!-- Complaint Content -->
                         <div class="mb-4">
                             <mwc-textfield class="w-100" label="Complaint Type" outlined=""
@@ -140,41 +140,43 @@
                         @endif
 
                         <!-- User Information -->
-                        <div class="row mb-4">
-                            <div class="col-md-6">
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-4">
                                 <mwc-textfield class="w-100" label="User Name" outlined=""
                                     value="{{ $details->user->name }}" readonly></mwc-textfield>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-4">
                                 <mwc-textfield class="w-100" label="User Email" outlined=""
                                     value="{{ $details->user->email }}" readonly></mwc-textfield>
                             </div>
                         </div>
 
                         <!-- Bio Data -->
-                        <div class="row mb-4">
-                            <div class="col-md-6">
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-4">
                                 <mwc-textfield class="w-100" label="Company" outlined=""
                                     value="{{ $details->user->bioData->company ?? 'N/A' }}" readonly></mwc-textfield>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-4">
                                 <mwc-textfield class="w-100" label="Next of Kin" outlined=""
                                     value="{{ $details->user->bioData->next_of_kin ?? 'N/A' }}" readonly></mwc-textfield>
                             </div>
                         </div>
 
+                        <div class="row mb-3">
                         <!-- Next of Kin Contact -->
-                        <div class="mb-4">
+                        <div class="col-md-6 mb-4">
                             <mwc-textfield class="w-100" label="Next of Kin Phone" outlined=""
                                 value="{{ $details->user->bioData->next_of_kin_phone ?? 'N/A' }}" readonly></mwc-textfield>
                         </div>
 
                         @if($details->fileComplaint)
                         <!-- File Complaint Details -->
-                        <div class="mb-4">
+                        <div class="col-md-6 mb-3">
                             <mwc-textfield class="w-100" label="File Type" outlined=""
-                                value="{{ $details->fileComplaint->type }}" readonly></mwc-textfield>
+                                value="{{ $details->fileComplaint->file_type }}" readonly></mwc-textfield>
                         </div>
+                    </div>
                         @endif
                         <a href="/admin/locate/{{$details->id}}" class="btn btn-sm btn-success mt-3"><i class="material-icons">map</i>Locate A Complaint</a>
                 </div>

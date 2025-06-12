@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Complaint extends Model
 {
@@ -64,5 +65,18 @@ class Complaint extends Model
             'video_file_upload', 'video' => 'video',
             default => 'file'
         };
+    }
+
+    public static function markComplaintResolved($complaintId){
+        return Complaint::whereId($complaintId)->update([
+            'status'=>'resolved'
+        ]);
+    }
+
+    public static function getTodaysComplaints(){
+        return Complaint::with('user.bioData','fileComplaint')
+        ->whereCreatedAt(Carbon::today())
+        ->latest()
+        ->get();
     }
 }

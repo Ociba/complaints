@@ -7,11 +7,13 @@
             <div class="card-body">
                 <h4 class="card-title">Complaints Fee</h4>
                 <div class="table-responsive">
-                    <table class="table table-striped table-bordered zero-configuration">
+                    <table id="datatablesSimple">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
                                 <th>Role</th>
                                 <th>Action</th>
                             </tr>
@@ -21,6 +23,8 @@
                             <tr>
                                 <td>{{ $i + 1 }}</td>
                                 <td>{{ $user->name}}</td>
+                                <td>{{ $user->phone}}</td>
+                                <td>{{ $user->email}}</td>
                                 <td>{{ $user->role}}</td>
                                 <td>
                                 <button type="button" class="btn btn-sm mb-1 btn-outline-primary">update</button>

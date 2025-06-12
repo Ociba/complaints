@@ -15,3 +15,4 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500" rel="stylesheet" />
 <!-- Load main stylesheet-->
 <link href="{{ asset('asset/admin/css/styles.css')}}" rel="stylesheet" />
+@livewireStyles

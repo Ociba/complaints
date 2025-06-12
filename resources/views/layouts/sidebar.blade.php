@@ -29,18 +29,13 @@
                 <!-- Drawer link (Dashboards)-->
                 <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
                     <div class="nav-link-icon"><i class="material-icons">dashboard</i></div>
-                    Dashboards
+                    Settings
                     <div class="drawer-collapse-arrow"><i class="material-icons">expand_more</i></div>
                 </a>
                 <!-- Nested drawer nav (Dashboards)-->
                 <div class="collapse" id="collapseDashboards" aria-labelledby="headingOne" data-bs-parent="#drawerAccordion">
                     <nav class="drawer-menu-nested nav">
-                        <a class="nav-link" href="app-dashboard-default.html">Default</a>
-                        <a class="nav-link" href="app-dashboard-minimal.html">Minimal</a>
-                        <a class="nav-link" href="app-dashboard-analytics.html">Analytics</a>
-                        <a class="nav-link" href="app-dashboard-accounting.html">Accounting</a>
-                        <a class="nav-link" href="app-dashboard-orders.html">Orders</a>
-                        <a class="nav-link" href="app-dashboard-projects.html">Projects</a>
+                        <a class="nav-link" href="/admin/settings/system_user">System Users</a>
                     </nav>
                 </div>
             </div>
