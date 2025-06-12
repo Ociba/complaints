@@ -8,12 +8,16 @@ use App\Http\Controllers\AdminComplaintController;
 use App\Http\Controllers\AdminPaymentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SystemSettingController;
+use App\Http\Controllers\FrontPagesController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('Welcome');
 
-
+Route::get('/about_us', [FrontPagesController::class, 'aboutUs'])->name('About Us');
+Route::get('/feedback', [FrontPagesController::class, 'feedback'])->name('Feedback');
+Route::get('/privacy_policy', [FrontPagesController::class, 'privacyPolicy'])->name('Private Policy');
+Route::get('/mobile-app-instructions', [FrontPagesController::class, 'mobileAppInstructions'])->name('Mobile App Instructions');
 
 Auth::routes();
 
