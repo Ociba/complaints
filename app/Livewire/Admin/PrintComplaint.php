@@ -13,20 +13,10 @@ class PrintComplaint extends Component
     public function mount($complaintId)
     {
         $this->complaintId = $complaintId;
-        $this->complaint = Complaint::getParticularComplaint($complaintId);
+        $this->complaint = Complaint::with(['user.bioData', 'fileComplaint'])
+        ->findOrFail($complaintId);
 
-        // Debug the actual path
-        if ($this->complaint->fileComplaint) {
-            $path = str_replace(['/', '\\'], DIRECTORY_SEPARATOR,
-                public_path('complaints/recorded_videos/' . basename($this->complaint->fileComplaint->path)));
-            
-            if (!file_exists($path)) {
-                logger()->error("Video file missing", [
-                    'expected_path' => $path,
-                    'stored_path' => $this->complaint->fileComplaint->path
-                ]);
-            }
-        }
+       
     }
 
     public function render()

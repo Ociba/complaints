@@ -21,10 +21,17 @@
                     <div class="nav-link-icon"><i class="material-icons">language</i></div>
                     Dashboard
                 </a>
-
+                <div class="drawer-menu-divider"></div>
+                <!-- Drawer section heading (Complaints)-->
+                <div class="drawer-menu-heading">Complaints</div>
+                <a class="nav-link" href="/admin/complaints/pending">
+                    Pending
+                </a>
+                <a class="nav-link" href="/admin/complaints/resolved">
+                    Resolved
+                </a>
                 <a class="nav-link" href="/admin/complaints">
-                    <div class="nav-link-icon"><i class="material-icons">widgets</i></div>
-                    complaints
+                    Emergency
                 </a>
                 <!-- Drawer link (Dashboards)-->
                 <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">

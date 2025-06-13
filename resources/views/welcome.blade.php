@@ -18,17 +18,17 @@
           <div class="col-lg-7 content-col" data-aos="fade-up">
             <div class="content">
               <div class="agency-name">
-                <h5>OUR AGENCY</h5>
+                {{--<h5> Tuliwamu </h5>--}}
               </div>
 
               <div class="main-heading">
-                <h1>CREATIVE <br>DESIGN</h1>
+                <h1>IN DISTRESS <br>WE RESPOND</h1>
               </div>
 
               <div class="divider"></div>
 
               <div class="description">
-                <p>Discover innovative strategies for impactful visual communication. We transform ideas into compelling realities, ensuring your brand stands out in a crowded marketplace. Our dedicated team leverages cutting-edge techniques to deliver exceptional results that resonate with your audience.</p>
+                <p>Tuliwamu is a dedicated emergency response app designed to assist distressed Ugandans in the diaspora by providing immediate help and ensuring their safe return home. Whether you're facing an emergency, need urgent assistance, or want to report a complaint, Tuliwamu connects you with the right support quickly and efficiently.</p>
               </div>
 
               <div class="cta-button">
@@ -87,8 +87,8 @@
 
           <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-left" data-aos-delay="300">
             <div class="about-content">
-              <h2>Elevating Business Performance Through Innovation</h2>
-              <p class="lead">We focus on crafting bespoke strategies that navigate complexity and deliver tangible results for our clients.</p>
+              <h2>Tuliwamu  Key Features:</h2>
+              <p class="lead">Tuliwamu is your reliable partner in distress—ensuring you’re never alone, no matter where you are. Download now and stay protected!.</p>
               <p>Through a blend of sophisticated analytics and creative problem-solving, we empower organizations to thrive in rapidly evolving markets.</p>
 
               <div class="row g-4 mt-3">

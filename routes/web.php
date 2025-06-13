@@ -111,3 +111,8 @@ Route::get('/test-video', function() {
     readfile($path);
     exit;
 });
+
+Route::get('/test-file', function() {
+    $path = 'complaints/recorded_audio/file-example-mp3-700kb_1749229650.mp3';
+    return response()->file(public_path($path));
+});
