@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class Complaint extends Model
 {
@@ -46,6 +47,12 @@ class Complaint extends Model
 
     public static function getComplaint(){
         return Complaint::with('user.bioData','fileComplaint')->latest()->get();
+    }
+
+    public static function getComplaintByStatus($status){
+        return Complaint::with('user.bioData','fileComplaint')
+        ->whereStatus($status)
+        ->latest()->get();
     }
 
     public static function getParticularComplaint($complaintId){
@@ -97,5 +104,32 @@ class Complaint extends Model
 
     public static function countVideoComplaints(){
         return Complaint::whereType('video')->count();
+    }
+    //comparing data in the graph
+    public static function getMonthlyComplaintCounts()
+    {
+        $currentYear = now()->year;
+
+        $months = range(1, 12); // Ensure we get all months, even if zero count
+
+        $pending = Complaint::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+            ->whereYear('created_at', $currentYear)
+            ->where('status', 'pending')
+            ->groupByRaw('MONTH(created_at)')
+            ->pluck('count', 'month');
+
+        $resolved = Complaint::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+            ->whereYear('created_at', $currentYear)
+            ->where('status', 'resolved')
+            ->groupByRaw('MONTH(created_at)')
+            ->pluck('count', 'month');
+
+        return collect($months)->map(function ($month) use ($pending, $resolved) {
+            return [
+                'month' => $month,
+                'pending' => $pending[$month] ?? 0,
+                'resolved' => $resolved[$month] ?? 0,
+            ];
+        });
     }
 }

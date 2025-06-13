@@ -15995,6 +15995,7 @@ body {
   border-radius: 50%;
 }
 
+
 .table, .datatable-table {
   font-size: 0.875rem;
 }
@@ -22056,7 +22057,7 @@ div.code-toolbar > .toolbar > .toolbar-item .top-app-bar.navbar-light .card .car
   flex-wrap: nowrap;
 }
 .drawer .drawer-menu .nav .drawer-menu-heading {
-  padding-top: 2.5rem;
+  padding-top: 1.5rem;
   padding-right: 1.5rem;
   padding-bottom: 0.75rem;
   padding-left: 1.5rem;
@@ -22067,7 +22068,7 @@ div.code-toolbar > .toolbar > .toolbar-item .top-app-bar.navbar-light .card .car
   height: 0px;
   border-top-style: solid;
   border-top-width: 1px;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   margin-bottom: 0;
 }
 .drawer .drawer-menu .nav .nav-link {

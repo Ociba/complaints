@@ -32,7 +32,13 @@ Route::get('/payments/verify', [PaymentController::class, 'verifyPayment']); // 
 
 Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->prefix('admin')->group(function () {
     // Complaints
-    Route::get('/complaints', [AdminComplaintController::class, 'index'])->name('Complaints');
+    // Route::get('/complaints', [AdminComplaintController::class, 'index'])->name('Complaints');
+
+    Route::get('/complaints', [AdminComplaintController::class, 'index'])->name('complaints.index');
+    Route::get('/complaints/status/{status}', [AdminComplaintController::class, 'getComplaintByStatus'])->name('complaints.status');
+    Route::get('/complaints/type/{type}', [AdminComplaintController::class, 'getComplaintByType'])->name('complaints.type');
+    
+
     Route::get('/complaint-details/{complaintId}', [AdminComplaintController::class, 'complaintDetails'])->name('Complaints Details');
     Route::get('/locate/{complaintId}', [AdminComplaintController::class, 'locateComplaint'])->name('Locate Complaint');
     Route::get('/print-complaint/{complaintId}', [AdminComplaintController::class, 'PrintComplaint'])->name('Complaint Print');
@@ -47,7 +53,7 @@ Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->prefix
     Route::post('/settings/{id}', [SystemSettingController::class, 'update'])->name('settings.update');
     Route::get('/settings/add/{setting}', [SystemSettingController::class, 'show'])->name('Show');
 });
-// Test route
+
 // Add this to your web.php
 Route::get('/play-audio/{filename}', function($filename) {
     $path = public_path('complaints/recorded_audio/' . $filename);
@@ -112,7 +118,3 @@ Route::get('/test-video', function() {
     exit;
 });
 
-Route::get('/test-file', function() {
-    $path = 'complaints/recorded_audio/file-example-mp3-700kb_1749229650.mp3';
-    return response()->file(public_path($path));
-});

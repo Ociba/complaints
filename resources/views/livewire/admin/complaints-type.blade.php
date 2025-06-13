@@ -5,12 +5,12 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="me-4">
                     <h2 class="card-title text-white mb-0">
-                    @if ($status === 'pending')
-                        Pending Complaints
-                    @elseif ($status === 'resolved')
-                        Resolved Complaints
+                    @if ($type === 'audio')
+                        Audio Complaints
+                    @elseif ($type === 'video')
+                        Video Complaints
                     @else
-                        All Complaints
+                        Text Complaints
                     @endif
                     </h2>
                 </div>
@@ -61,9 +61,9 @@
                         <td>{{ $complaint->user->bioData->next_of_kin_phone ?? 'N/A' }}</td>
                         <td>
                             <a href="/admin/complaint-details/{{$complaint->id}}" class="btn btn-sm btn-outline-success">View More</a>
-                            @if ($status !== 'resolved')
+                           
                             <a href="#" class="btn btn-sm btn-outline-primary" wire:click="markComplaintAsResolved({{$complaint->id}})">Resolve</a>
-                            @endif
+                            
                        </td>
                     </tr>
                     @endforeach

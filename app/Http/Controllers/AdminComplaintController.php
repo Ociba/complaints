@@ -8,7 +8,16 @@ class AdminComplaintController extends Controller
 
 {
     public function index(){
-        return view('admin.complaints.all');
+        return view('admin.complaints.index',['status' => null]);
+    }
+
+    public function getComplaintByStatus($status){
+        return view('admin.complaints.index', ['status' => $status]);
+    }
+    
+
+    public function getComplaintByType($type){
+        return view('admin.complaints.type', ['type' => $type]);
     }
     
     public function complaintDetails($complaintId){

@@ -1,5 +1,6 @@
 <div id="layoutDrawer_nav">
     <!-- Drawer navigation-->
+     
     <nav class="drawer accordion drawer-light bg-white" id="drawerAccordion">
         <div class="drawer-menu">
             <div class="nav">
@@ -16,6 +17,7 @@
                     Messages
                 </a>
                 <!-- Divider-->
+                <div class="drawer-menu-divider"></div>
                 <div class="drawer-menu-divider d-sm-none"></div>
                 <a class="nav-link" href="/home">
                     <div class="nav-link-icon"><i class="material-icons">language</i></div>
@@ -24,27 +26,30 @@
                 <div class="drawer-menu-divider"></div>
                 <!-- Drawer section heading (Complaints)-->
                 <div class="drawer-menu-heading">Complaints</div>
-                <a class="nav-link" href="/admin/complaints/pending">
-                    Pending
-                </a>
-                <a class="nav-link" href="/admin/complaints/resolved">
-                    Resolved
-                </a>
-                <a class="nav-link" href="/admin/complaints">
-                    Emergency
-                </a>
-                <!-- Drawer link (Dashboards)-->
-                <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
-                    <div class="nav-link-icon"><i class="material-icons">dashboard</i></div>
-                    Settings
-                    <div class="drawer-collapse-arrow"><i class="material-icons">expand_more</i></div>
-                </a>
+                <a class="nav-link"
+                    href="{{ route('complaints.index') }}"
+                    style="{{ Route::currentRouteName() === 'complaints.index' ? 'font-weight:bold; color:#000;' : '' }}">
+                        All
+                    </a>
+
+                    <a class="nav-link"
+                    href="{{ route('complaints.status', 'pending') }}"
+                    style="{{ request()->routeIs('complaints.status') && request()->route('status') === 'pending' ? 'font-weight:bold; color:#000;' : '' }}">
+                        Pending
+                    </a>
+
+                    <a class="nav-link"
+                    href="{{ route('complaints.status', 'resolved') }}"
+                    style="{{ request()->routeIs('complaints.status') && request()->route('status') === 'resolved' ? 'font-weight:bold; color:#000;' : '' }}">
+                        Resolved
+                    </a>
+
+                
+                <div class="drawer-menu-divider"></div>
+                <!-- Drawer section heading (Complaints)-->
+                <div class="drawer-menu-heading">Settings</div>
                 <!-- Nested drawer nav (Dashboards)-->
-                <div class="collapse" id="collapseDashboards" aria-labelledby="headingOne" data-bs-parent="#drawerAccordion">
-                    <nav class="drawer-menu-nested nav">
-                        <a class="nav-link" href="/admin/settings/system_user">System Users</a>
-                    </nav>
-                </div>
+                 <a class="nav-link" href="/admin/settings/system_user">System Users</a>
             </div>
         </div>
         <!-- Drawer footer        -->

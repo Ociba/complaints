@@ -30,7 +30,6 @@ class SystemSettingController extends Controller
      }
 
      public function systemUser(){
-        $users =User::get();
-        return view('admin.settings.users', compact('users'));
+        return view('admin.settings.users');
      }
 }

@@ -2,6 +2,6 @@
 
 @section('content')
 
-@livewire('admin.complaints')
+@livewire('admin.complaints',['status' =>$status])
 
 @endsection

@@ -4,7 +4,7 @@
     </div>
     <div class="col-12 col-md-auto">
         <div class="d-flex flex-column flex-sm-row gap-3">
-            {{Request()->route()->getName()}}
+        {{ str_replace('.', ' ', Request()->route()->getName()) }}
         </div>
     </div>
 </div>

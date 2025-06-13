@@ -75,7 +75,7 @@
       <div class="container">
 
         <div class="row gx-5 align-items-center">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+          {{--<div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
             <div class="about-image position-relative">
               <img src="{{ asset('asset/front/assets/img/about/about-portrait-1.webp')}}" class="img-fluid rounded-4 shadow-sm" alt="About Image" loading="lazy">
               <div class="experience-badge">
@@ -83,32 +83,47 @@
                 <span class="text">Years of Expertise</span>
               </div>
             </div>
-          </div>
+          </div>--}}
 
-          <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-left" data-aos-delay="300">
+          <div class="col-lg-12 mt-4 mt-lg-0" data-aos="fade-left" data-aos-delay="300">
             <div class="about-content">
               <h2>Tuliwamu  Key Features:</h2>
               <p class="lead">Tuliwamu is your reliable partner in distress—ensuring you’re never alone, no matter where you are. Download now and stay protected!.</p>
-              <p>Through a blend of sophisticated analytics and creative problem-solving, we empower organizations to thrive in rapidly evolving markets.</p>
+              <p>Diaspora Support – Specialized assistance for Ugandans abroad, including repatriation help when needed.</p>
 
               <div class="row g-4 mt-3">
-                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="400">
                   <div class="feature-item">
                     <i class="bi bi-check-circle-fill"></i>
-                    <h5>Dedicated Team Support</h5>
-                    <p>Our highly skilled professionals are committed to providing personalized service and impactful solutions on every engagement.</p>
+                    <h5>SOS Button</h5>
+                    <p>Instantly alert emergency contacts and response teams with your location in critical situations.</p>
                   </div>
                 </div>
-                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="450">
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="450">
                   <div class="feature-item">
                     <i class="bi bi-lightbulb-fill"></i>
-                    <h5>Forward-Thinking Approach</h5>
-                    <p>We embrace innovative methodologies to develop unique strategies that drive lasting success.</p>
+                    <h5>Complaints Portal</h5>
+                    <p>Report incidents via audio, video, or text to ensure your concerns are documented and addressed.</p>
+                  </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="450">
+                  <div class="feature-item">
+                    <i class="bi bi-globe"></i>
+                    <h5>Quick Response System</h5>
+                    <p>Connects you with trusted support networks for timely assistance.</p>
+                  </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="450">
+                  <div class="feature-item">
+                    <i class="bi bi-geo-alt"></i>
+                    <h5>Location Tracking</h5>
+                    <p>Helps responders locate and reach you faster in emergencies.</p>
                   </div>
                 </div>
               </div>
-
-              <a href="#" class="btn btn-primary mt-4">Explore Our Services</a>
+              <p class="mt-3">Tuliwamu is your reliable partner in distress—ensuring you’re never alone, no matter where you are. Download now and stay protected!</p>
+              <p>In Distress, We Respond.</p>
+              <a href="/about_us" class="btn btn-primary mt-4">Explore More</a>
             </div>
           </div>
         </div>
