@@ -19,7 +19,7 @@
                 <!-- Divider-->
                 <div class="drawer-menu-divider"></div>
                 <div class="drawer-menu-divider d-sm-none"></div>
-                <a class="nav-link" href="/home">
+                <a class="nav-link" href="/home" style="{{ Route::currentRouteName() === 'Home' ? 'font-weight:bold; color:#000;' : '' }}">
                     <div class="nav-link-icon"><i class="material-icons">language</i></div>
                     Dashboard
                 </a>
@@ -49,7 +49,9 @@
                 <!-- Drawer section heading (Complaints)-->
                 <div class="drawer-menu-heading">Settings</div>
                 <!-- Nested drawer nav (Dashboards)-->
-                 <a class="nav-link" href="/admin/settings/system_user">System Users</a>
+                 <a class="nav-link" href="/admin/settings/system_user" style="{{ Route::currentRouteName() === 'Users' ? 'font-weight:bold; color:#000;' : '' }}">
+                    System Users
+                </a>
             </div>
         </div>
         <!-- Drawer footer        -->

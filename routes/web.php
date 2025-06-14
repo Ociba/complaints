@@ -9,6 +9,10 @@ use App\Http\Controllers\AdminPaymentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SystemSettingController;
 use App\Http\Controllers\FrontPagesController;
+use App\Http\Controllers\ComplaintExportController;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use App\Notifications\SOSNotification;
 
 
@@ -37,7 +41,9 @@ Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->prefix
     Route::get('/complaints', [AdminComplaintController::class, 'index'])->name('complaints.index');
     Route::get('/complaints/status/{status}', [AdminComplaintController::class, 'getComplaintByStatus'])->name('complaints.status');
     Route::get('/complaints/type/{type}', [AdminComplaintController::class, 'getComplaintByType'])->name('complaints.type');
-    
+    Route::get('/complaints/report', [AdminComplaintController::class, 'getComplaintReport'])->name('complaints.report');
+    Route::get('/export-complaints/{status?}/{period?}', [ComplaintExportController::class, 'export']);
+    Route::get('/export-users', function () {return Excel::download(new UsersExport, 'users.xlsx');});
 
     Route::get('/complaint-details/{complaintId}', [AdminComplaintController::class, 'complaintDetails'])->name('Complaints Details');
     Route::get('/locate/{complaintId}', [AdminComplaintController::class, 'locateComplaint'])->name('Locate Complaint');

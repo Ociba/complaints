@@ -132,4 +132,43 @@ class Complaint extends Model
             ];
         });
     }
+
+     // Get monthly counts grouped by status for a given year
+     public static function getMonthlyStatusCounts($year)
+     {
+         // Query to count complaints grouped by month and status
+         $results = self::select(
+                 DB::raw('MONTH(created_at) as month'),
+                 'status',
+                 DB::raw('COUNT(*) as count')
+             )
+             ->whereYear('created_at', $year)
+             ->groupBy('month', 'status')
+             ->orderBy('month')
+             ->get();
+ 
+         // Initialize arrays with 0 counts for all months (Jan to Dec)
+         $pending = array_fill(1, 12, 0);
+         $resolved = array_fill(1, 12, 0);
+ 
+         foreach ($results as $row) {
+             if ($row->status === 'pending') {
+                 $pending[(int)$row->month] = $row->count;
+             } elseif ($row->status === 'resolved') {
+                 $resolved[(int)$row->month] = $row->count;
+             }
+         }
+ 
+         // Calculate totals (pending + resolved)
+         $total = [];
+         for ($i = 1; $i <= 12; $i++) {
+             $total[$i] = $pending[$i] + $resolved[$i];
+         }
+ 
+         return [
+             'pending' => $pending,
+             'resolved' => $resolved,
+             'total' => $total,
+         ];
+     }
 }

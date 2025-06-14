@@ -41,4 +41,8 @@ class AdminComplaintController extends Controller
     public function PrintComplaint($complaintId){
         return view('admin.complaints.print_complaint',compact('complaintId'));
     }
+
+    public function getComplaintReport(){
+        return view('admin.complaints.report');
+    }
 }

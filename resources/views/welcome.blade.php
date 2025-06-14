@@ -437,7 +437,7 @@
               </div>
               <div class="step-info">
                 <span class="step-number">Step 02</span>
-                <h3>Planning &amp; Save Me</h3>
+                <h3>Planning &amp; Tuliwamu</h3>
                 <p>Developing comprehensive strategies and detailed project plans based on the initial consultation. We create actionable roadmaps with clear milestones and deliverables.</p>
               </div>
             </div>
@@ -882,9 +882,9 @@
                   <div class="entry-overlay">
                     <div class="overlay-content">
                       <div class="entry-meta">Marketing</div>
-                      <h3 class="entry-title">Brand Save Me</h3>
+                      <h3 class="entry-title">Brand Tuliwamu</h3>
                       <div class="entry-links">
-                        <a href="assets/img/portfolio/portfolio-5.webp')}}" class="glightbox" data-gallery="portfolio-gallery-marketing" data-glightbox="title: Brand Save Me; description: Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum.">
+                        <a href="assets/img/portfolio/portfolio-5.webp')}}" class="glightbox" data-gallery="portfolio-gallery-marketing" data-glightbox="title: Brand Tuliwamu; description: Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum.">
                           <i class="bi bi-arrows-angle-expand"></i>
                         </a>
                         <a href="portfolio-details.html">

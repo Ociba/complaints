@@ -1,10 +1,16 @@
 <div>
     <div class="card card-raised h-100 mb-5">
         <div class="card-header bg-primary text-white px-4">
-            <h2 class="card-title text-white mb-0">Graph showing Resolved vs Pending Complaints (This Year)</h2>
+            <h2 class="card-title text-white mb-0">Graph showing Resolved vs Pending Complaints (This Year) </h2>
         </div>
         <div class="card-body">
             <canvas id="dashboardBarChart"></canvas>
+        </div>
+        <div class="card-footer bg-transparent position-relative ripple-gray">
+            <a class="d-flex align-items-center justify-content-end text-decoration-none stretched-link text-primary" href="{{ route('complaints.report')}}">
+                <div class="fst-button">Open Report</div>
+                <i class="material-icons icon-sm ms-1">chevron_right</i>
+            </a>
         </div>
     </div>
 

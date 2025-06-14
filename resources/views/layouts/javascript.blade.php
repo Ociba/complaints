@@ -14,7 +14,7 @@
 <script src="{{ asset('asset/admin/dist/js/simple-datatables.min.js')}}" crossorigin="anonymous"></script>
 <script src="{{ asset('asset/admin/js/datatables/datatables-simple-demo.js')}}"></script>
 
-<script src="https://assets.startbootstrap.com/js/sb-customizer.js"></script>
+<!-- <script src="https://assets.startbootstrap.com/js/sb-customizer.js"></script> -->
 @livewireScripts
 @stack('scripts')
 
