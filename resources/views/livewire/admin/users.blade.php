@@ -9,7 +9,7 @@
                     </h2>
                 </div>
                 <div class="d-flex gap-2">
-                    <a href="{{ url('/admin/export-users') }}" class="btn btn-lg btn-text-white btn-icon" type="button"><i class="material-icons">download</i></a>
+                    <a href="{{ url('/admin/export-users') }}" class="btn btn-lg bg-secondary btn-text-white btn-icon" type="button"><i class="material-icons">download</i></a>
                 </div>
             </div>
         </div>

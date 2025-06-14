@@ -37,7 +37,7 @@
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade">
       <div class="container position-relative">
-        <h1>About Save Me Complaint System</h1>
+        <h1>About Tuliwamu Complaint System</h1>
         <p></p>
         <nav class="breadcrumbs">
           <ol>
@@ -58,7 +58,7 @@
           <div class="col-lg-12 order-lg-1 order-2">
             <div class="service-main-content">
               <div class="service-header" data-aos="fade-up">
-                <h1>Save Me Complaint System</h1>
+                <h1>Tuliwamu Complaint System</h1>
                 <div class="service-meta">
                   <span><i class="bi bi-award"></i> Premium Service</span>
                   <span><i class="bi bi-clock"></i> Since 2015</span>
@@ -192,7 +192,7 @@
               </div>
 
               <div class="service-gallery" data-aos="fade-up" data-aos-delay="300">
-                <h3>Save Me Mobile App Complaint Steps</h3>
+                <h3>Tuliwamu Mobile App Complaint Steps</h3>
                 <div class="service-details-slider swiper init-swiper">
                   <script type="application/json" class="swiper-config">
                     {

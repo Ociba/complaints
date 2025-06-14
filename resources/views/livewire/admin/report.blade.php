@@ -1,6 +1,6 @@
 <div>
     <div id="reports-to-print">
-        <h2 class="mb-3 text-center"><u>Complaint Report For The Last Three Years</u></h2>
+        <h2 class="mb-3 text-center"><u>Complaint Report For The Last Two Years</u></h2>
         @foreach($years as $year)
             <div class="card card-raised mb-3">
                 <div class="card-header bg-primary small text-white" style="padding:2px;">
@@ -14,6 +14,7 @@
                     </div>
                 </div>
                 <div class="card-body p-4">
+                    <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped table-sm mb-0">
                         <thead>
                             <tr>
@@ -44,6 +45,7 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
                 </div>
             </div>
         @endforeach

@@ -7,8 +7,7 @@
                     <h2 class="card-title text-white mb-0">Complaints</h2>
                 </div>
                 <div class="d-flex gap-2">
-                    <button class="btn btn-lg btn-text-white btn-icon" type="button"><i class="material-icons">download</i></button>
-                    <button class="btn btn-lg btn-text-white btn-icon" type="button"><i class="material-icons">print</i></button>
+                    <a href="{{ route('complaints.status', 'pending') }}" class="btn btn-lg bg-secondary btn-text-white btn-icon" type="button"><i class="material-icons">visibility</i></a>
                 </div>
             </div>
         </div>

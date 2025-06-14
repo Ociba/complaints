@@ -107,20 +107,5 @@ Route::get('/video/{filename}', function($filename) {
     ]);
 })->name('video.play');
 
-Route::get('/test-video', function() {
-    $path = 'E:\Julius Projects\Complaint System\public\complaints\recorded_videos\rec6322911514257553334_1749288281.temp';
-    
-    if (!file_exists($path)) {
-        return "File does NOT exist at: " . $path;
-    }
 
-    // Clear output buffers
-    while (ob_get_level()) ob_end_clean();
-    
-    // Stream the file directly
-    header('Content-Type: video/mp4');
-    header('Content-Length: ' . filesize($path));
-    readfile($path);
-    exit;
-});
 
