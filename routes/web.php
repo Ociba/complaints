@@ -19,7 +19,6 @@ use App\Notifications\SOSNotification;
 
 Route::get('/', function () { return view('welcome');})->name('Welcome');
 
-
 Route::get('/about_us', [FrontPagesController::class, 'aboutUs'])->name('About Us');
 Route::get('/feedback', [FrontPagesController::class, 'feedback'])->name('Feedback');
 Route::get('/privacy_policy', [FrontPagesController::class, 'privacyPolicy'])->name('Private Policy');
