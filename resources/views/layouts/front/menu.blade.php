@@ -11,9 +11,9 @@
         <ul>
           <li><a href="/" class="active">Home</a></li>
           <li><a href="/">About</a></li>
-          <li><a href="/">Services</a></li>
-          {{--<li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>--}}
+          <li><a href="/">Testimonials</a></li>
+          <li><a href="/">How We Work</a></li>
+          <li><a href="/">FAQ</a></li>
           <li><a href="/">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

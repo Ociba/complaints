@@ -7,7 +7,31 @@
 
 <body class="index-page">
 
-  @include('layouts.front.menu')
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="{{ asset('asset/images/logo.png')}}" alt=""> 
+        <h1 class="sitename">Tuliwamu </h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimony">Testimonials</a></li>
+          <li><a href="#steps">How We Work</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="/mobile-app-instructions">Get Started</a>
+
+    </div>
+  </header>
 
   <main class="main">
 
@@ -17,9 +41,6 @@
         <div class="row">
           <div class="col-lg-7 content-col" data-aos="fade-up">
             <div class="content">
-              <div class="agency-name">
-                {{--<h5> Tuliwamu </h5>--}}
-              </div>
 
               <div class="main-heading">
                 <h1>IN DISTRESS <br>WE RESPOND</h1>
@@ -44,8 +65,19 @@
             <div class="visual-content">
               <div class="fluid-shape">
                 <img src="{{ asset('asset/front/assets/img/abstract/banner.png')}}" style="height:500px;" alt="Abstract Fluid Shape" class="fluid-img">
+                
               </div>
-
+              <div class="stats-card">
+                <div class="stats-number">
+                  <h4>Tuliwamu</h4>
+                </div>
+                <div class="stats-label">
+                  <p>Download App Now</p>
+                </div>
+                <div class="stats-arrow">
+                  <a href="#portfolio"><i class="bi bi-download"></i></a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -114,9 +146,11 @@
               <a href="/about_us" class="btn btn-primary mt-4">View More</a>
             </div>
           </div>
-        </div>
-
-        <div class="testimonial-section mt-5 pt-5" data-aos="fade-up" data-aos-delay="100">
+        </div></div></section>
+        
+        <section id="testimony" class="about section">
+        <div class="container">
+        <div  class="testimonial-section mt-5 pt-5" data-aos="fade-up" data-aos-delay="100">
           <div class="row">
             <div class="col-lg-4" data-aos="fade-right" data-aos-delay="200">
               <div class="testimonial-intro">
@@ -327,7 +361,7 @@
             <img src="{{ asset('asset/front/assets/img/abstract/banner.png')}}"  style="height:450px;" alt="Digital Platform" class="img-fluid rounded-4">
             <div class="floating-card">
               <div class="card-icon">
-                <i class="bi bi-graph-up-arrow"></i>
+                <i class="bi bi-download"></i>
               </div>
               <div class="card-content">
                 <span class="stats-number">Tuliwamu</span>

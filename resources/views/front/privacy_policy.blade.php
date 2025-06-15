@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{{ asset('asset/front/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{ asset('asset/front/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{ asset('asset/images/logo.png')}}" rel="icon">
+  <link href="{{ asset('asset/images/logo.png')}}" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -58,13 +58,14 @@
           <div class="col-lg-12 order-lg-1 order-2">
             <div class="service-main-content">
               <div class="service-header" data-aos="fade-up">
-                <h1>Tuliwamu Complaint System Privacy Policy</h1>
+                <h1>Tuliwamu Privacy Policy</h1>
                 <div class="service-meta">
                   
                 </div>
                 <p class="lead">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo erat at malesuada bibendum. Nullam eu risus sit amet nunc fermentum lacinia.
+                   Welcome to Tulwamu ("we," "our," or "us"). We respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you use our complaints application.
                 </p>
+                <p class="lead">By using our app, you consent to the practices described in this policy. If you do not agree, please do not use the application.</p>
               </div>
               <div class="service-sidebar" data-aos="fade-left">
               <div class="service-features-list" data-aos="fade-up" data-aos-delay="200">
@@ -73,36 +74,89 @@
                   <li>
                     <i class="bi bi-megaphone"></i>
                     <div>
-                      <h5>Social Media Marketing</h5>
-                      <p>Strategic presence across all relevant platforms</p>
+                      <h5>Information We Collect</h5>
+                      <p>We may collect the following types of information:</p>
+                      <ul>
+                      <li class="mt-2"> Personal Information</li>
+                         <p>- Name, Email address , Phone number, Location data (GPS or approximate location), Gender,Company used through travel (optional), Next of kin names,Next of kin contact, Your password (any you wish to use but should be stronger)</p>
+                         <li class="mt-2"> Media and Files</li>
+                         <p>Photos, Videos, Audio recordings,  Documents uploaded by users</p>
+                         <li class="mt-2"> Device Information</li>
+                         <p>Device type (mobile, tablet, etc.) , Operating system, IP address, Browser type </p>
+                      </ul>
                     </div>
                   </li>
                   <li>
                     <i class="bi bi-search"></i>
                     <div>
-                      <h5>SEO Optimization</h5>
-                      <p>Improve your search engine rankings</p>
+                      <h5>How We Use Your Information</h5>
+                      <p>We use the collected data for the following purposes: </p>
+                      <p>- To process and respond to complaints.</p>
+                      <p>- To improve our services and user experience</p>
+                      <p>- To provide customer support.</p>
+                      <p>- To comply with legal obligations.</p>
+                      <p>- To analyze app usage for troubleshooting and enhancements.</p>
                     </div>
                   </li>
                   <li>
                     <i class="bi bi-newspaper"></i>
                     <div>
-                      <h5>Content Marketing</h5>
-                      <p>Engaging content that converts visitors</p>
+                      <h5>Permissions Required</h5>
+                      <p>Our app requests the following permissions: </p>
+                      <p>Location: To identify the user’s location for complaint submission.</p>
+                      <p>Camera & Photos/Videos: To allow users to upload media related to complaints.</p>
+                      <p>Microphone (Audio): To record and upload audio complaints if needed.</p>
+                      <p>Storage: To access and store files related to complaints.</p>
                     </div>
                   </li>
                   <li>
                     <i class="bi bi-envelope-paper"></i>
                     <div>
-                      <h5>Email Campaigns</h5>
-                      <p>Targeted email marketing strategies</p>
+                      <h5>Data Sharing & Disclosure</h5>
+                      <p>We do not sell your personal information. However, we may share data with: </p>
+                      <p>Authorities/Legal Bodies: If required by law or to resolve complaints.</p>
+                      <p>Third-Party Service Providers: For analytics, hosting, or customer support (with strict confidentiality agreements).</p>
+                      <p>Business Transfers: In case of a merger or acquisition, user data may be transferred. </p>
                     </div>
                   </li>
                   <li>
                     <i class="bi bi-graph-up-arrow"></i>
                     <div>
-                      <h5>Analytics &amp; Reporting</h5>
-                      <p>Comprehensive performance tracking</p>
+                      <h5>Data Security</h5>
+                      <p>We implement security measures such as encryption and access controls to protect your data. However, no system is 100% secure, so we cannot guarantee absolute security.</p>
+                    </div>
+                  </li>
+
+                  <li>
+                    <i class="bi bi-check-circle"></i>
+                    <div>
+                      <h5>User Rights</h5>
+                      <p>Depending on your location, you may have the right to: </p>
+                      <p>- Access, correct, or delete your data. </p>
+                      <p>- Opt out of data collection (where applicable).</p>
+                      <p>- Withdraw consent for processing.</p>
+                      <p>To exercise these rights, contact us at <a href="mailto:julisema4@gmail.com">julisema4@gmail.com</a> </p>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="bi bi-person"></i>
+                    <div>
+                      <h5>Children’s Privac</h5>
+                      <p>Our app is not intended for users under [13/16] years old. We do not knowingly collect data from children. If we become aware of such data, we will delete it.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="bi bi-lock"></i>
+                    <div>
+                      <h5>Changes to This Policy</h5>
+                      <p>We may update this Privacy Policy. Users will be notified of significant changes via email or in-app alerts.  </p>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="bi bi-phone"></i>
+                    <div>
+                      <h5>Contact Us</h5>
+                      <p>For privacy-related questions, contact.</p>
                     </div>
                   </li>
                 </ul>

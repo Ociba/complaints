@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{{ asset('asset/front/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{ asset('asset/front/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{ asset('asset/images/logo.png')}}" rel="icon">
+  <link href="{{ asset('asset/images/logo-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -37,7 +37,7 @@
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade">
       <div class="container position-relative">
-        <h1>About Tuliwamu Complaint System</h1>
+        <h1>Tuliwamu Complaint System</h1>
         <p></p>
         <nav class="breadcrumbs">
           <ol>
@@ -65,7 +65,7 @@
                   <span><i class="bi bi-star-fill"></i> 4.9/5 Rating</span>
                 </div>
                 <p class="lead">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo erat at malesuada bibendum. Nullam eu risus sit amet nunc fermentum lacinia.
+                   
                 </p>
               </div>
 
@@ -78,7 +78,7 @@
                   </li>
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#service-details-tab-2" type="button" role="tab" aria-controls="process" aria-selected="false">
-                      <i class="bi bi-diagram-3"></i> Process
+                      <i class="bi bi-diagram-3"></i>How to Send Complaint ?
                     </button>
                   </li>
                   <li class="nav-item" role="presentation">
@@ -94,18 +94,18 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="content-block">
-                          <h3>Strategic Marketing Approach</h3>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis erat nibh. Praesent a nibh at eros sodales finibus. Suspendisse potenti. Sed vitae sagittis nulla.</p>
-                          <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam consequat, nulla nec commodo finibus, ipsum magna pretium libero.</p>
+                          <h3>Tuliwamu Mobile App</h3>
+                          <p>Tuliwamu is a versatile complaint assistance app that enables users to report issues via text, audio, video, or SOS alerts, ensuring accessibility for all. The app streamlines communication between complainants and support teams with features like real-time tracking, AI-powered categorization, and secure (optionally anonymous) submissions. Designed for both public and organizational use, Tuliwamu provides a user-friendly interface, multi-language support, and instant notifications to ensure timely resolution of grievances..</p>
+                          
                         </div>
                       </div>
                       <div class="col-md-6">
                       <div class="service-sidebar" data-aos="fade-left">
                         <div class="action-card" data-aos="zoom-in" data-aos-delay="100">
-                                <h3>Ready to Boost Your Online Presence?</h3>
-                                <p>Get a free consultation with our digital marketing experts and discover how we can help grow your business.</p>
-                                <a href="#" class="btn-primary">Schedule Consultation</a>
-                                <span class="guarantee"><i class="bi bi-shield-check"></i> 100% Satisfaction Guarantee</span>
+                                <h3>Ready to Assist you 24/7?</h3>
+                                <p>Aims to bridge the gap between those in need and assistance providers, making complaint resolution faster and transparent</p>
+                                <a href="#" class="btn-primary">Download Mobile App Now</a>
+                                <span class="guarantee"><i class="bi bi-shield-check"></i> 100% Free download</span>
                             </div>
                         </div>
                       </div>
@@ -117,32 +117,33 @@
                       <div class="timeline-item">
                         <div class="timeline-marker">01</div>
                         <div class="timeline-content">
-                          <h4>Discovery &amp; Research</h4>
-                          <p>Thorough market analysis and competitor research to define your target audience and marketing goals.</p>
+                          <h4>Free Download &amp; installing</h4>
+                          <p>Download Tuliwamu for free <a href="#!"> download app</a>. afer downloading install it on your device.</p>
                         </div>
                       </div>
 
                       <div class="timeline-item">
                         <div class="timeline-marker">02</div>
                         <div class="timeline-content">
-                          <h4>Strategy Development</h4>
-                          <p>Creating comprehensive marketing strategies tailored to your specific business objectives and target demographics.</p>
+                          <h4>Create Account</h4>
+                          <p>After Successful Installation, Open the App and create account by filling the information then Login.</p>
+                          <p>Note: The Information you enter will be confidential and we shall use during the time of helping you.</p>
                         </div>
                       </div>
 
                       <div class="timeline-item">
                         <div class="timeline-marker">03</div>
                         <div class="timeline-content">
-                          <h4>Implementation</h4>
-                          <p>Executing the marketing plan across various channels with precise targeting and creative content delivery.</p>
+                          <h4>Sending Complaint</h4>
+                          <p>When You Login Successful,There are many options provided on how you want to send your complaint,Please select the one which favours you at the time of complaining.</p>
                         </div>
                       </div>
 
                       <div class="timeline-item">
                         <div class="timeline-marker">04</div>
                         <div class="timeline-content">
-                          <h4>Analysis &amp; Optimization</h4>
-                          <p>Continuous monitoring, data analysis, and strategy refinement to maximize ROI and campaign effectiveness.</p>
+                          <h4>Processing &amp; Responding to Your Complaint</h4>
+                          <p>Our Team is ready to proceed with the process of handling your complaint and be in touch with you and other stakeholders to rescue the situation.</p>
                         </div>
                       </div>
                     </div>
@@ -155,8 +156,9 @@
                           <div class="benefit-icon">
                             <i class="bi bi-graph-up"></i>
                           </div>
-                          <h4>Increased Brand Visibility</h4>
-                          <p>Expand your digital footprint and reach more potential customers through targeted marketing efforts.</p>
+                          <h4>Convenient & Accessible Reporting</h4>
+                          <p>Submit complaints in any format (text, audio, video, or SOS) based on preference or urgency.</p>
+                          <p>No need for lengthy paperwork—quick and hassle-free submissions.</p>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -164,8 +166,8 @@
                           <div class="benefit-icon">
                             <i class="bi bi-people"></i>
                           </div>
-                          <h4>Higher Engagement Rates</h4>
-                          <p>Create meaningful connections with your audience through relevant and compelling content strategies.</p>
+                          <h4>Faster Response & Resolution</h4>
+                          <p>Real-time tracking keeps users updated on complaint status to ensures complaints reach the right authority quickly, reducing delays.</p>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -173,8 +175,8 @@
                           <div class="benefit-icon">
                             <i class="bi bi-cash-coin"></i>
                           </div>
-                          <h4>Improved ROI</h4>
-                          <p>Maximize your marketing budget with data-driven campaigns that deliver measurable results.</p>
+                          <h4> Enhanced Safety & Emergency Support</h4>
+                          <p>SOS alerts with GPS provide immediate help in critical situations (e.g., accidents, threats).Video/audio evidence strengthens complaints, increasing credibility and actionability.</p>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -182,8 +184,8 @@
                           <div class="benefit-icon">
                             <i class="bi bi-bar-chart-line"></i>
                           </div>
-                          <h4>Data-Driven Decisions</h4>
-                          <p>Make informed marketing choices based on comprehensive analytics and performance metrics.</p>
+                          <h4>Inclusive & User-Friendly</h4>
+                          <p>Supports multiple languages and voice-to-text for wider accessibility.Helps those with limited literacy by allowing voice/video submissions.</p>
                         </div>
                       </div>
                     </div>

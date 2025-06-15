@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{{ asset('asset/front/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{ asset('asset/front/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{ asset('asset//images/logo.png')}}" rel="icon">
+  <link href="{{ asset('asset/images/logo.png')}}" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -63,7 +63,7 @@
                   
                 </div>
                 <p class="lead">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo erat at malesuada bibendum. Nullam eu risus sit amet nunc fermentum lacinia.
+                 Tuliwamu is a user-friendly mobile application designed to empower individuals to report complaints and seek assistance efficiently. Users can submit complaints in multiple formats—text, audio, video, or SOS alerts—ensuring accessibility for all. The app streamlines communication between complainants and support teams, ensuring timely responses and resolutions.
                 </p>
               </div>
 
@@ -73,9 +73,8 @@
 
                   <div class="tab-pane fade show active" id="service-details-tab-1" role="tabpanel" aria-labelledby="overview-tab">
                     <div class="row">
-                      <div class="col-md-2">
-                      </div>
-                      <div class="col-md-8">
+                      
+                      <div class="col-md-12">
                       <div class="process-timeline">
                       <div class="timeline-item">
                         <div class="timeline-marker">01</div>
@@ -89,39 +88,36 @@
                         <div class="timeline-marker">02</div>
                         <div class="timeline-content">
                           <h4>Create Account</h4>
-                          <p>Creating comprehensive marketing strategies tailored to your specific business objectives and target demographics.</p>
+                          <p>After Successful Installation, Open the App and create account by filling the information then Login.</p>
+                          <p>Note: The Information you enter will be confidential and we shall use during the time of helping you.</p>
                         </div>
                       </div>
 
                       <div class="timeline-item">
                         <div class="timeline-marker">03</div>
                         <div class="timeline-content">
-                          <h4>Fill in the details, very important</h4>
-                          <p>Executing the marketing plan across various channels with precise targeting and creative content delivery.</p>
+                          <h4>Sending Complaint</h4>
+                          <p>When You Login Successful,There are many options provided on how you want to send your complaint,Please select the one which favours you at the time of complaining.</p>
                         </div>
                       </div>
 
                       <div class="timeline-item">
                         <div class="timeline-marker">04</div>
                         <div class="timeline-content">
-                          <h4>Send Complaint in any form you want (text, audio, or Video)</h4>
-                          <p>Continuous monitoring, data analysis, and strategy refinement to maximize ROI and campaign effectiveness.</p>
-                        </div>
-                      </div>
-                      <div class="timeline-item">
-                        <div class="timeline-marker">05</div>
-                        <div class="timeline-content">
-                          <h4>Processing Complaint &amp; Feedback</h4>
-                          <p>Continuous monitoring, data analysis, and strategy refinement to maximize ROI and campaign effectiveness.</p>
+                        <h4>Processing &amp; Responding to Your Complaint</h4>
+                        <p>Our Team is ready to proceed with the process of handling your complaint and be in touch with you and other stakeholders to rescue the situation.</p>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="col-md-2">
+                      <div class="col-lg-12 col-md-12 mt-4 text-center">
+                          <h4>Download Mobile App Now</h4>
+                          <p class="mt-1 mb-1"></p>
+                          <a href="#!"><img src="{{ asset('asset\front\assets\img\googleplay-btn.svg')}}"></a>
                       </div>
                     </div>
                   </div>
-
+                  
                 </div>
               </div>
 
