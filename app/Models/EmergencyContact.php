@@ -42,4 +42,8 @@ class EmergencyContact extends Model
     {
         return $this->receive_sms ? $this->phone : null;
     }
+
+    public static function getEmergencyContacts(){
+        return EmergencyContact::latest()->get();
+    }
 }

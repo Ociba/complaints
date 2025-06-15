@@ -12,6 +12,7 @@ use App\Http\Controllers\FrontPagesController;
 use App\Http\Controllers\ComplaintExportController;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\ContactsController;
 
 use App\Notifications\SOSNotification;
 
@@ -44,6 +45,9 @@ Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->prefix
     Route::get('/complaints/report', [AdminComplaintController::class, 'getComplaintReport'])->name('complaints.report');
     Route::get('/export-complaints/{status?}/{period?}', [ComplaintExportController::class, 'export']);
     Route::get('/export-users', function () {return Excel::download(new UsersExport, 'users.xlsx');});
+    Route::get('/emergency-contacts', [ContactsController::class, 'emergencyContacts'])->name('Emergency Contacts');
+    Route::get('/client-testimony', [ContactsController::class, 'clientTestimony'])->name('Client Testimony');
+    Route::get('/create-testimony',[ContactsController::class, 'createTestimony'])->name('Create Testimony');
 
     Route::get('/complaint-details/{complaintId}', [AdminComplaintController::class, 'complaintDetails'])->name('Complaints Details');
     Route::get('/locate/{complaintId}', [AdminComplaintController::class, 'locateComplaint'])->name('Locate Complaint');
@@ -58,6 +62,10 @@ Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->prefix
     Route::get('/settings/system_user', [SystemSettingController::class, 'systemUser'])->name('Users');
     Route::post('/settings/{id}', [SystemSettingController::class, 'update'])->name('settings.update');
     Route::get('/settings/add/{setting}', [SystemSettingController::class, 'show'])->name('Show');
+    Route::get('/settings/user-details/{userId}',[SystemSettingController::class, 'userDetails'])->name('User Details');
+    Route::get('/settings/{userId}/{status}', [SystemSettingController::class, 'getUserComplaintByStatus'])->name('User Complaints');
+    Route::get('/settings/all/{userId}/{type}', [SystemSettingController::class, 'getUserComplaintByType'])->name('User Complaints Type');
+    Route::get('/settings/create-emergency-contact', [SystemSettingController::class, 'createEmergencyContact'])->name('Emergency Contact Form');
 });
 
 // Add this to your web.php

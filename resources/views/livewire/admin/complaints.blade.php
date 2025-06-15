@@ -9,6 +9,8 @@
                         Pending Complaints
                     @elseif ($status === 'resolved')
                         Resolved Complaints
+                    @elseif ($status === 'emergency')
+                        Emergency Complaints
                     @else
                         All Complaints
                     @endif
@@ -60,8 +62,9 @@
                         <th>Sent By</th>
                         <th>Time</th>
                         <th>Type</th>
+                        <th>Content</th>
                         <th>status</th>
-                        <th>Next of Kin Contact</th>
+                        <th>NOK Contact</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -72,6 +75,7 @@
                         <td>{{ $complaint->user->name }}</td>
                         <td title="{{ $complaint->created_at->format('M j, Y g:i A') }}">{{ $complaint->created_at->format('M j, Y') }} {{ $complaint->created_at->format('g:i A') }} <p><small class="text-muted">({{ $complaint->created_at->diffForHumans() }})</small></p></td>
                         <td>{{ $complaint->type}}</td>
+                        <td>{{ $complaint->content}}</td>
                         @if( $complaint->status === 'pending')
                         <td><span class="badge bg-danger px-2">{{ @$complaint->status }}</span></td>
                         @else
@@ -79,9 +83,9 @@
                         @endif
                         <td>{{ $complaint->user->bioData->next_of_kin_phone ?? 'N/A' }}</td>
                         <td>
-                            <a href="/admin/complaint-details/{{$complaint->id}}" class="btn btn-sm btn-outline-success">View More</a>
+                            <a href="/admin/complaint-details/{{$complaint->id}}" class="btn btn-sm btn-outline-success mb-1">View More</a>
                             @if ($status !== 'resolved')
-                            <a href="#" class="btn btn-sm btn-outline-primary" wire:click="markComplaintAsResolved({{$complaint->id}})">Resolve</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary mb-1" wire:click="markComplaintAsResolved({{$complaint->id}})">Mark Resolved</a>
                             @endif
                        </td>
                     </tr>

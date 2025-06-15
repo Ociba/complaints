@@ -42,12 +42,12 @@
                             @foreach($users as $i=>$user)
                             <tr>
                                 <td>{{ $i + 1 }}</td>
-                                <td>{{ $user->name}}</td>
-                                <td>{{ $user->phone}}</td>
-                                <td>{{ $user->email}}</td>
-                                <td>{{ $user->role}}</td>
+                                <td>{{ $user->user->name}}</td>
+                                <td>{{ $user->user->phone}}</td>
+                                <td>{{ $user->user->email}}</td>
+                                <td>{{ $user->user->role}}</td>
                                 <td>
-                                <button type="button" class="btn btn-sm mb-1 btn-outline-primary">update</button>
+                                <a href="/admin/settings/user-details/{{$user->user_id}}" class="btn btn-sm mb-1 btn-outline-primary">View More</a>
                                 </td>
                             </tr>
                             @endforeach

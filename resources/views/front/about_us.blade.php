@@ -218,29 +218,20 @@
                   <div class="swiper-wrapper">
                     <div class="swiper-slide">
                       <div class="portfolio-item">
-                        <img src="{{ asset('asset/front/assets/img/services/services-2.webp')}}" alt="" class="img-fluid" loading="lazy">
-                        <div class="portfolio-info">
-                          <h5>Social Media Campaign</h5>
-                          <p>Increased engagement by 187%</p>
-                        </div>
+                        <img src="{{ asset('asset/front/assets/img/abstract/banner.png')}}" style="height:500px; width:100%;" alt="" class="img-fluid" loading="lazy">
+                        
                       </div>
                     </div>
                     <div class="swiper-slide">
                       <div class="portfolio-item">
-                        <img src="{{ asset('asset/front/assets/img/services/services-4.webp')}}" alt="" class="img-fluid" loading="lazy">
-                        <div class="portfolio-info">
-                          <h5>SEO Optimization</h5>
-                          <p>Ranked #1 for target keywords</p>
-                        </div>
+                        <img src="{{ asset('asset/front/assets/img/abstract/banner.png')}}" style="height:500px; width:100%;" alt="" class="img-fluid" loading="lazy">
+                        
                       </div>
                     </div>
                     <div class="swiper-slide">
                       <div class="portfolio-item">
-                        <img src="{{ asset('asset/front/assets/img/services/services-10.webp')}}" alt="" class="img-fluid" loading="lazy">
-                        <div class="portfolio-info">
-                          <h5>Content Marketing</h5>
-                          <p>200% increase in organic traffic</p>
-                        </div>
+                        <img src="{{ asset('asset/front/assets/img/abstract/banner.png')}}" style="height:500px; width:100%;" alt="" class="img-fluid" loading="lazy">
+                        
                       </div>
                     </div>
                   </div>

@@ -1,7 +1,7 @@
 <div id="layoutDrawer_nav">
     <!-- Drawer navigation-->
      
-    <nav class="drawer accordion drawer-light bg-white" id="drawerAccordion">
+    <nav class="drawer accordion drawer-light bg-whit" style="background-color:#f8f9fa;"  id="drawerAccordion">
         <div class="drawer-menu">
             <div class="nav">
                 <!-- Drawer section heading (Account)-->
@@ -33,9 +33,15 @@
                     </a>
 
                     <a class="nav-link"
-                    href="{{ route('complaints.status', 'pending') }}"
+                       href="{{ route('complaints.status', 'pending') }}"
                     style="{{ request()->routeIs('complaints.status') && request()->route('status') === 'pending' ? 'font-weight:bold; color:#000;' : '' }}">
                         Pending
+                    </a>
+
+                    <a class="nav-link"
+                       href="{{ route('complaints.status', 'emergency') }}"
+                    style="{{ request()->routeIs('complaints.status') && request()->route('status') === 'emergency' ? 'font-weight:bold; color:#000;' : '' }}">
+                        SOS
                     </a>
 
                     <a class="nav-link"
@@ -43,8 +49,13 @@
                     style="{{ request()->routeIs('complaints.status') && request()->route('status') === 'resolved' ? 'font-weight:bold; color:#000;' : '' }}">
                         Resolved
                     </a>
-
-                
+                <div class="drawer-menu-divider"></div>
+                    <a class="nav-link" href="/admin/emergency-contacts" style="{{ Route::currentRouteName() === 'Emergency Contacts' ? 'font-weight:bold; color:#000;' : '' }}">
+                        Emergency Contacts
+                    </a>
+                    <a class="nav-link" href="/admin/client-testimony" style="{{ Route::currentRouteName() === 'Client Testimony' ? 'font-weight:bold; color:#000;' : '' }}">
+                        Testimonials
+                    </a>
                 <div class="drawer-menu-divider"></div>
                 <!-- Drawer section heading (Complaints)-->
                 <div class="drawer-menu-heading">Settings</div>

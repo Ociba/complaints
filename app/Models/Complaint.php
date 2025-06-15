@@ -81,7 +81,7 @@ class Complaint extends Model
 
     public static function getTodaysComplaints(){
         return Complaint::with('user.bioData','fileComplaint')
-        ->whereCreatedAt(Carbon::today())
+        ->whereDate('created_at', Carbon::today())
         ->latest()
         ->get();
     }

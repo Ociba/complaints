@@ -32,4 +32,20 @@ class SystemSettingController extends Controller
      public function systemUser(){
         return view('admin.settings.users');
      }
+
+     public function userDetails($userId){
+        return view('admin.settings.user_details',compact('userId'));
+     }
+
+     public function getUserComplaintByStatus($userId, $status){
+        return view('admin.settings.user_complaints',compact('userId','status'));
+     }
+
+     public function getUserComplaintByType($userId, $type){
+        return view('admin.settings.user_complaints_type',compact('userId','type'));
+     }
+
+     public function createEmergencyContact(){
+        return view('admin.settings.emergency_contact_form');
+     }
 }

@@ -62,7 +62,7 @@
                         <td>
                             <a href="/admin/complaint-details/{{$complaint->id}}" class="btn btn-sm btn-outline-success">View More</a>
                            
-                            <a href="#" class="btn btn-sm btn-outline-primary" wire:click="markComplaintAsResolved({{$complaint->id}})">Resolve</a>
+                            <a href="#" class="btn btn-sm btn-outline-primary" wire:click="markComplaintAsResolved({{$complaint->id}})">Mark Resolved</a>
                             
                        </td>
                     </tr>

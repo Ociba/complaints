@@ -21,7 +21,6 @@
             <li><a href="/">Home</a></li>
             <li><a href="/about_us">About us</a></li>
             <li><a href="/feedback">Feedback</a></li>
-            <li><a href="/">Terms of service</a></li>
             <li><a href="/privacy_policy">Privacy policy</a></li>
           </ul>
         </div>
@@ -32,7 +31,6 @@
             <li><a href="#">Web Design</a></li>
             <li><a href="#">Web Development</a></li>
             <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
             <li><a href="#">Graphic Design</a></li>
           </ul>
         </div>

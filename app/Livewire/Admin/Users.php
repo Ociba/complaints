@@ -3,14 +3,14 @@
 namespace App\Livewire\Admin;
 
 use Livewire\Component;
-use App\Models\User;
+use App\Models\MemberBioData;
 
 class Users extends Component
 {
     public function render()
     {
         return view('livewire.admin.users',[
-            'users' =>User::get()
+            'users' =>MemberBioData::getUsers()
         ]);
     }
 }
