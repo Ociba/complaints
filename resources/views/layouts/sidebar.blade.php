@@ -41,7 +41,7 @@
                     <a class="nav-link"
                        href="{{ route('complaints.status', 'emergency') }}"
                     style="{{ request()->routeIs('complaints.status') && request()->route('status') === 'emergency' ? 'font-weight:bold; color:#000;' : '' }}">
-                        SOS
+                        SOS &nbsp; &nbsp; <span class="badge bg-danger">{{\App\Models\Complaint::countSOSComplaints()}}</span>
                     </a>
 
                     <a class="nav-link"
@@ -62,6 +62,9 @@
                 <!-- Nested drawer nav (Dashboards)-->
                  <a class="nav-link" href="/admin/settings/system_user" style="{{ Route::currentRouteName() === 'Users' ? 'font-weight:bold; color:#000;' : '' }}">
                     System Users
+                </a>
+                <a class="nav-link" href="/admin/settings/system-admin" style="{{ Route::currentRouteName() === 'System Admin' ? 'font-weight:bold; color:#000;' : '' }}">
+                    System Admin
                 </a>
             </div>
         </div>

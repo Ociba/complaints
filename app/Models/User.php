@@ -87,4 +87,8 @@ class User extends Authenticatable implements JWTSubject // Implement the interf
     {
         return $this->hasOne(EmergencyContact::class)->where('is_primary', true);
     }
+
+    public static function getAdmins(){
+        return User::whereRole('admin')->get();
+    }
 }

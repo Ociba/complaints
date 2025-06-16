@@ -59,6 +59,7 @@ Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->prefix
     Route::get('/settings/complaint_fee', [SystemSettingController::class, 'complaintFee'])->name('Complaint Fee');
     Route::post('/complaints/{complaint}/refund', [AdminPaymentController::class, 'refund'])->name('complaints.refund');
     Route::get('/settings/system_user', [SystemSettingController::class, 'systemUser'])->name('Users');
+    Route::get('/settings/system-admin', [SystemSettingController::class, 'systemAdmin'])->name('System Admin');
     Route::post('/settings/{id}', [SystemSettingController::class, 'update'])->name('settings.update');
     Route::get('/settings/add/{setting}', [SystemSettingController::class, 'show'])->name('Show');
     Route::get('/settings/user-details/{userId}',[SystemSettingController::class, 'userDetails'])->name('User Details');

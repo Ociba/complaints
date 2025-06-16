@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\SystemSetting;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class SystemSettingController extends Controller
@@ -31,6 +30,10 @@ class SystemSettingController extends Controller
 
      public function systemUser(){
         return view('admin.settings.users');
+     }
+
+     public function systemAdmin(){
+      return view('admin.settings.admin');
      }
 
      public function userDetails($userId){

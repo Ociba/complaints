@@ -94,6 +94,10 @@ class Complaint extends Model
         return Complaint::whereStatus('resolved')->count();
     }
 
+    public static function countSOSComplaints(){
+        return  Complaint::whereStatus('emergency')->count();
+    }
+
     public static function countTextComplaints(){
         return Complaint::whereType('text')->count();
     }
