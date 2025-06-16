@@ -352,7 +352,7 @@
             </div>
 
             <div class="cta-buttons d-flex flex-wrap gap-3">
-              <a href="#" class="btn btn-primary">Start Free Trial</a>
+              <a href="/mobile-app-instructions" class="btn btn-primary">Get Started</a>
               <a href="#" class="btn btn-outline">Learn More</a>
             </div>
           </div>

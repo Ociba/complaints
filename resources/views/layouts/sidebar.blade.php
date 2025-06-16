@@ -74,7 +74,7 @@
                 <i class="material-icons text-muted">account_circle</i>
                 <div class="ms-3">
                     <div class="caption">Logged in as:</div>
-                    <div class="small fw-500">{{ auth()->user()->role }}</div>
+                    <div class="small fw-500">{{ auth()->user()->name }}</div>
                 </div>
             </div>
         </div>

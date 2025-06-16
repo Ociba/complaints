@@ -23,7 +23,7 @@
                         <div class="d-flex align-items-center">
                             <i class="material-icons text-primary">insights</i>
                             <div class="ms-3">
-                                <div class="fs-6 mb-1 fw-500">Text Complaints Type</div>
+                                <div class="fs-6 mb-1 fw-500">Text Complaints</div>
                                 <a class="small stretched-link text-reset text-decoration-none" href="/admin/settings/all/{{$this->userId}}/text">{{\App\Models\MemberBioData::countTextComplaintType($userId)}}</a>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                         <div class="d-flex align-items-center">
                             <i class="material-icons text-primary">support</i>
                             <div class="ms-3">
-                                <div class="fs-6 mb-1 fw-500">Audio Complaint Type</div>
+                                <div class="fs-6 mb-1 fw-500">Audio Complaint</div>
                                 <a class="small stretched-link text-reset text-decoration-none" href="/admin/settings/all/{{$this->userId}}/audio">{{\App\Models\MemberBioData::countAudioComplaintType($userId)}}</a>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                         <div class="d-flex align-items-center">
                             <i class="material-icons text-primary">input</i>
                             <div class="ms-3">
-                                <div class="fs-6 mb-1 fw-500">Video Complaint Type</div>
+                                <div class="fs-6 mb-1 fw-500">Video Complaint</div>
                                 <a class="small stretched-link text-reset text-decoration-none" href="/admin/settings/all/{{$this->userId}}/video">{{\App\Models\MemberBioData::countVideoComplaintType($userId)}}</a>
                             </div>
                         </div>

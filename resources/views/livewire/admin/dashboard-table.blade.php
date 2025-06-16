@@ -7,7 +7,7 @@
                     <h2 class="card-title text-white mb-0">Pending Complaints Today</h2>
                 </div>
                 <div class="d-flex gap-2">
-                  <a href="{{ route('complaints.status', 'pending') }}" class="btn btn-sm bg-dark btn-text-white" > View All &nbsp;<i class="material-icons">visibility</i></a>
+                  <a href="{{ route('complaints.status', 'pending') }}" class="btn btn-sm bg-white btn-text-black" > View All &nbsp;<i class="material-icons">visibility</i></a>
                 </div>
             </div>
         </div>

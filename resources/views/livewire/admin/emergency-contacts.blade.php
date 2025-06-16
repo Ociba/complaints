@@ -7,7 +7,7 @@
                     <h2 class="card-title text-white mb-0">Emergency Contacts</h2>
                 </div>
                 <div class="d-flex gap-2">
-                    <a href="/admin/settings/create-emergency-contact" class="btn btn-sm btn-dark btn-text-white" type="button">Create Emergency Contact</a>
+                    <a href="/admin/settings/create-emergency-contact" class="btn btn-sm btn-white btn-text-black" type="button">Create Emergency Contact</a>
                 </div>
             </div>
         </div>

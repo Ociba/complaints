@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div class="col-lg-2 col-6 footer-links">
+        <div class="col-lg-3 col-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
             <li><a href="/">Home</a></li>
@@ -25,7 +25,7 @@
           </ul>
         </div>
 
-        <div class="col-lg-2 col-6 footer-links">
+        {{--<div class="col-lg-2 col-6 footer-links">
           <h4>Our Services</h4>
           <ul>
             <li><a href="#">Web Design</a></li>
@@ -33,9 +33,9 @@
             <li><a href="#">Product Management</a></li>
             <li><a href="#">Graphic Design</a></li>
           </ul>
-        </div>
+        </div>--}}
 
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+        <div class="col-lg-4 col-md-12 footer-contact text-center text-md-start">
           <h4>Download Mobile App Now</h4>
           <p class="mt-1 mb-1"></p>
           <img src="{{ asset('asset\front\assets\img\googleplay-btn.svg')}}">
