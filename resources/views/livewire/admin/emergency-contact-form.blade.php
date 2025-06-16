@@ -4,7 +4,7 @@
         <div class="card-header bg-primary text-white px-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="me-4">
-                    <h2 class="card-title text-white mb-0">Create Testimony</h2>
+                    <h2 class="card-title text-white mb-0">Create Emergency Contact</h2>
                 </div>
                 
             </div>
