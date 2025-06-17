@@ -7,7 +7,7 @@
                     <h2 class="card-title text-white mb-0">Testimonies</h2>
                 </div>
                 <div class="d-flex gap-2">
-                    <a href="/admin/create-testimony" class="btn btn-sm btn-dark btn-text-white" type="button">Add Testimony</a>
+                    <a href="/admin/create-testimony" class="btn btn-sm bg-white btn-text-black" type="button">Add Testimony</a>
                 </div>
             </div>
         </div>
@@ -34,6 +34,7 @@
                         <th>Statement</th>
                         <th>Photo</th>
                         <th>Created At</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +47,11 @@
                         <td><img src="{{ asset('storage/testimonies/'.$testimony->photo) }}" alt="{{ $testimony->name }}" width="60" heght="50"></td>
 
                         <td>{{ $testimony->created_at }}</td>
+                        @if($testimony->status === 'approved')
+                        <td><a href="#!" class="btn btn-sm btn-success">Approved</a></td>
+                        @else
+                        <td><a href="#!" class="btn btn-sm btn-outline-danger" wire:click="markTestimonyAsApproved({{$testimony->id}})">Approve</a></td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

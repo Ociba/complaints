@@ -9,7 +9,8 @@
                     </h2>
                 </div>
                 <div class="d-flex gap-2">
-                    <a href="{{ url('/admin/export-users') }}" class="btn btn-lg bg-secondary btn-text-white btn-icon" type="button"><i class="material-icons">download</i></a>
+                    <a href="{{ url('/admin/export-users') }}" class="btn btn-sm bg-white btn-text-black btn-icon" type="button"><i class="material-icons">download</i></a>
+                    <a href="/admin/settings/add-system-admin" class="btn btn-sm bg-white btn-text-black" type="button">Add System Admin</a>
                 </div>
             </div>
         </div>
@@ -47,7 +48,7 @@
                                 <td>{{ $admin->email}}</td>
                                 <td>{{ $admin->role}}</td>
                                 <td>
-                                <a href="#!" class="btn btn-sm mb-1 btn-outline-danger" wire:click="deleteAdmin{{$admin->id}}">Delete</a>
+                                <a href="#!" class="btn btn-sm mb-1 btn-outline-danger" wire:click="deleteAdmin({{ $admin->id }})">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

@@ -32,11 +32,6 @@ class Complaints extends Component
         return Complaint::latest()->get();
     }
 
-    public function markComplaintAsResolved($complaintId)
-    {
-        Complaint::markComplaintResolved($complaintId);
-        session()->flash('success', 'Operation Successful');
-        return redirect()->to('/admin/complaints');
-    }
+    
 }
 

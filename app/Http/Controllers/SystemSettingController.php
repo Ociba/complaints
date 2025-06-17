@@ -51,4 +51,12 @@ class SystemSettingController extends Controller
      public function createEmergencyContact(){
         return view('admin.settings.emergency_contact_form');
      }
+
+     public function changePassword(){
+      return view('admin.settings.change_password');
+     }
+
+     public function addSystemAdminForm(){
+      return view('admin.settings.add_system_admin_form');
+     }
 }

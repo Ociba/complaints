@@ -18,7 +18,7 @@
                 </div>
                 <div class="d-flex gap-4">
                     <div class="dropdown">
-                        <button class="btn btn-lg bg-secondary btn-text-white btn-icon dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <button class="btn btn-lg bg-white btn-text-black btn-icon dropdown-toggle" type="button" data-bs-toggle="dropdown">
                             <i class="material-icons">download</i> 
                         </button>
                         <ul class="dropdown-menu" style="max-height: 200px; overflow-y: auto;">
@@ -84,8 +84,13 @@
                         <td>{{ $complaint->user->bioData->next_of_kin_phone ?? 'N/A' }}</td>
                         <td>
                             <a href="/admin/complaint-details/{{$complaint->id}}" class="btn btn-sm btn-outline-success mb-1">View More</a>
-                            @if ($status !== 'resolved')
-                            <a href="#" class="btn btn-sm btn-outline-primary mb-1" wire:click="markComplaintAsResolved({{$complaint->id}})">Mark Resolved</a>
+                            @if ($complaint->status == 'pending' || $complaint->status == 'emergency')
+                            <form method="POST" action="{{ route('complaints.resolve', $complaint->id) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-outline-primary">
+                                    Mark Resolved
+                                </button>
+                            </form>
                             @endif
                        </td>
                     </tr>

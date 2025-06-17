@@ -128,7 +128,14 @@
                         <td>{{ $complaint->user->bioData->next_of_kin_phone ?? 'N/A' }}</td>
                         <td>
                             <a href="/admin/complaint-details/{{$complaint->id}}" class="btn btn-sm btn-outline-success mb-2">View More</a>
-                            <a href="#" class="btn btn-sm btn-outline-primary mb-2" wire:click="markComplaintAsResolved({{$complaint->id}})">Mark Resolved</a>
+                            @if ($complaint->status == 'pending' || $complaint->status == 'emergency')
+                            <form method="POST" action="{{ route('complaints.resolve', $complaint->id) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-outline-primary">
+                                    Mark Resolved
+                                </button>
+                            </form>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

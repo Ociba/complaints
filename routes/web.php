@@ -66,6 +66,8 @@ Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->prefix
     Route::get('/settings/{userId}/{status}', [SystemSettingController::class, 'getUserComplaintByStatus'])->name('User Complaints');
     Route::get('/settings/all/{userId}/{type}', [SystemSettingController::class, 'getUserComplaintByType'])->name('User Complaints Type');
     Route::get('/settings/create-emergency-contact', [SystemSettingController::class, 'createEmergencyContact'])->name('Emergency Contact Form');
+    Route::get('/settings/change-password', [SystemSettingController::class, 'changePassword'])->name('Change Password');
+    Route::get('/settings/add-system-admin', [SystemSettingController::class, 'addSystemAdminForm'])->name('Add System Form');
 });
 
 // Add this to your web.php

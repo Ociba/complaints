@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable implements JWTSubject // Implement the interface
 {
@@ -90,5 +92,22 @@ class User extends Authenticatable implements JWTSubject // Implement the interf
 
     public static function getAdmins(){
         return User::whereRole('admin')->get();
+    }
+
+    public static function createAdminAccount($name, $email, $phone, $role, $password)
+    {
+        return self::create([
+            'name' => $name,
+            'email' => $email,
+            'phone' => $phone,
+            'role' => $role,
+            'password' => Hash::make($password),
+        ]);
+    }
+
+    public static function changePassword($password){
+        User::whereId(Auth::user()->id)->update([
+         'password' => Hash::make($password),
+        ]);
     }
 }

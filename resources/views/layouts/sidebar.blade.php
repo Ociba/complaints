@@ -66,6 +66,9 @@
                 <a class="nav-link" href="/admin/settings/system-admin" style="{{ Route::currentRouteName() === 'System Admin' ? 'font-weight:bold; color:#000;' : '' }}">
                     System Admin
                 </a>
+                <a class="nav-link" href="/admin/settings/change-password" style="{{ Route::currentRouteName() === 'Change Password' ? 'font-weight:bold; color:#000;' : '' }}">
+                    Change Password
+                </a>
             </div>
         </div>
         <!-- Drawer footer        -->

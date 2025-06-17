@@ -14,9 +14,9 @@ class Admin extends Component
         ]);
     }
 
-    public function deleteAdmin($userId){
-        User::whereId($userId)->delete();
-        session()->flash('success', 'Deleted added successfully.');
+    public function deleteAdmin($id){
+        User::whereId($id)->delete();
+        session()->flash('success', 'Deleted Admin successfully.');
         return redirect()->to('/admin/settings/system-admin');
     }
 }

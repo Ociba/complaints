@@ -13,4 +13,12 @@ class ClientTestimony extends Component
             'testimonies' =>Testimony::getClientTestimony()
         ]);
     }
+
+    public function markTestimonyAsApproved($TestimonyId){
+        Testimony::whereId($TestimonyId)->update([
+            'status' => 'approved'
+        ]);
+        session()->flash('success', 'Operation Successful');
+        return redirect()->to('/admin/client-testimony');
+    }
 }
