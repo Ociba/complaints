@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
- @include('layouts.front.css')
-</head>
+@include('layouts.front.css')
 
 <body class="index-page">
 
-<header id="header" class="header d-flex align-items-center fixed-top">
+  <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="{{ asset('asset/images/logo.png')}}" alt=""> 
+        <img src="{{ asset('asset/images/logo.png')}}" alt="">
         <h1 class="sitename">Tuliwamu </h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#home" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#testimony">Testimonials</a></li>
-          <li><a href="#steps">How We Work</a></li>
+          <li><a href="#whatwedo">What We Do</a></li>
+          <li><a href="#complaint">How to send Complaint</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="/mobile-app-instructions">Get Started</a>
+      <a class="btn-getstarted" href="#">Get Started</a>
 
     </div>
   </header>
@@ -36,213 +34,144 @@
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7 content-col" data-aos="fade-up">
-            <div class="content">
+    <section id="home" class="hero section">
 
-              <div class="main-heading">
-                <h1>IN DISTRESS <br>WE RESPOND</h1>
-              </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-              <div class="divider"></div>
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
 
-              <div class="description">
-                <p>Tuliwamu is a dedicated emergency response app designed to assist distressed Ugandans in the diaspora by providing immediate help and ensuring their safe return home. Whether you're facing an emergency, need urgent assistance, or want to report a complaint, Tuliwamu connects you with the right support quickly and efficiently.</p>
-              </div>
+              <h1 class="mb-4">
+                Tuliwamu&nbsp;Mobile&nbsp;App<br>
+                <span class="accent-text">IN DISTRESS, <br>WE RESPOND</span>
+              </h1>
 
-              <div class="cta-button">
-                <a href="/about_us" class="btn">
-                  <span>View More</span>
-                  <i class="bi bi-arrow-right"></i>
+              <p class="mb-4 mb-md-5">Tuliwamu is a dedicated emergency response app designed to assist distressed Ugandans in the diaspora by providing immediate help and ensuring their safe return home. Whether you're facing an emergency, need urgent assistance, or want to report a complaint, Tuliwamu connects you with the right support quickly and efficiently.</p>
+
+              <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">View More</a>
+                <a href="#" class="btn btn-link mt-2 mt-sm-0 glightbox">
+                  <i class="bi bi-play-circle me-1"></i>
+                  Play Video
                 </a>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-5" data-aos="zoom-out">
-            <div class="visual-content">
-              <div class="fluid-shape">
-                <img src="{{ asset('asset/front/assets/img/abstract/banner.png')}}" style="height:500px;" alt="Abstract Fluid Shape" class="fluid-img">
-                
-              </div>
-              <div class="stats-card">
-                <div class="stats-number">
-                  <h4>Tuliwamu</h4>
+          <div class="col-lg-6">
+            <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
+              <img src="{{ asset('asset/front/assets/img/illustration-1.webp')}}" alt="Hero Image" class="img-fluid">
+
+              <div class="customers-badge text-center">
+                <div class="customer-avatars">
+                  <span class="more">Tuliwamu</span>
                 </div>
-                <div class="stats-label">
-                  <p>Download App Now</p>
-                </div>
-                <div class="stats-arrow">
-                  <a href="#portfolio"><i class="bi bi-download"></i></a>
-                </div>
+                <p class="mb-0 mt-2">Download App Now</p>
               </div>
             </div>
           </div>
         </div>
+
+        <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
+          <div class="container fw-bold text-center mt-2">
+            <h2>Why should i install Tuliwamu Mobile Application ?</h2>
+            <div class="company-badg mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle-fill me-2" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+              </svg>
+              Tuliwamu App will/shall be used incase of the following situations listed below so that you can be helped as soon as possible.
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-trophy"></i>
+              </div>
+              <div class="stat-content">
+                <h4>Danger</h4>
+                <p class="mb-0">When you are in danger situation</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-briefcase"></i>
+              </div>
+              <div class="stat-content">
+                <h4>Mistreated</h4>
+                <p class="mb-0">When You are mistreated.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-graph-up"></i>
+              </div>
+              <div class="stat-content">
+                <h4>Under Serviced</h4>
+                <p class="mb-0">Denial of rights</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-award"></i>
+              </div>
+              <div class="stat-content">
+                <h4>Stranded</h4>
+                <p class="mb-0">When You have lost direction</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
+
     </section><!-- /Hero Section -->
 
     <!-- About Section -->
     <section id="about" class="about section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <div><span>Learn More</span> <span class="description-title">About Us</span></div>
-      </div><!-- End Section Title -->
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-      <div class="container">
+        <div class="row gy-4 align-items-center justify-content-between">
 
-        <div class="row gx-5 align-items-center">
-          {{--<div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
-            <div class="about-image position-relative">
-              <img src="{{ asset('asset/front/assets/img/about/about-portrait-1.webp')}}" class="img-fluid rounded-4 shadow-sm" alt="About Image" loading="lazy">
-              <div class="experience-badge">
-                <span class="years">20+</span>
-                <span class="text">Years of Expertise</span>
+          <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
+            <span class="about-meta">MORE ABOUT US</span>
+            <h2 class="about-title">Specialized assistance for Ugandans abroad and within</h2>
+            <p class="about-description">Tuliwamu is your reliable partner in distress—ensuring you’re never alone, no matter where you are. Download now and stay protected!.Diaspora Support – Specialized assistance for Ugandans abroad, including repatriation help when needed.</p>
+
+            <div class="row feature-list-wrapper">
+              <div class="col-md-6">
+                <ul class="feature-list">
+                  <li><i class="bi bi-check-circle-fill"></i> a versatile complaint assistance app</li>
+                  <li><i class="bi bi-check-circle-fill"></i> enables users to report issues instantly.</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Report issues via text, audio, video, or SOS alerts</li>
+                </ul>
               </div>
-            </div>
-          </div>--}}
-
-          <div class="col-lg-12 mt-4 mt-lg-0" data-aos="fade-left" data-aos-delay="300">
-            <div class="about-content">
-              <p class="lead">Tuliwamu is your reliable partner in distress—ensuring you’re never alone, no matter where you are. Download now and stay protected!.</p>
-              <p>Diaspora Support – Specialized assistance for Ugandans abroad, including repatriation help when needed.</p>
-
-              <div class="row g-4 mt-3">
-                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="400">
-                  <div class="feature-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <h5>SOS Button</h5>
-                    <p>Instantly alert emergency contacts and response teams with your location in critical situations.</p>
-                  </div>
-                </div>
-                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="450">
-                  <div class="feature-item">
-                    <i class="bi bi-lightbulb-fill"></i>
-                    <h5>Complaints Portal</h5>
-                    <p>Report incidents via audio, video, or text to ensure your concerns are documented and addressed.</p>
-                  </div>
-                </div>
-                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="450">
-                  <div class="feature-item">
-                    <i class="bi bi-globe"></i>
-                    <h5>Quick Response System</h5>
-                    <p>Connects you with trusted support networks for timely assistance.</p>
-                  </div>
-                </div>
-                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="450">
-                  <div class="feature-item">
-                    <i class="bi bi-geo-alt"></i>
-                    <h5>Location Tracking</h5>
-                    <p>Helps responders locate and reach you faster in emergencies.</p>
-                  </div>
-                </div>
+              <div class="col-md-6">
+                <ul class="feature-list">
+                  <li><i class="bi bi-check-circle-fill"></i> ensuring accessibility for all</li>
+                  <li><i class="bi bi-check-circle-fill"></i> streamlines 24/7 reporting</li>
+                  <li><i class="bi bi-check-circle-fill"></i> ensure timely resolution of grievances</li>
+                </ul>
               </div>
-              <p class="mt-3">Tuliwamu is your reliable partner in distress—ensuring you’re never alone, no matter where you are. Download now and stay protected!</p>
-              <p>In Distress, We Respond.</p>
-              <a href="/about_us" class="btn btn-primary mt-4">View More</a>
             </div>
           </div>
-        </div></div></section>
-        
-        <section id="testimony" class="about section">
-        <div class="container">
-        <div  class="testimonial-section mt-5 pt-5" data-aos="fade-up" data-aos-delay="100">
-          <div class="row">
-            <div class="col-lg-4" data-aos="fade-right" data-aos-delay="200">
-              <div class="testimonial-intro">
-                <h3>Rescued Individuals</h3>
-                <p>Hear directly from those who have experienced the impact of our partnership and achieved their strategic goals.</p>
-                <p>Hear directly from those who have experienced the impact.</p>
-                <div class="swiper-nav-buttons mt-4">
-                  <button class="slider-prev"><i class="bi bi-arrow-left"></i></button>
-                  <button class="slider-next"><i class="bi bi-arrow-right"></i></button>
-                </div>
+
+          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="image-wrapper">
+              <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
+                <img src="{{ asset('asset/front/assets/img/about-5.webp')}}" alt="Business Meeting" class="img-fluid main-image rounded-4">
+                <img src="{{ asset('asset/front/assets/img/about-2.webp')}}" alt="Team Discussion" class="img-fluid small-image rounded-4">
               </div>
-            </div>
-
-            <div class="col-lg-8" data-aos="fade-left" data-aos-delay="300">
-              <div class="testimonial-slider swiper init-swiper">
-                <script type="application/json" class="swiper-config">
-                  {
-                    "loop": true,
-                    "speed": 800,
-                    "autoplay": {
-                      "delay": 5000
-                    },
-                    "slidesPerView": 1,
-                    "spaceBetween": 30,
-                    "navigation": {
-                      "nextEl": ".slider-next",
-                      "prevEl": ".slider-prev"
-                    },
-                    "breakpoints": {
-                      "768": {
-                        "slidesPerView": 2
-                      }
-                    }
-                  }
-                </script>
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      <p>"Their strategic vision and unwavering commitment to results provided exceptional value. Our operational efficiency has signficantly improved."</p>
-                      <div class="client-info d-flex align-items-center mt-4">
-                        <img src="{{ asset('asset/front/assets/img/person/person-f-1.webp')}}" class="client-img" alt="Client" loading="lazy">
-                        <div>
-                          <h6 class="mb-0">Eleanor Vance</h6>
-                          <span>Operations Manager</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      
-                      <p>"Collaborating with their team was a revelation. Their innovative strategies guided us toward achieving our objectives with precision and speed."</p>
-                      <div class="client-info d-flex align-items-center mt-4">
-                        <img src="{{ asset('asset/front/assets/img/person/person-m-1.webp')}}" class="client-img" alt="Client" loading="lazy">
-                        <div>
-                          <h6 class="mb-0">David Kim</h6>
-                          <span>Product Lead</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      
-                      <p>"The depth of knowledge and unwavering dedication they bring to every project is exceptional. They've become an essential ally in driving our expansion."</p>
-                      <div class="client-info d-flex align-items-center mt-4">
-                        <img src="{{ asset('asset/front/assets/img/person/person-f-2.webp')}}" class="client-img" alt="Client" loading="lazy">
-                        <div>
-                          <h6 class="mb-0">Isabella Diaz</h6>
-                          <span>Research Analyst</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      
-                      <p>"Their dedication to delivering superior solutions and their meticulous attention to detail have profoundly impacted our corporate growth trajectory."</p>
-                      <div class="client-info d-flex align-items-center mt-4">
-                        <img src="{{ asset('asset/front/assets/img/person/person-f-3.webp')}}" class="client-img" alt="Client" loading="lazy">
-                        <div>
-                          <h6 class="mb-0">Olivia Chen</h6>
-                          <span>Development Strategist</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
+              <div class="experience-badge floating">
+                <h3>Tuliwamu</span></h3>
+                <p>Download App Now</p>
               </div>
             </div>
           </div>
@@ -252,138 +181,154 @@
 
     </section><!-- /About Section -->
 
+    <!-- Features Section -->
 
-    <!-- Steps Section -->
-    <section id="steps" class="steps section">
+    <!-- Features Cards Section -->
+    <section id="whatwedo" class="features-cards section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Steps</h2>
-        <div><span>How we</span> <span class="description-title">Work</span></div>
-      </div><!-- End Section Title -->
+      <div class="container">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
 
-        <div class="steps-wrapper">
-
-          <div class="step-item" data-aos="fade-right" data-aos-delay="200">
-            <div class="step-content">
-              <div class="step-icon">
-                <i class="bi bi-lightbulb"></i>
-              </div>
-              <div class="step-info">
-                <span class="step-number">Step 01</span>
-                <h3>Initial Consultation</h3>
-                <p>Conducting thorough discovery sessions to understand your business requirements and objectives. Our expert team analyzes your needs to create a customized approach.</p>
-              </div>
+          <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="feature-box orange">
+              <i class="bi bi-award"></i>
+              <h4>SOS Alert</h4>
+              <p>Instantly alert emergency contacts and response teams with your location in critical situations.</p>
             </div>
-          </div><!-- End Step Item -->
+          </div><!-- End Feature Borx-->
 
-          <div class="step-item" data-aos="fade-left" data-aos-delay="300">
-            <div class="step-content">
-              <div class="step-icon">
-                <i class="bi bi-gear"></i>
-              </div>
-              <div class="step-info">
-                <span class="step-number">Step 02</span>
-                <h3>Planning &amp; Tuliwamu</h3>
-                <p>Developing comprehensive strategies and detailed project plans based on the initial consultation. We create actionable roadmaps with clear milestones and deliverables.</p>
-              </div>
+          <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="feature-box blue">
+              <i class="bi bi-patch-check"></i>
+              <h4>Complaints Portal</h4>
+              <p>Report incidents via audio, video, or text to ensure your concerns are documented and addressed.</p>
             </div>
-          </div><!-- End Step Item -->
+          </div><!-- End Feature Borx-->
 
-          <div class="step-item" data-aos="fade-right" data-aos-delay="400">
-            <div class="step-content">
-              <div class="step-icon">
-                <i class="bi bi-bar-chart"></i>
-              </div>
-              <div class="step-info">
-                <span class="step-number">Step 03</span>
-                <h3>Development Phase</h3>
-                <p>Executing the planned strategies with precision and agility. Our team implements solutions while maintaining constant communication and progress updates.</p>
-              </div>
+          <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="feature-box green">
+              <i class="bi bi-sunrise"></i>
+              <h4>Quick Response System</h4>
+              <p>Connects you with trusted support networks for timely assistance.</p>
             </div>
-          </div><!-- End Step Item -->
+          </div><!-- End Feature Borx-->
 
-          <div class="step-item" data-aos="fade-left" data-aos-delay="500">
-            <div class="step-content">
-              <div class="step-icon">
-                <i class="bi bi-check2-circle"></i>
-              </div>
-              <div class="step-info">
-                <span class="step-number">Step 04</span>
-                <h3>Launch &amp; Support</h3>
-                <p>Ensuring smooth deployment and providing ongoing support for implemented solutions. We monitor performance and make necessary adjustments for optimal results.</p>
-              </div>
+          <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="feature-box red">
+              <i class="bi bi-shield-check"></i>
+              <h4>Location Tracking</h4>
+              <p>Helps responders locate and reach you faster in emergencies.</p>
             </div>
-          </div><!-- End Step Item -->
+          </div><!-- End Feature Borx-->
 
         </div>
 
       </div>
 
-    </section><!-- /Steps Section -->
+    </section><!-- /Features Cards Section -->
 
-    <!-- Call To Action Section -->
-    <section id="call-to-action" class="call-to-action section">
+    <!-- Features 2 Section -->
+    <section id="complaint" class="features-2 section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="advertise-1 d-flex flex-column flex-lg-row gap-4 align-items-center position-relative">
+        <div class="row align-items-center">
 
-          <div class="content-left flex-grow-1" data-aos="fade-right" data-aos-delay="200">
-            <span class="badge text-uppercase mb-2">Don't Miss!</span>
-            <h2>Your Path To Safety Today</h2>
-            <p class="my-4">Strategia accelerates your business growth through innovative solutions and cutting-edge technology. Join thousands of satisfied customers who have transformed their operations.</p>
+          <div class="col-lg-4">
 
-            <div class="features d-flex flex-wrap gap-3 mb-4">
-              <div class="feature-item">
-                <i class="bi bi-check-circle-fill"></i>
-                <span>Premium Support</span>
+            <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="200">
+              <div class="d-flex align-items-center justify-content-end gap-4">
+                <div class="feature-content">
+                  <h3>How to download App ?</h3>
+                  <p>Search for <strong>"Tuliwamu"</strong> on your phone device in play store.</p>
+                </div>
+                <div class="feature-icon flex-shrink-0">
+                  {{--<i class="bi bi-display"></i>--}} 01
+                </div>
               </div>
-              <div class="feature-item">
-                <i class="bi bi-check-circle-fill"></i>
-                <span>Cloud Integration</span>
-              </div>
-              <div class="feature-item">
-                <i class="bi bi-check-circle-fill"></i>
-                <span>Real-time Analytics</span>
-              </div>
-            </div>
+            </div><!-- End .feature-item -->
 
-            <div class="cta-buttons d-flex flex-wrap gap-3">
-              <a href="/mobile-app-instructions" class="btn btn-primary">Get Started</a>
-              <a href="#" class="btn btn-outline">Learn More</a>
-            </div>
+            <div class="feature-item text-end mb-5" data-aos="fade-right" data-aos-delay="300">
+              <div class="d-flex align-items-center justify-content-end gap-4">
+                <div class="feature-content">
+                  <h3>Download &amp; installing</h3>
+                  <p>Click download Tuliwamu for free <a href="#!"> download app</a>. afer downloading install it on your device.</p>
+                </div>
+                <div class="feature-icon flex-shrink-0">
+                  {{--<i class="bi bi-feather"></i>--}} 02
+                </div>
+              </div>
+            </div><!-- End .feature-item -->
+
+            <div class="feature-item text-end" data-aos="fade-right" data-aos-delay="400">
+              <div class="d-flex align-items-center justify-content-end gap-4">
+                <div class="feature-content">
+                  <h3>Open the App</h3>
+                  <p>After Successful Installation, Open the App, <strong>Note:</strong> The Information you enter will be confidential and we shall use during the time of helping you. </p>
+                </div>
+                <div class="feature-icon flex-shrink-0">
+                  03
+                </div>
+              </div>
+            </div><!-- End .feature-item -->
+
           </div>
 
-          <div class="content-right position-relative" data-aos="fade-left" data-aos-delay="300">
-            <img src="{{ asset('asset/front/assets/img/abstract/banner.png')}}"  style="height:450px;" alt="Digital Platform" class="img-fluid rounded-4">
-            <div class="floating-card">
-              <div class="card-icon">
-                <i class="bi bi-download"></i>
-              </div>
-              <div class="card-content">
-                <span class="stats-number">Tuliwamu</span>
-                <span class="stats-text">Download App Now</span>
-              </div>
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="phone-mockup text-center">
+              <img src="{{ asset('asset/front/assets/img/phone-app-screen.webp')}}" alt="Phone Mockup" class="img-fluid">
             </div>
-          </div>
+          </div><!-- End Phone Mockup -->
 
-          <div class="decoration">
-            <div class="circle-1"></div>
-            <div class="circle-2"></div>
-          </div>
+          <div class="col-lg-4">
 
+            <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="200">
+              <div class="d-flex align-items-center gap-4">
+                <div class="feature-icon flex-shrink-0">
+                  04
+                </div>
+                <div class="feature-content">
+                  <h3>Create Account</h3>
+                  <p>create account by filling the information then click create to submit your details.</p>
+                </div>
+              </div>
+            </div><!-- End .feature-item -->
+
+            <div class="feature-item mb-5" data-aos="fade-left" data-aos-delay="300">
+              <div class="d-flex align-items-center gap-4">
+                <div class="feature-icon flex-shrink-0">
+                  05
+                </div>
+                <div class="feature-content">
+                  <h3>Sending Complaint</h3>
+                  <p>When You Login Successful,There are many options provided on how you want to send your complaint,Please select the one which favours you at the time of complaining.</p>
+                </div>
+              </div>
+            </div><!-- End .feature-item -->
+
+            <div class="feature-item" data-aos="fade-left" data-aos-delay="400">
+              <div class="d-flex align-items-center gap-4">
+                <div class="feature-icon flex-shrink-0">
+                  06
+                </div>
+                <div class="feature-content">
+                  <h3>Processing &amp; Responding to Your Complaint</h3>
+                  <p>Our Team is ready to proceed with the process of handling your complaint and be in touch with you and other stakeholders to rescue the situation..</p>
+                </div>
+              </div>
+            </div><!-- End .feature-item -->
+
+          </div>
         </div>
 
       </div>
 
-    </section><!-- /Call To Action Section -->
+    </section><!-- /Features 2 Section -->
 
-   
+
     <!-- Faq Section -->
-    <section class="faq-9 faq section" id="faq">
+    <section class="faq-9 faq section light-background" id="faq">
 
       <div class="container">
         <div class="row">
@@ -400,11 +345,10 @@
 
           <div class="col-lg-7" data-aos="fade-up" data-aos-delay="300">
             <div class="faq-container">
-
               <div class="faq-item faq-active">
-                <h3>How do I submit a complaint?</h3>
+                <h3>Who is supposed to use this App?</h3>
                 <div class="faq-content">
-                  <p>Open the app if you have already downloaded it.</p>
+                  <p>Every Ugandan who is in trouble, danger or anyone one who needs assistance whether you are in Uganda or abroad.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->
@@ -418,6 +362,14 @@
               </div><!-- End Faq item-->
 
               <div class="faq-item">
+                <h3>How do I submit a complaint?</h3>
+                <div class="faq-content">
+                  <p>Open the app if you have already downloaded it.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
                 <h3>Is my data safe?</h3>
                 <div class="faq-content">
                   <p>Yes, we use secure encryption and follow data protection best practices. Your personal details will not be shared without your consent.</p>
@@ -426,25 +378,9 @@
               </div><!-- End Faq item-->
 
               <div class="faq-item">
-                <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
+                <h3>Why do you want me to enter personal details ?</h3>
                 <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Tempus quam pellentesque nec nam aliquam sem et tortor?</h3>
-                <div class="faq-content">
-                  <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
-                <div class="faq-content">
-                  <p>Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed in suscipit sequi. Distinctio ipsam dolore et.</p>
+                  <p>These details will be kept confidential and will only be used when you are in need of help.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->
@@ -456,16 +392,71 @@
       </div>
     </section><!-- /Faq Section -->
 
+
     <!-- Contact Section -->
-    <section id="contact" class="contact section">
+    <section id="contact" class="contact section light-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
-        <div><span>Let's</span> <span class="description-title">Connect</span></div>
+        <p>Aims to bridge the gap between those in need and assistance providers, making complaint resolution faster and transparent</p>
       </div><!-- End Section Title -->
 
-      @livewire('front.contact-us')
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-4 g-lg-5">
+          <div class="col-lg-5">
+            <div class="info-box" data-aos="fade-up" data-aos-delay="200">
+              <h3>Contact Info</h3>
+              <p>Download Tuliwamu for free <a href="#!"> download app</a>. afer downloading install it on your device.</p>
+
+              <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box">
+                  <i class="bi bi-geo-alt"></i>
+                </div>
+                <div class="content">
+                  <h4>Our Location</h4>
+                  <p>A108 Adam Street</p>
+                  <p>New York, NY 535022</p>
+                </div>
+              </div>
+
+              <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box">
+                  <i class="bi bi-telephone"></i>
+                </div>
+                <div class="content">
+                  <h4>Phone Number</h4>
+                  <p>+1 5589 55488 55</p>
+                  <p>+1 6678 254445 41</p>
+                </div>
+              </div>
+
+              <div class="info-item" data-aos="fade-up" data-aos-delay="500">
+                <div class="icon-box">
+                  <i class="bi bi-envelope"></i>
+                </div>
+                <div class="content">
+                  <h4>Email Address</h4>
+                  <p>info@example.com</p>
+                  <p>contact@example.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+              <h3>Get In Touch</h3>
+
+              @livewire('front.contact-us')
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
 
     </section><!-- /Contact Section -->
 
@@ -476,16 +467,8 @@
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
   @include('layouts.front.javascript')
 
 </body>
 
 </html>
-
-
-
-
-

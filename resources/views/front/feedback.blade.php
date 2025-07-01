@@ -1,61 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>{{env('APP_NAME')}} - {{Request()->Route()->getName()}}</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+@include('layouts.front.css')
 
-  <!-- Favicons -->
-  <link href="{{ asset('asset/images/logo.png')}}" rel="icon">
-  <link href="{{ asset('asset/images/logo.png')}}" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{{ asset('asset/front/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{ asset('asset/front/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{ asset('asset/front/assets/vendor/aos/aos.css')}}" rel="stylesheet">
-  <link href="{{ asset('asset/front/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
-  <link href="{{ asset('asset/front/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="{{ asset('asset/front/assets/css/main.css')}}" rel="stylesheet">
-</head>
-
-<body class="starter-page-page">
+<body class="index-page">
 
   @include('layouts.front.menu')
 
   <main class="main">
 
-    <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade">
-      <div class="container position-relative">
+    <div class="page-title light-background">
+      <div class="container">
         <h1>Feedback</h1>
-        <p></p>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="/">Home</a></li>
-            <li class="current">Feedback</li>
+            <li class="current">Your Feedback</li>
           </ol>
         </nav>
       </div>
     </div><!-- End Page Title -->
+    <section class="contact section mt-3 light-backgroun">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-    <!-- Starter Section Section -->
-    <section id="starter-section" class="starter-section section">
-
-      <div class="container" data-aos="fade-up">
-        @livewire('front.feedback')
+        <div class="row g-4 g-lg-5">
+          <div class="col-lg-3"></div>
+          <div class="col-lg-6">
+            <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+              <h3>Send Your Feedback</h3>
+              @livewire('front.feedback')
+            </div>
+          </div>
+          <div class="col-lg-3"></div>
+        </div>
       </div>
-
-    </section><!-- /Starter Section Section -->
+      </div>
 
   </main>
 

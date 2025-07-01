@@ -9,17 +9,17 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="/" class="active">Home</a></li>
+        <li><a href="/" class="active">Home</a></li>
           <li><a href="/">About</a></li>
-          <li><a href="/">Testimonials</a></li>
-          <li><a href="/">How We Work</a></li>
+          <li><a href="/">What We Do</a></li>
+          <li><a href="/">How to send Complaint</a></li>
           <li><a href="/">FAQ</a></li>
           <li><a href="/">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="/mobile-app-instructions">Get Started</a>
+      <a class="btn-getstarted" href="#">Get Started</a>
 
     </div>
   </header>
