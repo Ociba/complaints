@@ -2,6 +2,238 @@
 <html lang="en">
 
 @include('layouts.front.css')
+<style>
+  .hero-image {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    /* or set a specific height */
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* this makes the image cover the container */
+    display: block;
+  }
+
+  /* Ensure the container has a defined height */
+  .image-wrapper {
+    position: relative;
+    height: 100%;
+    /* Parent (.col-xl-6) must have a height */
+    min-height: 400px;
+    /* Fallback if parent height isn't set */
+  }
+
+  .images {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  /* Apply object-fit: cover to the main image */
+  .main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cover the container */
+    object-position: center;
+    /* Focus on center (adjust if needed) */
+    border-radius: 1rem !important;
+    /* Match rounded-4 (Bootstrap) */
+    display: block;
+  }
+
+  /* Adjust the small image (assuming it's positioned absolutely) */
+  .small-image {
+    position: absolute;
+    bottom: -20px;
+    /* Adjust as needed */
+    right: -20px;
+    /* Adjust as needed */
+    width: 40%;
+    /* Adjust size */
+    height: auto;
+    /* Maintain aspect ratio */
+    z-index: 2;
+    border-radius: 1rem !important;
+  }
+
+  /* Style the floating badge */
+  .experience-badge.floating {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 0.5rem;
+    z-index: 3;
+  }
+
+  @media (max-width: 768px) {
+    .image-wrapper {
+      min-height: 300px;
+      /* Shorter height on small screens */
+    }
+
+    .small-image {
+      width: 30%;
+      /* Smaller overlap on mobile */
+    }
+  }
+
+  .feature-box,
+  h4 {
+    text-align: center;
+    /* Centers icon, heading, and text */
+    padding: 2rem;
+  }
+
+  .feature-box svg {
+    display: block;
+    margin: 0 auto 1.5rem;
+    /* Centers SVG horizontally with space below */
+    transition: transform 0.3s;
+  }
+
+  .feature-box:hover svg {
+    transform: scale(1.1);
+    /* Subtle hover effect */
+  }
+
+  /* Color overrides for SVG fills (optional) */
+  .orange svg path:not([fill="#ffffff"]) {
+    fill: #f39c12;
+  }
+
+  .blue svg path:not([fill="#ffffff"]) {
+    fill: #3498db;
+  }
+
+  .green svg path:not([fill="#ffffff"]) {
+    fill: #2ecc71;
+  }
+
+  .red svg path:not([fill="#ffffff"]) {
+    fill: #e74c3c;
+  }
+
+  .info-box-with-bg {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 2rem;
+    min-height: 500px;
+    /* Adjust as needed */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    /* Dark overlay */
+    url('{{ asset("asset/images/distress142.png") }}') center/cover no-repeat;
+    color: white;
+  }
+
+  .info-box-content {
+    position: relative;
+    z-index: 2;
+    /* Ensures content stays above background */
+  }
+
+  /* Adjust existing styles for dark background */
+  .info-box-with-bg h3,
+  .info-box-with-bg h4,
+  .info-box-with-bg p {
+    color: white;
+  }
+
+  .info-box-with-bg a {
+    color: #4e9af1;
+    text-decoration: none;
+  }
+
+  .info-box-with-bg .icon-box i {
+    color: #4e9af1;
+  }
+
+  /* Optional: Add subtle animation to background */
+  .info-box-with-bg:hover {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('{{ asset("asset/images/distress62.png") }}') center/cover no-repeat;
+    transition: all 0.3s ease;
+  }
+
+  /* Slider Container */
+  .col-lg-6.position-relative {
+    min-height: 500px;
+    /* Adjust as needed */
+    overflow: hidden;
+    border-radius: 15px;
+    /* Optional rounded corners */
+  }
+
+  .hero-slider-container {
+    min-height: 500px;
+    overflow: hidden;
+    border-radius: 15px;
+  }
+
+  .hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .slide.active {
+    opacity: 1;
+  }
+
+  .gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+    z-index: 2;
+  }
+
+  .hero-content2 {
+    position: relative;
+    z-index: 3;
+    padding: 2rem;
+    color: white;
+  }
+  /* Phone mockup sizing control */
+.phone-mockup {
+  max-width: 100%; /* Adjust this value to control maximum width */
+  margin: 0 auto;
+}
+
+/* Responsive width adjustments */
+@media (min-width: 992px) {
+  .phone-mockup {
+    max-width: 320px; /* Larger width on desktop */
+  }
+}
+
+/* Maintain aspect ratio */
+.phone-mockup img {
+  object-fit: contain;
+  object-position: center;
+}
+</style>
 
 <body class="index-page">
 
@@ -40,15 +272,13 @@
 
         <div class="row align-items-center">
           <div class="col-lg-6">
-            <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
 
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
               <h1 class="mb-4">
                 Tuliwamu&nbsp;Mobile&nbsp;App<br>
                 <span class="accent-text">IN DISTRESS, <br>WE RESPOND</span>
               </h1>
-
               <p class="mb-4 mb-md-5">Tuliwamu is a dedicated emergency response app designed to assist distressed Ugandans in the diaspora by providing immediate help and ensuring their safe return home. Whether you're facing an emergency, need urgent assistance, or want to report a complaint, Tuliwamu connects you with the right support quickly and efficiently.</p>
-
               <div class="hero-buttons">
                 <a href="#about" class="btn btn-primary me-0 me-sm-2 mx-1">View More</a>
                 <a href="#" class="btn btn-link mt-2 mt-sm-0 glightbox">
@@ -59,17 +289,17 @@
             </div>
           </div>
 
-          <div class="col-lg-6">
-            <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
-              <img src="{{ asset('asset/front/assets/img/illustration-1.webp')}}" alt="Hero Image" class="img-fluid">
-
-              <div class="customers-badge text-center">
-                <div class="customer-avatars">
-                  <span class="more">Tuliwamu</span>
-                </div>
-                <p class="mb-0 mt-2">Download App Now</p>
-              </div>
+          <div class="col-lg-6  position-relative hero-slider-container">
+            <!-- Image Slider -->
+            <div class="hero-slider">
+              <div class="slide" style="background-image: url('{{ asset('asset/images/distress5.png') }}');"></div>
+              <div class="slide" style="background-image: url('{{ asset('asset/images/distress11.png') }}');"></div>
+              <div class="slide" style="background-image: url('{{ asset('asset/images/distress8.png') }}');"></div>
+              <div class="slide" style="background-image: url('{{ asset('asset/images/distress10.png') }}');"></div>
+              <div class="slide" style="background-image: url('{{ asset('asset/images/distress13.png') }}');"></div>
+              <div class="slide" style="background-image: url('{{ asset('asset/images/distress142.png') }}');"></div>
             </div>
+            <div class="gradient-overla"></div>
           </div>
         </div>
 
@@ -86,7 +316,11 @@
           <div class="col-lg-3 col-md-6">
             <div class="stat-item">
               <div class="stat-icon">
-                <i class="bi bi-trophy"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#ff3b30" viewBox="0 0 24 24">
+                  <path d="M12 2L1 21h22L12 2zm0 3.5L18.5 19h-13L12 5.5z" />
+                  <path d="M12 16a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" fill="#fff" />
+                  <circle cx="12" cy="8.5" r="1.5" fill="#fff" />
+                </svg>
               </div>
               <div class="stat-content">
                 <h4>Danger</h4>
@@ -97,7 +331,10 @@
           <div class="col-lg-3 col-md-6">
             <div class="stat-item">
               <div class="stat-icon">
-                <i class="bi bi-briefcase"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#8e44ad" viewBox="0 0 24 24">
+                  <path d="M19 3h-4V1h-6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H6v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1V18z" />
+                  <path d="M8 10h8v2H8z" fill="#fff" />
+                </svg>
               </div>
               <div class="stat-content">
                 <h4>Mistreated</h4>
@@ -108,7 +345,9 @@
           <div class="col-lg-3 col-md-6">
             <div class="stat-item">
               <div class="stat-icon">
-                <i class="bi bi-graph-up"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#3498db" viewBox="0 0 24 24">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 12H9v-2h2v2zm0-4H9V9h2v2zm0-4H9V5h2v2zm4 8h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2z" />
+                </svg>
               </div>
               <div class="stat-content">
                 <h4>Under Serviced</h4>
@@ -119,7 +358,10 @@
           <div class="col-lg-3 col-md-6">
             <div class="stat-item">
               <div class="stat-icon">
-                <i class="bi bi-award"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#f39c12" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  <path d="M12 6.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5z" fill="#fff" />
+                </svg>
               </div>
               <div class="stat-content">
                 <h4>Stranded</h4>
@@ -166,8 +408,8 @@
           <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
             <div class="image-wrapper">
               <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
-                <img src="{{ asset('asset/front/assets/img/about-5.webp')}}" alt="Business Meeting" class="img-fluid main-image rounded-4">
-                <img src="{{ asset('asset/front/assets/img/about-2.webp')}}" alt="Team Discussion" class="img-fluid small-image rounded-4">
+                <img src="{{ asset('asset/images/distress152.png')}}" alt="Business Meeting" class="img-fluid main-image rounded-4">
+                <img src="{{ asset('asset/images/distress142.png')}}" alt="Team Discussion" class="img-fluid small-image rounded-4">
               </div>
               <div class="experience-badge floating">
                 <h3>Tuliwamu</span></h3>
@@ -192,7 +434,10 @@
 
           <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
             <div class="feature-box orange">
-              <i class="bi bi-award"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#ffffff" viewBox="0 0 24 24">
+                <path d="M12 2L1 21h22L12 2zm0 3.5L18.5 19h-13L12 5.5z" />
+                <text x="12" y="16" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle" fill="#ff3b30">SOS</text>
+              </svg>
               <h4>SOS Alert</h4>
               <p>Instantly alert emergency contacts and response teams with your location in critical situations.</p>
             </div>
@@ -200,7 +445,11 @@
 
           <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
             <div class="feature-box blue">
-              <i class="bi bi-patch-check"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#ffffff" viewBox="0 0 24 24">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                <path d="M7 12h10v2H7zm0-4h10v2H7z" fill="#3498db" />
+                <path d="M15 18l-5-3v6l5-3z" fill="#3498db" />
+              </svg>
               <h4>Complaints Portal</h4>
               <p>Report incidents via audio, video, or text to ensure your concerns are documented and addressed.</p>
             </div>
@@ -208,7 +457,11 @@
 
           <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
             <div class="feature-box green">
-              <i class="bi bi-sunrise"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#ffffff" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8" stroke="#2ecc71" stroke-width="2" fill="none" />
+                <path d="M12 4v3M12 17v3M4 12h3M17 12h3" stroke="#2ecc71" stroke-width="2" />
+                <path d="M12 8l3 3-3 3-3-3z" fill="#2ecc71" />
+              </svg>
               <h4>Quick Response System</h4>
               <p>Connects you with trusted support networks for timely assistance.</p>
             </div>
@@ -216,7 +469,11 @@
 
           <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
             <div class="feature-box red">
-              <i class="bi bi-shield-check"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#ffffff" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
+                <circle cx="12" cy="9" r="3" fill="#e74c3c" />
+                <path d="M12 6v6" stroke="#ffffff" stroke-width="2" />
+              </svg>
               <h4>Location Tracking</h4>
               <p>Helps responders locate and reach you faster in emergencies.</p>
             </div>
@@ -275,11 +532,14 @@
 
           </div>
 
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="phone-mockup text-center">
-              <img src="{{ asset('asset/front/assets/img/phone-app-screen.webp')}}" alt="Phone Mockup" class="img-fluid">
+          <div class="col-lg-4 text-center" data-aos="zoom-in" data-aos-delay="200">
+              <div class="phone-mockup d-inline-block">
+                <img src="{{ asset('asset/images/app.png')}}"
+                    alt="App Preview"
+                    class="img-fluid"
+                    style="border-radius: 25px; height: 500px; width: auto; max-width: 100%;">
+              </div>
             </div>
-          </div><!-- End Phone Mockup -->
 
           <div class="col-lg-4">
 
@@ -405,41 +665,43 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row g-4 g-lg-5">
-          <div class="col-lg-5">
-            <div class="info-box" data-aos="fade-up" data-aos-delay="200">
-              <h3>Contact Info</h3>
-              <p>Download Tuliwamu for free <a href="#!"> download app</a>. afer downloading install it on your device.</p>
+          <div class="col-lg-5 position-relative"> <!-- Added position-relative -->
+            <div class="info-box-with-bg" data-aos="fade-up" data-aos-delay="200">
+              <div class="info-box-content"> <!-- New wrapper for content -->
+                <h3>Contact Info</h3>
+                <p>Download Tuliwamu for free <a href="#!">download app</a>. After downloading install it on your device.</p>
 
-              <div class="info-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon-box">
-                  <i class="bi bi-geo-alt"></i>
+                <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+                  <div class="icon-box">
+                    <i class="bi bi-geo-alt"></i>
+                  </div>
+                  <div class="content">
+                    <h4>Our Location</h4>
+                    <p>A108 Adam Street</p>
+                    <p>New York, NY 535022</p>
+                  </div>
                 </div>
-                <div class="content">
-                  <h4>Our Location</h4>
-                  <p>A108 Adam Street</p>
-                  <p>New York, NY 535022</p>
-                </div>
-              </div>
 
-              <div class="info-item" data-aos="fade-up" data-aos-delay="400">
-                <div class="icon-box">
-                  <i class="bi bi-telephone"></i>
+                <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+                  <div class="icon-box">
+                    <i class="bi bi-telephone"></i>
+                  </div>
+                  <div class="content">
+                    <h4>Phone Number</h4>
+                    <p>+1 5589 55488 55</p>
+                    <p>+1 6678 254445 41</p>
+                  </div>
                 </div>
-                <div class="content">
-                  <h4>Phone Number</h4>
-                  <p>+1 5589 55488 55</p>
-                  <p>+1 6678 254445 41</p>
-                </div>
-              </div>
 
-              <div class="info-item" data-aos="fade-up" data-aos-delay="500">
-                <div class="icon-box">
-                  <i class="bi bi-envelope"></i>
-                </div>
-                <div class="content">
-                  <h4>Email Address</h4>
-                  <p>info@example.com</p>
-                  <p>contact@example.com</p>
+                <div class="info-item" data-aos="fade-up" data-aos-delay="500">
+                  <div class="icon-box">
+                    <i class="bi bi-envelope"></i>
+                  </div>
+                  <div class="content">
+                    <h4>Email Address</h4>
+                    <p>info@example.com</p>
+                    <p>contact@example.com</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -468,6 +730,31 @@
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   @include('layouts.front.javascript')
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.slide');
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        // Hide all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+
+        // Show current slide
+        slides[index].classList.add('active');
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      // Initial display
+      showSlide(0);
+
+      // Change slide every 5 seconds (adjust timing as needed)
+      setInterval(nextSlide, 2000);
+    });
+  </script>
 
 </body>
 

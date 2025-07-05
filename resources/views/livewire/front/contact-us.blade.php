@@ -1,18 +1,24 @@
 <div>
-    @if(session('success'))
-    <div class="alert alert-success mb-4">
-        {{ session('success') }}
-    </div>
-    @endif
-
-    @if(session('error'))
-    <div class="alert alert-danger mb-4">
-        {{ session('error') }}
-    </div>
-    @endif
-    <form wire:submit.prevent="submitForm" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+   
+    <form wire:submit.prevent="submitForm" class="php-email-form">
         <div class="row gy-4">
-
+            <div class="col-12">
+                @if($isSending)
+                <div class="alert alert-info">Sending your message...</div>
+                @endif
+                
+                @if($successMessage)
+                <div class="alert alert-success">
+                    {{ $successMessage }}
+                </div>
+                @endif
+                
+                @if($errorMessage)
+                <div class="alert alert-danger">
+                    {{ $errorMessage }}
+                </div>
+                @endif
+            </div>
             <div class="col-md-6">
                 <input type="text" wire:model="name" class="form-control" placeholder="Your Name" required>
                 @error('name') <span class="text-danger">{{ $message }}</span> @enderror

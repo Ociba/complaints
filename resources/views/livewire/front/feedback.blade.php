@@ -1,8 +1,17 @@
 <div>
+    @if(session('success'))
+        <div class="alert alert-success mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
 
-    <form wire:submit.prevent="submit" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+    @if(session('error'))
+        <div class="alert alert-danger mb-4">
+            {{ session('error') }}
+        </div>
+    @endif
+    <form wire:submit.prevent="submit" class="php-email-form">
         <div class="row gy-4">
-
             <div class="col-md-12">
                 <input type="text" wire:model="name" class="form-control" placeholder="Your Name" required>
                 @error('name') <span class="text-danger">{{ $message }}</span> @enderror
@@ -26,12 +35,7 @@
                 @if($isSending)
                 <div class="loading">Loading</div>
                 @endif
-                @if($errorMessage)
-                <div class="error-message">{{ $errorMessage }}</div>
-                @endif
-                @if($successMessage)
-                <div class="sent-message">{{ $successMessage }}</div>
-                @endif
+               
             </div>
             <div class="col-12 text-center">
                 <button type="submit" class="btn btn-primary btn-submit" wire:loading.attr="disabled">

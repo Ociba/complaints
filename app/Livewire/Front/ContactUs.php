@@ -33,12 +33,10 @@ class ContactUs extends Component
         
         try {
             $recipients = [
-                'ocibajames@gmail.com', // Primary recipient
-                'julisema4@gmail.com'   // Additional recipient
-                // 'third@example.com'      Another recipient
+                'ocibajames@gmail.com',
+                'julisema4@gmail.com'
             ];
             
-            // Send to all recipients in one go
             Mail::to($recipients)
                 ->send(new ContactFormMail(
                     $this->name,
@@ -48,10 +46,12 @@ class ContactUs extends Component
                 ));
                 
             $this->resetForm();
-            return redirect()->to('/')->with('success', 'Your message has been sent. Thank you!');
+            $this->successMessage = 'Your message has been sent. Thank you!';
+            $this->errorMessage = '';
             
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'There was an error sending your message.');
+            $this->errorMessage = 'There was an error sending your message.';
+            $this->successMessage = '';
         }
         
         $this->isSending = false;

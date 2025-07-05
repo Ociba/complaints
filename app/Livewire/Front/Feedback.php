@@ -46,12 +46,12 @@ class Feedback extends Component
                 ));
                 
             $this->reset(['name', 'email', 'subject', 'message']);
-            return redirect()->to('/feedback')->with('success', 'Your message has been sent. Thank you!');
+            session()->flash('success', 'Your message has been sent. Thank you!');
             
             
             
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'There was an error sending your message.');
+            session()->flash('error', 'There was an error sending your message.');
         }
         
         $this->isSending = false;
