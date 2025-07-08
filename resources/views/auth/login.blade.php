@@ -25,7 +25,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                       <div class="input-with-icon">
-                        <i class="bi bi-envelope"></i>
+                        <i class="bi bi-envelope"></i> &nbsp;Email
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="email" required autocomplete="email" autofocus>
                       </div>
                         @error('email')
@@ -39,7 +39,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <div class="input-with-icon">
-                        <i class="bi bi-lock"></i>
+                        <i class="bi bi-lock"></i> &nbsp;Password
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="password" required autocomplete="current-password">
                       </div>
                         @error('password')

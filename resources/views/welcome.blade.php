@@ -323,7 +323,7 @@
                 </svg>
               </div>
               <div class="stat-content">
-                <h4>Danger</h4>
+                <h4>In&nbsp;Danger</h4>
                 <p class="mb-0">When you are in danger situation</p>
               </div>
             </div>
@@ -350,8 +350,8 @@
                 </svg>
               </div>
               <div class="stat-content">
-                <h4>Under Serviced</h4>
-                <p class="mb-0">Denial of rights</p>
+                <h4>Contract&nbsp;Breach</h4>
+                <p class="mb-0">Breach of Contract guidelines</p>
               </div>
             </div>
           </div>
@@ -677,8 +677,8 @@
                   </div>
                   <div class="content">
                     <h4>Our Location</h4>
-                    <p>A108 Adam Street</p>
-                    <p>New York, NY 535022</p>
+                    <p>King Ceasor Palace</p>
+                    <p>Nakasero Road, Kampala (Uganda)</p>
                   </div>
                 </div>
 
@@ -688,8 +688,8 @@
                   </div>
                   <div class="content">
                     <h4>Phone Number</h4>
-                    <p>+1 5589 55488 55</p>
-                    <p>+1 6678 254445 41</p>
+                    <p>+256 (0) 776913451</p>
+                    <p>+256 (0)756131454</p>
                   </div>
                 </div>
 
@@ -699,8 +699,8 @@
                   </div>
                   <div class="content">
                     <h4>Email Address</h4>
-                    <p>info@example.com</p>
-                    <p>contact@example.com</p>
+                    <p>info@tuliwamu.com</p>
+                    <p>contact@tuliwamu.com</p>
                   </div>
                 </div>
               </div>

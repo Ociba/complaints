@@ -28,6 +28,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('Home');
 Route::get('/logout', [HomeController::class, 'logoutUser']);
+Route::get('/register', function () { return redirect('/login');});
 
 // User routes
 Route::post('/complaints', [ComplaintController::class, 'store']);
