@@ -46,7 +46,7 @@
         <div class="col-lg-4 col-md-6 footer-links">
           <h4>Download Mobile App Now</h4>
           <ul>
-            <li><a href="#"><img src="{{ asset('asset\front\assets\img\googleplay-btn.svg')}}"></a></li>
+            <li><a href="#"><img src="{{ asset('asset\images\googleplay-btn.svg')}}"></a></li>
             <li><a href="#">1. Download, install & Open App</a></li>
             <li><a href="#">2. Create an Account</a></li>
             <li><a href="#">3. Send a Complaint</a></li>
