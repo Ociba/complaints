@@ -34,7 +34,7 @@
                 radial-gradient(circle at 10% 20%, rgba(28, 58, 113, 0.3) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(28, 58, 113, 0.3) 0%, transparent 20%),
                 radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 30%),
-                linear-gradient(135deg, #0d1b3e 0%, #1e3c72 100%);
+                linear-gradient(135deg, #0d83fd 0%, #0d83fd 100%);
             position: relative;
         }
 
@@ -69,7 +69,7 @@
 
         .login-left {
             flex: 1;
-            background: linear-gradient(135deg, rgba(30, 60, 114, 0.95) 0%, rgba(42, 82, 152, 0.95) 100%);
+            background: linear-gradient(135deg, rgba(13, 131, 253, 0.95) 0%, rgba(11, 110, 213, 0.95) 100%);
             color: white;
             padding: 50px 40px;
             display: flex;
@@ -281,7 +281,7 @@
         }
 
         .btn-submit {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #0d83fd 0%, #0d83fd 100%);
             color: white;
             border: none;
             padding: clamp(16px, 2vw, 18px) clamp(20px, 2.5vw, 30px);
@@ -439,7 +439,7 @@
         @media (max-width: 768px) {
             body {
                 padding: 10px;
-                background: linear-gradient(135deg, #0d1b3e 0%, #1e3c72 100%);
+                background: linear-gradient(135deg, #0d83fd 0%, #0d83fd 100%);
             }
             
             .login-left, .login-right {

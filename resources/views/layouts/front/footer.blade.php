@@ -2,7 +2,7 @@
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="/" class="logo d-flex align-items-center">
             <span class="sitename">Tuliwamu</span>
           </a>
           <div class="footer-contact pt-3">
@@ -23,7 +23,6 @@
           <h4>Useful Links</h4>
           <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About us</a></li>
             <li><a href="#whatwedo">What We Do</a></li>
             <li><a href="#complaint">How To Send Complaint</a></li>
             <li><a href="/feedback">Your Feedback</a></li>
@@ -45,7 +44,7 @@
         <div class="col-lg-4 col-md-6 footer-links">
           <h4>Download Mobile App Now</h4>
           <ul>
-            <li><a href="#"><img src="{{ asset('asset\images\googleplay-btn.svg')}}" alt="Google Play"></a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.kishanit.complaintsapp"><img src="{{ asset('asset\images\googleplay-btn.svg')}}" alt="Google Play"></a></li>
             <li><a href="#">1. Download, install & Open App</a></li>
             <li><a href="#">2. Create an Account</a></li>
             <li><a href="#">3. Send a Complaint</a></li>
